@@ -587,9 +587,12 @@ async function sendResults(){
   const jobs = [];
   if (CONFIG.sendEmail && !r.sentEmail) jobs.push(sendEmail(r).then(() => { r.sentEmail = true; }));
   if (CONFIG.sheetUrl && !r.sentSheet) jobs.push(sendSheet(r).then(() => { r.sentSheet = true; }));
-  const res = await Promise.allSettled(jobs);
+  await Promise.allSettled(jobs);
   saveFlags(r);
-  if (res.every(x => x.status === "fulfilled")){
+  // Το Google Sheet είναι η κύρια καταγραφή: αν έφτασε εκεί, η αποστολή θεωρείται επιτυχής
+  // (ένα πρόβλημα μόνο στο email — π.χ. FormSubmit χωρίς ενεργοποίηση — δεν εμφανίζεται ως σφάλμα).
+  const done = CONFIG.sheetUrl ? !!r.sentSheet : (!CONFIG.sendEmail || !!r.sentEmail);
+  if (done){
     r.sent = true; markSent(r.id);
     st.className = "status ok";
     st.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5 9-10"/></svg><span>Τα αποτελέσματα στάλθηκαν επιτυχώς.</span>';
