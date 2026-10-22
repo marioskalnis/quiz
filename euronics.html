@@ -16,7 +16,7 @@
   --radius:18px; --shadow:0 10px 30px -12px rgba(15,31,61,.25);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%}
+html,body{margin:0;height:100%;overscroll-behavior-y:none}
 body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
 .app{max-width:480px;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:var(--bg);position:relative}
@@ -474,7 +474,7 @@ function beginQuiz(consent){
   storage.set("quiz_last_user_" + CONFIG.chain, {name:state.name, store:state.store});
   state.i = 0; state.answers = CONFIG.questions.map(()=>null); state.submitted = false;
   $("#whoLine").textContent = state.name || ANON;
-  show("s-quiz"); renderQ(); startTimer();
+  show("s-quiz"); renderQ(); startTimer(); saveProgress();
 }
 
 /* ---------- timer ---------- */
@@ -482,8 +482,33 @@ let timerId = null;
 function startTimer(){
   state.startedAt = Date.now(); state.endsAt = state.startedAt + CONFIG.timeLimitMin*60000;
   state.auto = false; state.warned = false;
-  clearInterval(timerId); tick(); timerId = setInterval(tick, 250);
+  runTimer();
 }
+function runTimer(){ clearInterval(timerId); tick(); if (!state.submitted) timerId = setInterval(tick, 250); }
+
+/* ---------- πρόοδος: συνέχεια μετά από ανανέωση της σελίδας ---------- */
+const PKEY = () => "quiz_progress_" + CONFIG.chain;
+function saveProgress(){
+  if (state.submitted || !state.endsAt) return;
+  storage.set(PKEY(), { name: state.name, store: state.store, storeObj: state.storeObj, consent: state.consent,
+    answers: state.answers, i: state.i, startedAt: state.startedAt, endsAt: state.endsAt, warned: !!state.warned,
+    qn: CONFIG.questions.length });
+}
+function clearProgress(){ try { localStorage.removeItem(PKEY()); } catch(e){} }
+function resumeProgress(){
+  const pr = storage.get(PKEY());
+  if (!pr || !pr.endsAt || pr.qn !== CONFIG.questions.length || !pr.storeObj) return false;
+  if (Date.now() - pr.endsAt > 24*3600*1000) { clearProgress(); return false; }
+  Object.assign(state, { name: pr.name || "", store: pr.store, storeObj: pr.storeObj, consent: pr.consent,
+    answers: pr.answers, i: Math.min(pr.i || 0, CONFIG.questions.length - 1), startedAt: pr.startedAt, endsAt: pr.endsAt,
+    warned: pr.warned, auto: false, submitted: false });
+  $("#whoLine").textContent = state.name || ANON;
+  show("s-quiz"); renderQ(); runTimer();
+  if (!state.submitted) toast("Συνέχεια από εκεί που έμεινες — ο χρόνος συνεχίζει.");
+  return true;
+}
+// Προειδοποίηση πριν από ανανέωση/κλείσιμο ενώ το quiz είναι σε εξέλιξη
+window.addEventListener("beforeunload", e => { if (timerId && !state.submitted){ e.preventDefault(); e.returnValue = ""; } });
 function stopTimer(){ clearInterval(timerId); timerId = null; }
 function tick(){
   const left = (state.endsAt - Date.now())/1000;
@@ -523,7 +548,7 @@ function renderQ(){
         if (!state.answers[state.i].length) state.answers[state.i] = null;
       } else state.answers[state.i] = k;
       document.querySelectorAll(".opt").forEach(e2=>e2.classList.toggle("sel", e2.querySelector("input").checked));
-      updateNav();
+      updateNav(); saveProgress();
     });
   });
   updateNav();
@@ -535,10 +560,10 @@ function updateNav(){
   $("#nextBtn").textContent = last ? "Υποβολή" : "Επόμενη";
   $("#nextBtn").className = "btn " + (last ? "btn-primary" : "btn-dark");
 }
-$("#prevBtn").onclick = () => { if (state.i>0){ state.i--; renderQ(); } };
+$("#prevBtn").onclick = () => { if (state.i>0){ state.i--; renderQ(); saveProgress(); } };
 $("#nextBtn").onclick = () => {
   if (state.answers[state.i] === null) return;
-  if (state.i < CONFIG.questions.length-1){ state.i++; renderQ(); window.scrollTo(0,0); }
+  if (state.i < CONFIG.questions.length-1){ state.i++; renderQ(); window.scrollTo(0,0); saveProgress(); }
   else submit();
 };
 
@@ -553,7 +578,7 @@ function correctIdx(q){ return q.type==="multi" ? q.correct : q.type==="truefals
 
 function submit(){
   if (state.submitted) return;
-  state.submitted = true; stopTimer();
+  state.submitted = true; stopTimer(); clearProgress();
   const now = new Date();
   const elapsed = Math.min(CONFIG.timeLimitMin*60, Math.round((Date.now() - state.startedAt)/1000));
   const items = CONFIG.questions.map((q,i)=>{
@@ -800,6 +825,7 @@ $("#saveImgBtn").onclick = async () => {
   }catch(e){ toast("Δεν ήταν δυνατή η αποθήκευση του PDF."); }
   finally{ btn.disabled = false; btn.innerHTML = html; }
 };
+resumeProgress();
 </script>
 </body>
 </html>
