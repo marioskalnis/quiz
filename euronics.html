@@ -16,10 +16,11 @@
   --radius:18px; --shadow:0 10px 30px -12px rgba(15,31,61,.25);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;overscroll-behavior-y:none}
+html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none}
 body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
-.app{max-width:480px;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:var(--bg);position:relative}
+.app{max-width:480px;height:100%;height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:var(--bg);position:relative;
+  overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 @media (min-width:520px){body{background:#d5dbe7}.app{box-shadow:0 0 60px rgba(15,31,61,.18)}}
 
 /* Header */
@@ -192,6 +193,7 @@ input:focus,select:focus{border-color:var(--brand-2);background:#fff}
 .history a{color:var(--brand-2);font-weight:700;font-size:14px;text-decoration:none}
 
 @media print{
+  html,body,.app{height:auto!important;overflow:visible!important}
   body,.app{background:#fff!important;box-shadow:none!important}
   .foot,.status,.toast,.no-print{display:none!important}
   .screen{display:none!important}
@@ -428,9 +430,9 @@ $("#slist").addEventListener("click", e => { const b = e.target.closest(".sitem"
 $("#storeOther").addEventListener("input", ()=> $("#f-other").classList.remove("invalid"));
 document.addEventListener("keydown", e => { if (e.key==="Escape" && $("#sheet").classList.contains("open")) closeSheet(); });
 
-// remember last name/store on this phone (convenience only)
+// θυμάται μόνο το κατάστημα σε αυτό το κινητό (όχι το όνομα — μπορεί να το χρησιμοποιεί άλλος)
 const last = storage.get("quiz_last_user_" + CONFIG.chain);
-if (last){ $("#name").value = last.name || ""; const ls = STORE_LIST.find(s=>s.full===last.store); if (ls) pickStore(ls);
+if (last){ const ls = STORE_LIST.find(s=>s.full===last.store); if (ls) pickStore(ls);
   else if (last.store && last.store.startsWith(OTHER_PREFIX)){ pickOther(); $("#storeOther").value = last.store.slice(OTHER_PREFIX.length); } }
 
 const hist = storage.get("quiz_history_" + CONFIG.chain) || [];
@@ -471,7 +473,7 @@ function beginQuiz(consent){
     state.store = storeSel.value;
     state.storeObj = STORE_LIST.find(s=>s.full===storeSel.value);
   }
-  storage.set("quiz_last_user_" + CONFIG.chain, {name:state.name, store:state.store});
+  storage.set("quiz_last_user_" + CONFIG.chain, {store:state.store});
   state.i = 0; state.answers = CONFIG.questions.map(()=>null); state.submitted = false;
   $("#whoLine").textContent = state.name || ANON;
   show("s-quiz"); renderQ(); startTimer(); saveProgress();
@@ -520,7 +522,8 @@ function tick(){
 document.addEventListener("visibilitychange", () => { if (timerId) tick(); });
 
 /* ---------- quiz ---------- */
-function show(id){ document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active", s.id===id)); window.scrollTo(0,0); }
+function appTop(){ const a = document.querySelector(".app"); if (a) a.scrollTop = 0; }
+function show(id){ document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active", s.id===id)); appTop(); }
 
 function renderQ(){
   const q = CONFIG.questions[state.i], n = CONFIG.questions.length;
@@ -563,7 +566,7 @@ function updateNav(){
 $("#prevBtn").onclick = () => { if (state.i>0){ state.i--; renderQ(); saveProgress(); } };
 $("#nextBtn").onclick = () => {
   if (state.answers[state.i] === null) return;
-  if (state.i < CONFIG.questions.length-1){ state.i++; renderQ(); window.scrollTo(0,0); saveProgress(); }
+  if (state.i < CONFIG.questions.length-1){ state.i++; renderQ(); appTop(); saveProgress(); }
   else submit();
 };
 
