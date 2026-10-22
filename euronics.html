@@ -33,7 +33,8 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
 .logos img{display:block;height:20px;width:auto}
 .minibar{background:linear-gradient(160deg,var(--brand) 0%,var(--brand-2) 100%);display:flex;justify-content:space-between;align-items:center;
   padding:calc(env(safe-area-inset-top) + 12px) 18px 12px}
-.minibar img{display:block;height:14px;width:auto}
+.minibar img{display:block;height:14px;width:auto;flex:none}
+.minibar{position:sticky;top:0;z-index:6;gap:10px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
 .res-hero .logos{margin-bottom:18px}
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;font-weight:600}
 .hero h1{margin:0 0 8px;font-size:27px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
@@ -165,8 +166,9 @@ input:focus,select:focus{border-color:var(--brand-2);background:#fff}
 .disclaimer{font-size:13px;color:var(--ink-2);margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);line-height:1.45}
 .disclaimer .req{color:var(--bad);font-weight:700}
 .qright{display:flex;align-items:center;gap:10px;flex:none}
-.timer{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:#fff;font-weight:700;font-size:14px;padding:5px 11px;border-radius:999px;font-variant-numeric:tabular-nums}
-.timer.warn{background:var(--bad);animation:pulse 1s ease-in-out infinite}
+.timer{display:inline-flex;align-items:center;gap:6px;background:#14874f;color:#fff;font-weight:800;font-size:16px;padding:6px 13px;border-radius:999px;font-variant-numeric:tabular-nums;transition:background .3s}
+.timer.warn{background:#ff1f1f;color:#fff;animation:beat 1s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 @keyframes pulse{50%{opacity:.65}}
 .status.off{background:#eef1f6;color:var(--ink-2);flex-wrap:wrap}
 .status.off button{background:var(--brand)}
@@ -244,9 +246,9 @@ input:focus,select:focus{border-color:var(--brand-2);background:#fff}
 
   <!-- ============ QUIZ ============ -->
   <section class="screen" id="s-quiz">
-    <div class="minibar"><img data-logo="e" alt="Euronics"><img data-logo="s" alt="Samsung"></div>
+    <div class="minibar"><img data-logo="e" alt="Euronics"><span class="timer" id="timer" aria-live="off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="timeLeft">10:00</span></span><img data-logo="s" alt="Samsung"></div>
     <div class="qtop">
-      <div class="qmeta"><span class="who" id="whoLine"></span><span class="qright"><span id="stepLine"></span><span class="timer" id="timer" aria-live="off"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="timeLeft">10:00</span></span></span></div>
+      <div class="qmeta"><span class="who" id="whoLine"></span><span class="qright"><span id="stepLine"></span></span></div>
       <div class="progress"><i id="bar"></i></div>
     </div>
     <div class="body" id="qBody"></div>
@@ -334,7 +336,7 @@ const CONFIG = {
   sheetUrl: "https://script.google.com/macros/s/AKfycbzuHYSdsUqSCjBH25m3_dXP2U6e1vrQu6EwV5UWKUtytqqTLcNIcmbwQcHNhBwXPgOrAA/exec",
   sheetToken: "samsung-quiz-2026",   // ίδιο με το TOKEN στο Code.gs
   passMark: 50, // % για "Επιτυχία"
-  timeLimitMin: 10, // διαθέσιμος χρόνος σε λεπτά
+  timeLimitMin: 2, // διαθέσιμος χρόνος σε λεπτά (ΔΟΚΙΜΗ: 2 — κανονικά 10)
   trainerLabel: "Samsung Trainer",
   questions: [
     {
