@@ -27,6 +27,11 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
 .topline{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .internal{font-size:13px;font-weight:700;letter-spacing:.06em;color:#fff;opacity:.9;line-height:1}
 .samsung{display:block;height:20px;width:auto}
+.left-mark{display:flex;align-items:center;min-height:20px}
+.left-mark img{display:block;height:20px;width:auto}
+.left-mark .cname{font-size:17px;font-weight:800;color:#fff;letter-spacing:.01em;line-height:1}
+.minibar .left-mark img{height:14px}
+.minibar .left-mark .cname{font-size:14px}
 .hero{background:linear-gradient(160deg,var(--brand) 0%,var(--brand-2) 100%);color:#fff;
   padding:calc(env(safe-area-inset-top) + 22px) 22px 26px;border-radius:0 0 28px 28px;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;right:-80px;top:70px;width:200px;height:200px;border-radius:50%;
@@ -52,11 +57,76 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
 .foot{position:sticky;bottom:0;padding:12px 18px calc(env(safe-area-inset-bottom) + 14px);
   background:linear-gradient(to top,var(--bg) 70%,rgba(238,241,246,0))}
 .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
-.card h3{margin:0 0 10px;font-size:17px;font-weight:800}
-.plist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.plist li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink-2);line-height:1.4}
-.plist .ic{flex:none;width:32px;height:32px;border-radius:10px;background:#f2f4f8;display:grid;place-items:center;color:var(--ink)}
-.plist b{color:var(--ink)}
+
+/* Start form */
+label.f,.f{display:block;font-weight:700;font-size:15px;margin:0 0 8px}
+.req{color:var(--bad)}
+.field{margin-bottom:18px;scroll-margin-bottom:120px}
+.field:last-child{margin-bottom:0}
+.err{display:none;color:var(--bad);font-size:13px;font-weight:600;margin-top:6px}
+.field.invalid .err{display:block}
+.hint{font-size:13px;color:var(--ink-2);margin-top:6px}
+input[type=text]{width:100%;font:inherit;font-size:17px;color:var(--ink);background:#f6f8fb;border:2px solid var(--line);
+  border-radius:14px;padding:14px;min-height:54px;outline:none;appearance:none;-webkit-appearance:none}
+input[type=text]:focus{border-color:var(--brand-2);background:#fff}
+.field.invalid input[type=text]{border-color:var(--bad);background:var(--bad-bg)}
+.sess-one{background:#f6f8fb;border:2px solid var(--line);border-radius:14px;padding:12px 14px}
+.sess-one b{display:block;font-size:16px;line-height:1.3}
+.sess-one span{font-size:14px;color:var(--ink-2)}
+.slistc{display:flex;flex-direction:column;gap:10px}
+.sopt{position:relative;display:flex;gap:12px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer}
+.sopt input{position:absolute;opacity:0;pointer-events:none}
+.sopt .dot{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid #b8c1d3}
+.sopt.sel{border-color:var(--sel);background:var(--sel-bg)}
+.sopt.sel .dot{border:7px solid var(--sel)}
+.sopt b{display:block;font-size:15.5px;line-height:1.3}
+.sopt span{font-size:13.5px;color:var(--ink-2)}
+.field.invalid .sopt{border-color:var(--bad)}
+.badge{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:2px 8px;border-radius:999px;background:#000;color:#fff;margin-right:6px;vertical-align:1px}
+.badge.store{background:var(--accent);color:var(--accent-ink)}
+.loading{display:flex;gap:10px;align-items:center;color:var(--ink-2);font-size:15px;font-weight:600}
+.spin{width:18px;height:18px;border:3px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .8s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.msg{font-size:15px;color:var(--ink-2)}
+.msg button{margin-top:12px}
+.info{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);margin-top:16px;padding:0 4px;line-height:1.45}
+.info svg{flex:none;margin-top:2px}
+
+/* Store picker */
+.owner{color:#1d5fd1;font-weight:800}
+.addr{color:var(--ink-2);font-weight:500}
+.picker{width:100%;text-align:left;font:inherit;font-size:16px;line-height:1.35;color:var(--ink);background:#f6f8fb;border:2px solid var(--line);
+  border-radius:14px;padding:13px 42px 13px 14px;min-height:54px;cursor:pointer;position:relative;display:block}
+.picker::after{content:"";position:absolute;right:16px;top:50%;width:14px;height:9px;margin-top:-4px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%234a5878' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat}
+.picker .ph{color:#8a95ab}
+.picker .owner,.picker .addr{display:block}
+.picker .addr{font-size:14px}
+.field.invalid .picker{border-color:var(--bad);background:var(--bad-bg)}
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:20;display:none}
+.sheet-bg.open{display:block}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,100%);width:100%;max-width:480px;height:88dvh;background:#fff;z-index:21;
+  border-radius:24px 24px 0 0;display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.2,.8,.2,1);box-shadow:0 -10px 40px rgba(15,31,61,.25)}
+.sheet.open{transform:translate(-50%,0)}
+.sheet-h{padding:10px 18px 12px;border-bottom:1px solid var(--line)}
+.grab{width:44px;height:5px;border-radius:9px;background:#d0d6e2;margin:0 auto 12px}
+.sheet-t{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sheet-t h3{margin:0;font-size:19px;font-weight:800}
+.xbtn{border:0;background:#eef1f6;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
+.search{position:relative}
+.search input{padding-left:44px!important;min-height:50px!important}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-2)}
+.slist{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 10px calc(env(safe-area-inset-bottom) + 16px);overscroll-behavior:contain}
+.sitem{display:block;width:100%;text-align:left;font:inherit;font-size:16px;line-height:1.35;background:none;border:0;border-bottom:1px solid #eef1f6;
+  padding:14px 40px 14px 10px;cursor:pointer;position:relative;border-radius:12px;color:var(--ink)}
+.sitem .owner{display:block;margin-bottom:2px}
+.sitem .addr{font-size:14.5px}
+.sitem.sel{background:#eef3ff}
+.sitem.sel::after{content:"✔";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#1d5fd1;font-weight:800}
+.sitem.other{border-top:2px dashed var(--line);border-bottom:0;margin-top:6px}
+.sitem.other .owner{color:var(--ink)}
+.sitem.other .owner::before{content:"＋ ";color:#1d5fd1}
+.empty{padding:30px 10px;text-align:center;color:var(--ink-2)}
 
 .btn{width:100%;font:inherit;font-weight:700;font-size:17px;border:0;border-radius:16px;min-height:56px;padding:14px 18px;
   cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .08s,opacity .2s}
@@ -87,8 +157,6 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
 .opt.sel{border-color:var(--sel);background:var(--sel-bg)}
 .opt.sel .key{background:var(--sel);color:#fff}
 .opt:focus-within{outline:3px solid rgba(29,58,114,.25);outline-offset:2px}
-
-/* Star grade */
 .stars{display:flex;justify-content:space-between;gap:6px;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px 12px 14px}
 .star{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;cursor:pointer;font:inherit;color:var(--ink-2);padding:0}
 .star svg{width:44px;height:44px;transition:transform .12s}
@@ -96,10 +164,8 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
 .star.on svg path{fill:var(--accent);stroke:#d48e08}
 .star:active svg{transform:scale(.9)}
 .star span{font-size:12px;font-weight:700}
-.star:focus-visible{outline:3px solid rgba(29,58,114,.25);border-radius:12px}
 .grade-label{text-align:center;margin-top:14px;font-size:18px;font-weight:800;min-height:26px}
 .grade-label small{display:block;font-size:13px;font-weight:600;color:var(--ink-2)}
-
 textarea{width:100%;font:inherit;font-size:17px;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:16px;
   padding:14px;min-height:170px;outline:none;resize:vertical}
 textarea:focus{border-color:var(--brand-2)}
@@ -117,12 +183,26 @@ textarea:focus{border-color:var(--brand-2)}
 .status.pending{background:#fff4dc;color:#7a5200}
 .status.ok{background:var(--ok-bg);color:var(--ok)}
 .status.fail{background:var(--bad-bg);color:var(--bad);flex-wrap:wrap}
-.status.preview{background:#eef1f6;color:var(--ink-2)}
-.status .spin{width:18px;height:18px;border:3px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .8s linear infinite;flex:none}
-@keyframes sp{to{transform:rotate(360deg)}}
 .status button{margin-left:auto;font:inherit;font-weight:700;font-size:13px;border:0;background:var(--bad);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
 .note{font-size:14px;color:var(--ink-2);text-align:center;margin:6px 8px 0;line-height:1.45}
-.closed{padding:40px 22px;text-align:center;color:var(--ink-2)}
+.consent-line{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#f4f6fa;border-radius:12px;padding:10px 12px;font-size:14px;color:var(--ink-2);margin-bottom:18px}
+.consent-line b{color:var(--ink)}
+.linkbtn{background:none;border:0;font:inherit;font-size:14px;font-weight:700;color:var(--sel);text-decoration:underline;cursor:pointer;padding:4px;flex:none}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:30;display:none;align-items:center;justify-content:center;padding:18px}
+.modal-bg.open{display:flex;animation:fade .2s ease}
+.modal{background:#fff;border-radius:22px;width:100%;max-width:420px;max-height:94dvh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.modal-body{overflow-y:auto;padding:20px 18px 12px}
+.modal-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.modal-ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center}
+.modal h3{margin:0;font-size:20px;font-weight:800}
+.mlead{font-size:15px;margin:0 0 12px;line-height:1.45}
+.mlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.mlist li{display:flex;gap:10px;align-items:flex-start;background:#f4f6fa;border-radius:12px;padding:10px 12px;font-size:14.5px;line-height:1.4}
+.mlist li .mi{flex:none;font-size:17px;line-height:1.3}
+.mlist li.yes{background:#fff6dd}
+.modal-foot{padding:12px 18px calc(env(safe-area-inset-bottom) + 14px);border-top:1px solid var(--line)}
+.mbtns{display:flex;gap:10px}
+.mbtns .btn{flex:1;min-height:52px;font-size:16px;padding:10px 8px}
 </style>
 </head>
 <body>
@@ -131,36 +211,29 @@ textarea:focus{border-color:var(--brand-2)}
   <!-- ============ START ============ -->
   <section class="screen active" id="s-start">
     <header class="hero">
-      <div class="topline"><span class="internal">Internal</span><img class="samsung" data-logo alt="Samsung"></div>
-      <div class="eyebrow" id="trainingName" style="margin-bottom:8px"></div>
+      <div class="topline"><span class="left-mark"></span><img class="samsung" data-logo alt="Samsung"></div>
+      <div class="eyebrow" id="eyebrow" style="margin-bottom:8px">Samsung Training</div>
       <h1>Αξιολόγηση Εκπαίδευσης</h1>
       <p id="introText"></p>
       <div class="chips">
-        <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>Ανώνυμο</span>
         <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg><span><span class="q-count"></span> ερωτήσεις</span></span>
         <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>~<span id="minutes"></span> λεπτά</span></span>
       </div>
     </header>
     <div class="body">
-      <div class="card">
-        <h3>Πριν ξεκινήσετε</h3>
-        <ul class="plist">
-          <li><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span>
-            <span><b>Δεν ζητάμε όνομα ή κατάστημα.</b> Οι απαντήσεις σας δεν συνδέονται με εσάς.</span></li>
-          <li><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg></span>
-            <span><b>Βαθμολογήστε ειλικρινά</b> και πείτε μας τι δεν λειτούργησε, ώστε να το διορθώσουμε.</span></li>
-          <li><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span>
-            <span>Στο τέλος πατήστε <b>«Αποστολή»</b>. Δεν υπάρχει χρονικό όριο.</span></li>
-        </ul>
+      <div class="card" id="startCard">
+        <div class="loading"><span class="spin"></span>Φόρτωση εκπαιδεύσεων…</div>
       </div>
+      <div class="info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>
+        <span>Στο τέλος πατήστε <b>«Αποστολή»</b> – δεν υπάρχει χρονικό όριο.</span></div>
     </div>
-    <div class="foot"><button class="btn btn-primary" id="startBtn" type="button">Έναρξη
+    <div class="foot"><button class="btn btn-primary" id="startBtn" type="button" disabled>Έναρξη
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
   </section>
 
   <!-- ============ QUESTIONS ============ -->
   <section class="screen" id="s-quiz">
-    <div class="minibar"><div class="topline"><span class="internal">Internal</span><img class="samsung" data-logo alt="Samsung"></div></div>
+    <div class="minibar"><div class="topline"><span class="left-mark"></span><img class="samsung" data-logo alt="Samsung"></div></div>
     <div class="qtop">
       <div class="qmeta"><span class="qsec" id="secLine"></span><span id="stepLine" style="flex:none"></span></div>
       <div class="progress"><i id="bar"></i></div>
@@ -178,53 +251,76 @@ textarea:focus{border-color:var(--brand-2)}
   <!-- ============ THANK YOU ============ -->
   <section class="screen" id="s-done">
     <header class="hero res-hero">
-      <div class="topline"><span class="internal">Internal</span><img class="samsung" data-logo alt="Samsung"></div>
+      <div class="topline"><span class="left-mark"></span><img class="samsung" data-logo alt="Samsung"></div>
       <div class="tick"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
       <h2>Ευχαριστούμε πολύ!</h2>
       <p>Η αξιολόγησή σας μάς βοηθά να κάνουμε τις επόμενες εκπαιδεύσεις καλύτερες.</p>
     </header>
     <div class="body">
-      <div class="status pending" id="sendStatus"><span class="spin"></span><span>Αποστολή απαντήσεων…</span></div>
+      <div class="status" id="sendStatus" style="display:none"></div>
       <p class="note">Μπορείτε τώρα να κλείσετε αυτή τη σελίδα.</p>
     </div>
   </section>
+</div>
 
-  <!-- ============ CLOSED ============ -->
-  <section class="screen" id="s-closed">
-    <header class="hero">
-      <div class="topline"><span class="internal">Internal</span><img class="samsung" data-logo alt="Samsung"></div>
-      <h1>Αξιολόγηση Εκπαίδευσης</h1>
-    </header>
-    <div class="closed">Η αξιολόγηση έχει κλείσει. Ευχαριστούμε!</div>
-  </section>
+<div class="modal-bg" id="consentBg" role="dialog" aria-modal="true" aria-labelledby="consentTitle">
+  <div class="modal">
+    <div class="modal-body">
+      <div class="modal-head"><div class="modal-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <h3 id="consentTitle">Αποστολή αξιολόγησης</h3></div>
+      <p class="mlead">Η αξιολόγησή σας θα σταλεί στον <b>Samsung Trainer</b>. Συμφωνείτε να σταλεί με τα στοιχεία σας;</p>
+      <ul class="mlist">
+        <li class="yes"><span class="mi">✅</span><span><b>«Συμφωνώ»:</b> θα συμπληρώσετε <b>ονοματεπώνυμο και κατάστημα</b>, και θα σταλούν μαζί με την αξιολόγηση.</span></li>
+        <li><span class="mi">🔒</span><span><b>«Δεν συμφωνώ»:</b> θα δώσετε <b>μόνο το κατάστημα</b> και η αξιολόγηση θα σταλεί <b>ανώνυμα</b>.</span></li>
+      </ul>
+    </div>
+    <div class="modal-foot">
+      <div class="mbtns">
+        <button class="btn btn-ghost" id="disagreeBtn" type="button">Δεν συμφωνώ</button>
+        <button class="btn btn-primary" id="agreeBtn" type="button">Συμφωνώ</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Επιλογή καταστήματος">
+  <div class="sheet-h">
+    <div class="grab"></div>
+    <div class="sheet-t"><h3>Επιλέξτε κατάστημα</h3>
+      <button class="xbtn" id="sheetClose" type="button" aria-label="Κλείσιμο"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input type="text" id="storeSearch" placeholder="Αναζήτηση: επωνυμία, πόλη, διεύθυνση" autocomplete="off" enterkeyhint="search"></div>
+  </div>
+  <div class="slist" id="slist"></div>
 </div>
 
 <script>
 /* =====================================================================
    ΡΥΘΜΙΣΕΙΣ — αλλάξτε μόνο αυτό το τμήμα
+   Οι εκπαιδεύσεις ΔΕΝ γράφονται εδώ: προστίθενται στην καρτέλα «Εκπαιδεύσεις» του Google Sheet.
+   Links / QR:
+     feedback.html                → ένα QR για όλες τις ενεργές εκπαιδεύσεις
+     feedback.html?c=euronics      → QR ανά πελάτη (internal, euronics, electronet, plaisio, kotsovolos, public, expert, bestelectric, praktiker)
+     feedback.html?s=ΚΩΔΙΚΟΣ       → συγκεκριμένη εκπαίδευση (π.χ. ?s=test για δοκιμή, ακόμη κι αν δεν είναι ενεργή)
    ===================================================================== */
 const CONFIG = {
-  // Κάθε εκπαίδευση (περίσταση) έχει δικό της κωδικό → δικό της link και QR: feedback.html?e=ΚΩΔΙΚΟΣ
-  occasions: {
-    "smartapps-30-10": "«Ποια είναι η καλύτερη smart εφαρμογή;» · Teams · 30/10/2026",
-    "test":            "Δοκιμή"
-  },
-  defaultOccasion: "smartapps-30-10",
   intro: "Η γνώμη σας μετράει: βαθμολογήστε την εκπαίδευση και πείτε μας τι να βελτιώσουμε.",
   minutes: 5,
-  // Google Sheet (Apps Script web app, τελειώνει σε /exec). Κενό = προεπισκόπηση, δεν στέλνεται τίποτα.
-  sheetUrl: "",
-  sheetToken: "",
-  formId: "training-feedback-2026-10-30",
-  // Οι ερωτήσεις θα μπουν εδώ. Τύποι: "grade" (αστέρια 1–5), "single" (μία επιλογή),
-  // "multi" (όσες ισχύουν), "text" (ελεύθερο κείμενο). optional:true = μπορεί να μείνει κενή.
+  sheetUrl: "https://script.google.com/macros/s/AKfycbyijcmVlst00PFV9xcXdiQrRdV3uZNNE-tKHdEBUztsRHdpNtb6lUBHsO6ChcgtOmw_iw/exec",
+  sheetToken: "samsung-feedback-2026",
+  clients: {
+    internal: "Internal (Samsung)", euronics: "Euronics", electronet: "Electronet", plaisio: "Plaisio",
+    kotsovolos: "Κωτσόβολος", public: "Public", expert: "Expert", bestelectric: "Best Electric", praktiker: "Praktiker"
+  },
+  // Τύποι: "grade" (αστέρια 1–5), "single" (μία επιλογή), "multi" (όσες ισχύουν), "text" (ελεύθερο κείμενο).
+  // scores: πόντοι (0–100) ανά επιλογή για το «Συνολικό σκορ». Χωρίς scores = δεν μετράει στο σκορ.
   questions: [
     { section: "Α. Συνολική εντύπωση", type: "grade",
       text: "Πώς θα βαθμολογούσατε συνολικά την εκπαίδευση;",
       labels: ["Κακή", "Μέτρια", "Καλή", "Πολύ καλή", "Εξαιρετική"] },
     { section: "Α. Συνολική εντύπωση", type: "single",
       text: "Η εκπαίδευση ανταποκρίθηκε στις προσδοκίες σας;",
-      options: ["Τις ξεπέρασε", "Ναι, πλήρως", "Εν μέρει", "Όχι"] },
+      options: ["Τις ξεπέρασε", "Ναι, πλήρως", "Εν μέρει", "Όχι"], scores: [100, 80, 40, 0] },
     { section: "Β. Περιεχόμενο", type: "multi",
       text: "Υπήρξε θέμα που θα θέλατε να καλυφθεί περισσότερο;",
       options: ["Βήμα-βήμα σύνδεση συσκευής στην εφαρμογή", "Συχνά προβλήματα πελατών και λύσεις",
@@ -234,7 +330,10 @@ const CONFIG = {
   ]
 };
 
+/* Καταστήματα ανά πελάτη (από τον φάκελο Stores): [επωνυμία, διεύθυνση, πόλη] */
+const STORES = {"euronics":[["E-GLOU ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ","Γ. ΚΟΥΓΙΟΥΜΤΖΊΔΗ 3,, ΓΙΑΝΝΙΤΣΑ, 58100, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["PTI Ε.Ε.","ΚΑΤΕΧΑΚΗ 39, ΑΘΗΝΑ, 11525, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["TSUM ΗΛΕΚΤΡΙΚΑ ΕΠE","Ν.ΒΟΤΣΗ 22, ΗΛΙΟΥΠΟΛΗ ΘΕΣΣΑΛΟΝΙΚΗΣ, 56431, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΑΔΑΜ Π. ΑΓΗΣΙΛΑΟΣ","ΠΑΠΑΔΙΑΜΑΝΤΗ 12 - ΣΚΙΑΘΟΣ, ΣΚΙΑΘΟΣ, 37002, ΣΚΙΑΘΟΣ","ΣΚΙΑΘΟΣ"],["ΑΔΑΜΟΓΛΟΥ ΚΥΡ. ΔΡΟΣΟΣ","ΜΑΚΕΔΟΝΟΜΑΧΩΝ 10, ΧΡΥΣΟΥΠΟΛΗ, 64200, ΚΑΒΑΛΑΣ","ΚΑΒΑΛΑΣ"],["ΑΖΗΖΟΓΛΟΥ Σ. ΣΕΪΧΑΝ","ΣΜΥΝΘΗ, ΞΑΝΘΗ, 67100, ΞΑΝΘΗΣ","ΞΑΝΘΗΣ"],["ΑΖΗΖΟΓΛΟΥ Σ. ΣΕΪΧΑΝ","ΞΑΝΘΗ, ΔΗΜΟΚΡΙΤΟΥ, 671 31, ΞΑΝΘΗ","ΞΑΝΘΗ"],["ΑΘΑΝΑΣΙΑΔΗ Γ. ΧΡΥΣΟΥΛΑ & ΣΙΑ ΕΕ","ΕΠΙΣΚΟΠΗ - ΝΑΟΥΣΑ, ΝΑΟΥΣΑ, 59200, ΗΜΑΘΙΑΣ","ΗΜΑΘΙΑΣ"],["ΑΘΑΝΑΣΟΠΟΥΛΟΣ ΧΡΗΣΤΟΣ Α.Ε.","ΚΟΛΟΚΟΤΡΩΝΗ 21, ΠΑΤΡΑ, 26221, ΑΧΑΪΑΣ","ΑΧΑΪΑΣ"],["ΑΘΑΝΑΣΟΠΟΥΛΟΣ ΧΡΗΣΤΟΣ Α.Ε.","ΚΟΛΟΚΟΤΡΩΝΗ 46, ΠΑΤΡΑ 26221","ΠΑΤΡΑ 26221"],["ΑΛΕΞΙΟΥ ΓΕΩΡΓ. ΧΡΗΣΤΟΣ","ΤΑΓΜΑΤΑΡΧΗ ΒΕΛΙΣΣΑΡΙΟΥ 23, ΦΙΛΙΠΠΙΑΔΑ, 48200, ΑΡΤΑΣ","ΑΡΤΑΣ"],["ΑΜΠΑΤΖΙΔΟΥ Ν. ΜΑΡΙΑ","ΑΓΙΟΥ ΔΗΜΗΤΡΙΟΥ 11, ΕΔΕΣΣΑ, 58200, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["ΑΝΑΣΤΑΣΙΟΥ Ο.Ε","ΠΑΠΑΠΟΣΤΟΛΟΥ 9Β, ΛΑΜΙΑ, 35100, ΦΘΙΩΤΙΔΑΣ","ΦΘΙΩΤΙΔΑΣ"],["ΑΝΔΡΙΚΟΠΟΥΛΟΥ ΑΙΚΑΤ. & ΘΕΟΔΩΡΑ Ο.Ε.","Λ.ΛΑΥΡΙΟΥ 45, ΠΑΛΛΗΝΗ, 15351, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΑΝΘΙΔΗΣ Μ. ΓΕΩΡΓΙΟΣ (ΚΕΝΤΡΙΚΟ)","ΑΓ.ΠΑΝΤΩΝ 63, ΘΕΣΣΑΛΟΝΙΚΗ, 54629, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΑΝΘΙΔΗΣ Μ. ΓΕΩΡΓΙΟΣ (ΥΠΟΚ/ΜΑ)","ΚΑΣΣΑΝΔΡΟΥ 137, ΘΕΣΣΑΛΟΝΙΚΗ, 54634, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΑΝΤΩΝΙΟΥ ΛΑΜΠΡΟΣ","ΔΟΜΟΚΟΣ, 35010, ΦΘΙΩΤΙΔΑΣ","ΦΘΙΩΤΙΔΑΣ"],["ΑΝΤΩΝΙΟΥ ΛΑΜΠΡΟΣ","ΛΑΜΙΑΣ 73, ΦΑΡΣΑΛΑ, 40300","ΦΑΡΣΑΛΑ"],["ΑΝΤΩΝΟΥΛΑΣ Κ ΙΩΑΝΝΗΣ","ΑΒΡΑΑΜ ΚΟΝΤΟΠΟΥΛΟΥ 20, ΔΡΑΠΕΤΣΩΝΑ, 18648, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΑΡΑΠΟΓΛΙΔΗΣ ΚΟΣΜΑΣ","25ης ΜΑΡΤΙΟΥ 59, ΠΤΟΛΕΜΑΪΔΑ, 50200, ΚΟΖΑΝΗΣ","ΚΟΖΑΝΗΣ"],["ΑΡΓΥΡΟΠΟΥΛΟΣ ΔΗΜΟΣΘΕΝΗΣ","ΚΟΡΙΝΘΟΥ 60, ΑΡΓΟΣ, 21200, ΑΡΓΟΛΙΔΑΣ","ΑΡΓΟΛΙΔΑΣ"],["ΑΡΓΥΡΟΠΟΥΛΟΣ ΝΙΚΟΛΑΟΣ","ΑΜΥΝΤΟΡΟΣ 114, ΑΓ. ΙΕΡΟΘΕΟΣ, ΠΕΡΙΣΤΕΡΙ, 12135, ΑΤΤΙΚΗ","ΑΤΤΙΚΗ"],["ΑΣΗΜΑΚΟΠΟΥΛΟΙ ΑΦΟΙ Ο.Ε.","ΡΗΓΑ ΦΕΡΑΙΟΥ 10, ΑΙΓΑΛΕΩ, 12241, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΑΣΤΕΡΙΝΟΣ ΑΝΑΣΤΑΣΙΟΣ","ΠΡΙΑΜΟΥ 113 & ΠΡΩΤΕΣΙΛΑΟΥ, ΙΛΙΟΝ, 13122, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΑΦΕΝΤΟΥΛΗΣ Γ. ΣΤΥΛΙΑΝΟΣ","Μ.ΑΛΕΞΑΝΔΡΟΥ 35 & ΓΩΝΙΑ ΕΔΕΣΣΗΣ 13, ΒΕΡΟΙΑ, 59100, ΗΜΑΘΙΑΣ","ΗΜΑΘΙΑΣ"],["ΑΦΟΙ Θ. ΠΕΤΣΟΥ ΟΕΕ","ΑΦΟΙ Θ. ΠΕΤΣΟΥ ΟΕΕ, ΒΕΛΙΚΑ ΡΩΜΑ 11, ΓΙΑΝΝΙΤΣΑ, 58100, ΓΙΑΝΝΙΤΣΑ","ΓΙΑΝΝΙΤΣΑ"],["ΒΑΒΙΖΟΣ ΚΩΝ/ΝΟΣ & ΣΙΑ Ε.Ε.","ΑΕΡΟΔΡΟΜΊΟΥ 78-80, ΛΑΡΙΣΑ, 41336, ΛΑΡΙΣΑΣ","ΛΑΡΙΣΑΣ"],["ΒΑΣΙΛΕΙΟΥ ΑΦΟΙ ΟΙΚΙΑΚΟΣ ΕΞΟΠΛΙΣΜΟΣ Ι.Κ.Ε","ΑΓ.ΔΗΜΗΤΡΙΟΥ 178, ΑΓΙΟΣ ΔΗΜΗΤΡΙΟΣ, 17343, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΒΛΕΤΣΟΣ Π.ΠΑΝΑΓΙΩΤΗΣ","ΘΕΡΜΟΠΥΛΩΝ 10, ΓΡΕΒΕΝA, 51100, ΓΡΕΒΕΝΩΝ","ΓΡΕΒΕΝΩΝ"],["ΒΡΑΧΑ Ε.Π.Ε.","ΚΑΡΑΪΣΚΑΚΗ 10, ΑΓΡΙΝΙΟ, 30100, ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ","ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ"],["ΒΡΑΪΜΑΚΗ ΑΦΟΙ Ο.Ε.","ΑΒΑΝΤΩΝ 49, ΧΑΛΚΙΔΑ, 34100, ΕΥΒΟΙΑΣ","ΕΥΒΟΙΑΣ"],["ΓΑΝΙΤΗΣ Γ.ΚΑΙ ΣΙΑ Ε.Ε.","ΒΑΣΙΛΕΩΣ ΠΑΥΛΟΥ 6, ΚΟΜΟΤΗΝΗ, 69100, ΡΟΔΟΠΗΣ","ΡΟΔΟΠΗΣ"],["ΓΕΩΡΓΑΚΗΣ ΑΝΤ. & ΣΙΑ ΕΠΕ","ΛΕΩΦ. ΑΡΤΕΜΙΔΟΣ 77, ΑΡΤΕΜΙΔΑ, 19016, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΓΕΩΡΓΑΚΛΗΣ Θ. – ΓΕΩΡΓΑΚΛΗΣ Γ. Ο.Ε","ΝΑΥΑΡΙΝΟΥ 68, ΜΕΣΣΗΝΗ, 24200, ΜΕΣΣΗΝΙΑΣ","ΜΕΣΣΗΝΙΑΣ"],["ΓΕΩΡΓΟΥΛΗ ΑΦΟΙ Ο.Ε","ΑΓΙΟΣ ΛΟΥΚΑΣ, ΣΙΦΝΟΣ, 84003, ΚΥΚΛΑΔΩΝ","ΚΥΚΛΑΔΩΝ"],["ΓΙΑΝΝΟΠΟΥΛΟΣ ΚΩΝ/ΝΟΣ & ΙΩΑΝΝΗΣ ΟΕ","ΠΑΠΑΣΤΡΑΤΟΥ 19, ΑΓΡΙΝΙΟ, 30100, ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ","ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ"],["ΓΚΑΛΔΑΝΙΔΗΣ Ε. & ΣΙΑ ΟΕ","25ης ΜΑΪΟΥ 37, ΔΙΔΥΜΟΤΕΙΧΟ, 68300, ΕΒΡΟΥ","ΕΒΡΟΥ"],["ΓΚΙΚΑΣ ΣΠΥΡΙΔΩΝ","Λ.ΑΘΗΝΩΝ 17 & ΘΕΟΦΡΑΣΤΟΥ, ΑΧΑΡΝΕΣ, 13674, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΓΚΛΕΖΑΚΟΣ Α. & ΣΙΑ Ε.Ε","ΓΡ. ΛΑΜΠΡΑΚΗ 23, ΑΛΕΞΑΝΔΡΕΙΑ, 59300, ΗΜΑΘΙΑΣ","ΗΜΑΘΙΑΣ"],["ΓΚΛΕΖΑΚΟΣ ΞΥΔΑΣ ΙΚΕ","ΦΙΛΙΠΠΟΥ ΦΛΩΡΟΥ 98,, ΚΟΡΔΕΛΙΟ, ΘΕΣΣΑΛΟΝΙΚΗ, 56334","ΘΕΣΣΑΛΟΝΙΚΗ"],["ΓΚΛΕΖΑΚΟΣ Π. & ΣΙΑ ΟΕ","ΠΑΠAΝΙΚΟΛΗ 34, ΚΕΡΑΤΣΙΝΙ, 18756, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΔΕΔΕΣ Κ. ΑΘΑΝΑΣΙΟΣ","ΠΡΟΙΚΟΝΗΣΟΥ 2, ΩΡΩΠΟΣ, 19015, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΔΗΜΟΥ ΕΥΑΓ. ΚΩΝ/ΝΟΣ","Μ.ΑΛΕΞΑΝΔΡΟΥ 6, ΣΕΡΡΕΣ, 62122, ΣΕΡΡΩΝ","ΣΕΡΡΩΝ"],["ΔΙΔΑΓΓΕΛΟΣ ΙΩΑΝΝΗΣ","ΑΝΔΡΟΥΤΣΟΥ 7, ΠΑΛΑΜΑ, 43200, ΚΑΡΔΙΤΣΑΣ","ΚΑΡΔΙΤΣΑΣ"],["ΔΙΟΜΑΤΑΡΗΣ Η. & ΣΙΑ Ο.Ε.","ΠΡΟΠΟΝΤΙΔΟΣ 14, ΩΡΩΠΟΣ, 19015, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΔΩΔΟΣ ΑΝΑΣΤΑΣΙΟΣ","ΠΟΛΥΤΕΧΝΕΙΟΥ 70, ΗΡΑΚΛΕΙΑ, 62400, ΣΕΡΡΩΝ","ΣΕΡΡΩΝ"],["ΕΥΡΑΓΟΡΑ ΞΥΔΑΣ ΙΚΕ.","ΛΕΩΦ. Κ.ΚΑΡΑΜΑΝΛΗ 35, ΘΕΣΣΑΛΟΝΙΚΗ, 54639, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΕΥΣΤΡΑΤΙΟΥ Ο.Ε.","ΣΚΕΥΟΥ ΖΕΡΒΟΥ 7, ΚΩΣ, 85300, ΔΩΔΕΚΑΝΗΣΟΥ","ΔΩΔΕΚΑΝΗΣΟΥ"],["ΖΑΦΕΙΡΑΚΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","ΙΩΑΣΩΝΑ ΚΑΛΑΜΠΟΚΑ 45, ΧΙΟΣ 82132","ΧΙΟΣ 82132"],["ΖΙΑΚΑ ΣΤΥΛΙΑΝΗ","ΓΚΕΡΤΣΟΥ & ΒΟΣΠΟΡΟΥ, ΚΟΖΑΝΗ, 50100, ΚΟΖΑΝΗΣ","ΚΟΖΑΝΗΣ"],["ΖΙΑΝΟΣ ΚΩΝ. ΑΡΗΣ","Κ. ΟΙΚΟΝΟΜΟΥ, ΕΛΑΣΣΟΝΑ, 40200, ΛΑΡΙΣΑΣ","ΛΑΡΙΣΑΣ"],["ΖΩΓΡΑΦΟΥ ΑΦΟΙ Ο.Ε","ΑΣΠΡΟΒΑΛΤΑ, ΘΕΣΣΑΛΟΝΙΚΗ, 57021, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΗΛΕΚΤΡΑΓΟΡΑ ΖΑΡΡΟΣ -ΔΗΜ.Α. ΖΑΡΡΟΣ","Κ.ΤΣΑΛΔΑΡΗ 47, ΞΥΛΟΚΑΣΤΡΟ, 20400, ΚΟΡΙΝΘΙΑΣ","ΚΟΡΙΝΘΙΑΣ"],["ΗΛΕΚΤΡΟΔΥΝΑΜΙΚΗ ΙΚΑΡΙΑΣ ΚΑΙ ΣΙΑ Ε.Ε","ΓΙΑΛΙΣΚΑΡΙ 1, ΡΑΧΕΣ -ΙΚΑΡΙΑΣ , 83301","ΡΑΧΕΣ -ΙΚΑΡΙΑΣ"],["ΗΛΕΚΤΡΟΕΜΠΟΡΙΚΗ ΡΟΔΟΥ ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ - ΧΑΡΑΛΑΜΠΑΚΗ","ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΗΣ 75ΡΟΔΟΣ, 85100","ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΗΣ 75ΡΟΔΟΣ"],["ΘΕΟΔΟΥΛΙΔΗΣ Α.Ε.","ΠΑΠΑΖΩΛΗ 16, ΘΕΣΣΑΛΟΝΙΚΗ, 54630, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΘΕΟΔΩΡΟΥ Ν. ΣΠΥΡΙΔΩΝ","ΑΡΙΣΤΟΤΕΛΟΥΣ 9, ΜΑΡΤΙΝΟ, 35005, ΦΘΙΩΤΙΔΑΣ","ΦΘΙΩΤΙΔΑΣ"],["Κ. ΜΑΝΩΛΑΚΗΣ ΚΑΙ ΣΙΑ","ΛΕΩΦΟΡΟΣ 62 ΜΑΡΤΥΡΩΝ 86, ΗΡΑΚΛΕΙΟ ΚΡΗΤΗΣ, 71303, ΗΡΑΚΛΕΙΟΥ","ΗΡΑΚΛΕΙΟΥ"],["ΚΑΒΒΑΔΙΑ ΣΤ. ΑΦΟΙ Α.Ε","3ο ΧΛΜ. ΛΑΜΙΑΣ – ΑΘΗΝΑΣ, ΛΑΜΙΑ, 35100, ΦΘΙΩΤΙΔΑΣ","ΦΘΙΩΤΙΔΑΣ"],["ΚΑΓΚΟΥΡΑΣ ΔΗΜΗΤΡΙΟΣ & ΣΙΑ Ο.Ε","ΦΩΣΚΟΛΟΥ 85, ΖΑΚΥΝΘΟΣ, 29100, ΖΑΚΥΝΘΟΥ","ΖΑΚΥΝΘΟΥ"],["ΚΑΖΑΚΟΣ ΓΕΩΡΓΙΟΣ","ΑΡΧΑΓΓΕΛΟΣ, ΑΡΧΑΓΓΕΛΟΣ - ΡΟΔΟΣ, 85102","ΑΡΧΑΓΓΕΛΟΣ - ΡΟΔΟΣ"],["ΚΑΚΑΡΙΑΡΗΣ ΑΡΙΣΤΕΙΔΗΣ Μ. ΕΠΕ","ΙΕΡΑ ΟΔΟΣ 102Α, ΒΟΤΑΝΙΚΟΣ, 11147, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΑΛΑΜΠΑΚΑ Ν. ΑΦΟΙ Ο.Ε.","ΜΟΥΖΑΚΙ, ΜΟΥΖΑΚΙ, 40060, ΚΑΡΔΙΤΣΑΣ","ΚΑΡΔΙΤΣΑΣ"],["ΚΑΛΛΙΓΕΡΟΣ ΧΑΡΑΛΑΜΠΟΣ","ΛΙΒΑΔΙ, ΚΥΘΗΡΑ, 80100, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΑΛΛΙΓΙΑΝΝΗΣ Α.Ε","ΗΓΟΥΜΕΝΟΥ ΓΑΒΡΙΗΛ 103, ΡΕΘΥΜΝΟ, 74100, ΡΕΘΥΜΝΟΥ","ΡΕΘΥΜΝΟΥ"],["ΚΑΛΛΙΠΟΛΙΤΟΥ ΧΡΙΣΤΙΝΑ","ΕΥΞΕΙΝΟΥ ΠΟΝΤΟΥ 19, ΣΚΥΔΡΑ, 58500, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["ΚΑΛΟΓΙΑΝΝΗΣ Ε. ΣΤΑΥΡΟΣ","ΛΕΩΦΟΡΟΣ ΣΑΛΑΜΙΝΑΣ 101, ΣΑΛΑΜΙΝΑ, 18900, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΑΠΟΔΙΣΤΡΙΑ ΗΛΕΚΤΡΟΝ Μ. Ε.Π.Ε.","Κατάστημα Ηλεκτρικών Συσκευών, ΑΝΑΛΗΨΕΩΣ 48, ΒΟΛΟΣ, 38333","ΒΟΛΟΣ"],["ΚΑΠΟΣ Ν. & ΣΙΑ Ε.Ε","ΑΓ.ΚΩΝΣΤΑΝΤΙΝΟΥ 1, ΗΛΙΟΥΠΟΛΗ, 16346, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΑΡΑΒΑΣΙΛΗ ΒΙΚΤΩΡΙΑ","ΚΑΡΑΚΑΣΗ 49, ΘΕΣΣΑΛΟΝΙΚΗ, 54248, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΚΑΡΑΓΙΛΑΝΗ ΓΕΩΡΓΙΑ","ΓΡ. ΛΑΜΠΡΑΚΗ 34, ΤΑΥΡΟΣ, 17778, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΑΡΑΚΑΝΤΑΣ ΒΑΪΟΣ ΧΡ. & ΣΙΑ Ο.Ε.","ΛΕΩΦ. ΔΗΜΟΚΡΑΤΙΑΣ 85, ΚΑΡΔΙΤΣΑ, 43100, ΚΑΡΔΙΤΣΑΣ","ΚΑΡΔΙΤΣΑΣ"],["ΚΑΡΑΚΟΛΙΔΗΣ ΑΧΙΛΛΕΑΣ","ΚΡΙΕΖΗ 4, ΚΑΒΑΛΑ, 65302, ΚΑΒΑΛΑΣ","ΚΑΒΑΛΑΣ"],["ΚΑΡΑΜΗΤΣΟΥ Ι. ΥΙΟΙ Ο.Ε.","3ο ΧΛΜ ΕΠΙΣΚΟΠΗΣ ΝΑΟΥΣΑΣ, ΕΠΙΣΚΟΠΗ, 59200, ΗΜΑΘΙΑΣ","ΗΜΑΘΙΑΣ"],["ΚΑΡΑΜΠΑΣ Χ. Α.&Α. ΟΕ","ΣΟΥΝΙΟ, ΞΑΝΘΗ, 67100, ΞΑΝΘΗΣ","ΞΑΝΘΗΣ"],["ΚΑΡΑΝΤΖΙΑΣ Γ. & ΣΙΑ Ο.Ε","ΜΑΞ.ΓΡΑΙΚΟΥ 40 - 42, ΑΡΤΑ, 47100, ΑΡΤΑΣ","ΑΡΤΑΣ"],["ΚΑΡΑΧΑΛΙΔΗΣ ΜΙΛΤΙΑΔΗΣ","ΠΛΑΤΩΝΟΣ 8ΘΕΣΣΑΛΟΝΙΚΗ, 54631, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΚΑΡΒΕΛΑΣ ΓΕΩΡΓΙΟΣ Α.Ε (ΚΑΤΑΣΤΗΜΑ 1ο)","ΕΦΕΣΟΥ 5, ΗΡΑΚΛΕΙΟ, 71306, ΗΡΑΚΛΕΙΟY","ΗΡΑΚΛΕΙΟY"],["ΚΑΡΒΕΛΑΣ ΓΕΩΡΓΙΟΣ Α.Ε (ΚΑΤΑΣΤΗΜΑ 2ο)","ΛΕΟΦΩΡΟ ΚΝΩΣΟΥ 255-259, ΗΡΑΚΛΕΙΟ, 71409, ΗΡΑΚΛΕΙΟΥ","ΗΡΑΚΛΕΙΟΥ"],["ΚΑΡΚΟΥΛΗΣ ΝΙΚ. ΣΠΥΡΙΔΩΝ","Κατάστημα Ηλεκτρικών Συσκευών, ΑΣΤΡΟΥΣ-ΛΕΩΝΙΔΙΟΥ, ΑΣΤΡΟΣ ΚΥΝΟΥΡΙΑΣ, 22001","ΑΣΤΡΟΣ ΚΥΝΟΥΡΙΑΣ"],["ΚΑΡΠΕΤΑΣ ΚΩΝ. ΓΕΩΡΓΙΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΛΕΩΝΙΔΟΥ 3, ΜΩΛΟΣ ΦΘΙΩΤΙΔΟΣ, 35009","ΜΩΛΟΣ ΦΘΙΩΤΙΔΟΣ"],["ΚΑΤΣΑΝΟΣ ΠΑΝΑΓΙΩΤΗΣ","ΚΩΝ/ΝΟΥ ΛΑΣΚΑΡΗ 40, ΑΙΤΩΛΙΚΟ, 30400, ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ","ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ"],["ΚΑΤΣΑΡΗΣ ΣΩΚΡ.ΝΙΚΟΛΑΟΣ","ΠΥΡ.ΚΑΝΑΡΗ 6, ΛΑΥΡΙΟ, 19500, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΑΧΕΛΟΥ ΕΥΑΓΓΕΛΙΑ","Ι.ΔΕΛΗΚΑΡΗ 4-5, ΧΡΥΣΟΥΠΟΛΗ, 64200, ΚΑΒΑΛΑΣ","ΚΑΒΑΛΑΣ"],["ΚΕΧΑΓΙΑΣ Κ. & ΣΙΑ ΟΕ","Π.ΤΣΑΛΔΑΡΗ 220, ΝΙΚΑΙΑ, 18453, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΙΑΛΙΟΣ ΙΩΑΝΝΗΣ","ΠΕΣ. ΜΑΧΗΤΩΝ 11, ΟΡΧΟΜΕΝΟΣ, 32300, ΒΟΙΩΤΙΑΣ","ΒΟΙΩΤΙΑΣ"],["ΚΙΚΙΛΙΝΤΖΑΣ Π. - ΜΕΤΑΛΛΙΔΗΣ Θ. Ο.Ε","ΑΛ.ΠΑΠΑΝΑΣΤΑΣΙΟΥ 67, ΘΕΣΣΑΛΟΝΙΚΗ, 54453, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΚΙΟΣΕΟΓΛΟΥ ΑΦΟΙ Ο.Ε.","ΒΕΝΙΖΕΛΟΥ 68, ΒΕΡΟΙΑ, 59100, ΗΜΑΘΙΑΣ","ΗΜΑΘΙΑΣ"],["ΚΙΟΥΜΟΥΡΤΖΙΔΗΣ ΝΙΚΟΛΑΟΣ","ΚΑΡΑΒΑΓΓΕΛΗ 22, ΣΙΝΔΟΣ, 57400, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΚΙΟΥΠΟΥΡΟΓΛΟΥ ΣΤΕΛΙΟΣ TOY ΣΙΜΟΥ","ΑΡΤΑΚΗΣ 97-99, Ν.ΣΜΥΡΝΗ, 17124, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΟΝΙΔΑΣ ΓΕΩΡΓΙΟΣ","ΤΖΑΒΕΛΛΑ 73, ΝΑΥΠΑΚΤΟΣ, 30300, ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ","ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ"],["ΚΟΝΣΟΛΑΚΗ ΑΙΚΑΤΕΡΙΝΗ","ΠΕΤΑΛΑ 68, Ν.ΧΑΛΚΗΔΩΝΑ, 14343, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΟΡΑΚΑΣ Δ. ΓΕΩΡΓΙΟΣ","ΧΡΙΣΤΟΠΟΥΛΟΥ 20, ΝΕΜΕΑ, 20500, ΚΟΡΙΝΘΙΑΣ","ΚΟΡΙΝΘΙΑΣ"],["ΚΟΡΟΜΗΛΑΣ ΧΡΗΣΤΟΣ","ΚΡΩΜΝΗΣ 14, ΚΑΤΕΡΙΝΗ, 60100, ΠΙΕΡΙΑΣ","ΠΙΕΡΙΑΣ"],["ΚΟΤΣΑΛΟΥ - ΓΚΙΑΦΗ ΑΘ. ΕΥΑΓΓ.","ΓΡ. ΚΟΥΣΙΔΟΥ 46, ΖΩΓΡΑΦΟΥ, 15772, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΟΥΚΗΣ ΔΗΜΗΤΡΙΟΣ & ΣΙΑ ΕΕ","ΧΙΟΥ 56, ΚΑΜΙΝΙΑ, 18541, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΟΥΚΛΑΤΖΗΣ IKE","ΠΑΡΑΠΛΕΥΡΩΣ Π ΟΡΕΣΤΙΑΔΑΣ, ΟΡΕΣΤΙΑΔΑ, 68200, ΕΒΡΟΥ","ΕΒΡΟΥ"],["ΚΟΥΚΟΥΖΕΛΗ ΕΛ.ΙΩΑΝΝΑ","ΘΕΟΜΗΤΟΡΟΣ 44, ΑΓ.ΔΗΜΗΤΡΙΟΣ, 17342, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΟΥΚΟΥΡΑΚΗΣ ΙΩΑΝΝΗΣ","ΚΡΙΕΖΩΤΟΥ & Δ.ΠΕΡΙΜΕΤΡΙΚΗ, ΚΑΡΥΣΤΟΣ, 34001, ΕΥΒΟΙΑΣ","ΕΥΒΟΙΑΣ"],["ΚΟΥΛΟΥΜΠΡΗΣ ΙΩΑΝΝΗΣ","ΙΑΛΥΣΟΥ 74, ΡΟΔΟΣ, 85101, ΔΩΔΕΚΑΝΗΣΟΥ","ΔΩΔΕΚΑΝΗΣΟΥ"],["ΚΟΥΛΟΥΡΗΣ ΑΠΟΛΛΩΝ","ΑΓ.ΓΕΩΡΓΙΟΥ 7, ΣΟΦΑΔΕΣ, 43300, ΚΑΡΔΙΤΣΑΣ","ΚΑΡΔΙΤΣΑΣ"],["ΚΟΥΝΤΗΣ ΧΡΗΣΤΟΣ Α.Ε.","ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ 110, ΚΑΛΑΜΑΡΙΑ, 55140, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΚΟΥΡΕΤΣΗΣ Π. & ΣΙΑ Ε.Ε.","ΔΑΣΚΑΡΟΛΗ 67, ΓΛΥΦΑΔΑ, 16675, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΚΟΥΡΚΟΥΝΑΣ Β. ΖΗΣΗΣ","ΜΥΡΜΙΔΟΝΩΝ 8 & ΚΑΠΟΔΙΣΤΡΙΟΥ, ΚΑΡΔΙΤΣΑ, 43100, ΚΑΡΔΙΤΣΑΣ","ΚΑΡΔΙΤΣΑΣ"],["ΚΟΥΤΣΟΥΛΑ ΑΦΟΙ ΑΒΕΕ","ΑΓ.ΝΙΚΑΝΔΡΟΥ 14, ΑΡΙΔΑΙΑ, 58400, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["ΚΡΗΤΙΚΟΣ ΔΗΜΗΤΡΙΟΣ","ΑΓ.ΙΩΑΝΝΟΥ 5, ΤΗΝΟΣ, 84200, ΚΥΚΛΑΔΩΝ","ΚΥΚΛΑΔΩΝ"],["ΚΡΟΚΟΥ Β. ΜΑΡΙΑ","Κατάστημα Ηλεκτρικών Συσκευών, ΠΑΡΑΛΙΑ ΑΥΛΙΔΑΣ, ΧΑΛΚΙΔΑ, 34100","ΧΑΛΚΙΔΑ"],["ΚΥΠΡΑΙΟΣ ΜΙΧ. ΒΑΣΙΛΕΙΟΣ","ΑΝΑΣΤΑΣΗ, ΚΑΛΥΜΝΟΣ, 85200, ΔΩΔΕΚΑΝΗΣΟΥ","ΔΩΔΕΚΑΝΗΣΟΥ"],["ΚΥΡΙΑΖΙΔΟΥ ΣΠΥΡΙΔΟΥΛΑ","ΒΕΝΙΖΕΛΟΥ 20 ΣΕΡΡΕΣ , 62100","ΒΕΝΙΖΕΛΟΥ 20 ΣΕΡΡΕΣ"],["ΚΥΡΙΚΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","ΕΛ. ΒΕΝΙΖΕΛΟΥ 27, ΒΟΝΙΤΣΑ, 30002, ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ","ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ"],["ΚΥΡΙΤΣΗΣ ΝΙΚ. – ΧΑΛΑΤΣΗ ΓΕΩΡΓΙΑ Ο.Ε.","ΣΠ. ΜΟΥΣΤΑΚΛΗ & ΘΕΜΕΛΗ 3, ΜΕΣΟΛΟΓΓΙ, 30200, ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ","ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ"],["ΚΩΝΣΤΑΝΤΑΤΟΣ ΠΑΝΑΓΙΩΤΗΣ","ΕΡΜΙΟΝΗ ΑΡΓΟΛΙΔΑΣ, ΕΡΜΙΟΝΗ, 21051, ΑΡΓΟΛΙΔΑΣ","ΑΡΓΟΛΙΔΑΣ"],["ΚΩΣΤΑΛΑΣ Δ. ΙΩΑΝΝΗΣ","ΠΟΡΤΟ ΧΕΛΙ, ΠΟΡΤΟ ΧΕΛΙ, 21061, ΑΡΓΟΛΙΔΑΣ","ΑΡΓΟΛΙΔΑΣ"],["ΚΩΤΣΙΟΠΟΥΛΟΣ ΙΩΑΝΝΗΣ & ΣΙΑ ΕΕ","ΜΑΛΛΙΑΡΟΠΟΥΛΟΥ 15 & ΝΙΚΗΤΑΡΑ 24, ΤΡΙΠΟΛΗ, 22100, ΑΡΚΑΔΙΑΣ","ΑΡΚΑΔΙΑΣ"],["ΛΑΜΠΑΟΥΝΑ ΑΦΟΙ ΑΝΑΣΤ. Ο.Ε.","ΚΡΕΣΤΕΝΙΤΗ & ΣΙΣΙΝΗ 4, ΠΥΡΓΟΣ, 27100, ΗΛΕΙΑΣ","ΗΛΕΙΑΣ"],["ΛΑΜΠΡΟΠΟΥΛΟΙ ΑΦΟΙ Ο.Ε.","ΑΣΗΜΑΚΗ ΦΩΤΗΛΑ 14, ΑΙΓΙΟ 25100","ΑΙΓΙΟ 25100"],["ΛΕΒΑΝΤΙΝΟΣ ΑΝΤΩΝΙΟΣ & ΣΙΑ ΟΕ","Κατάστημα Ηλεκτρικών Συσκευών, ΤΡΙΩΝ ΙΕΡΑΡΧΩΝ 9, ΤΗΝΟΣ, 84200","ΤΗΝΟΣ"],["ΛΟΥΚΑΔΑΚΗΣ Μ. ΙΩΑΝΝΗΣ","ΠΛ. ΠΥΘΑΓΟΡΑ, ΣΑΜΟΣ, 83100, ΣΑΜΟΥ","ΣΑΜΟΥ"],["ΛΥΡΑ Β. ΑΦΟΙ Ο.Ε.","ΠΑΠΑΦΛΕΣΣΑ & ΚΑΛΑΜΑΤΑΣ, ΠΥΛΟΣ, 24001, ΜΕΣΣΗΝΙΑΣ","ΜΕΣΣΗΝΙΑΣ"],["ΜΑΚΡΙΔΗΣ ΤΗΛΕΜΑΧΟΣ & ΣΙΑ Ο.Ε","ΒΙΖΥΗΝΟΥ 7, ΝΕΑ ΣΜΥΡΝΗ, 17121, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΜΑΚΡΥΓΙΑΝΝΗΣ ΑΓΓΕΛΟΣ & ΣΙΑ Ο.Ε","ΑΓ.ΠΑΡΑΣΚΕΥΗΣ 36, ΜΕΓΑΡΑ, 19100, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΜΑΛΙΣΟΒΑΣ ΔΗΜΗΤΡΙΟΣ","ΑΙΑΝΤΟΣ ΛΟΚΡΟΥ 20, ΑΤΑΛΑΝΤΗ, 35200, ΦΘΙΩΤΙΔΑΣ","ΦΘΙΩΤΙΔΑΣ"],["ΜΑΝΟΥΣΑΚΗΣ Α. & ΣΙΑ Ο.Ε.","ΑΓ.ΒΑΡΒΑΡΑΣ 34, Π.ΦΑΛΗΡΟ, 17563, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΜΑΡΓΩΝΗ ΑΝΑΣΤΑΣΙΟΥ ΑΦΟΙ & ΣΙΑ ΟΕ","ΣΤΡΑΤΗΓΟΥ ΣΑΡΑΦΗ, ΑΛΙΑΡΤΟΣ, 32001, ΒΟΙΩΤΙΑΣ","ΒΟΙΩΤΙΑΣ"],["ΜΑΡΙΝΙΤΣΗ ΣΟΦΙΑ","ΜΑΝΤΟΥΔΙ, ΕΥΒΟΙΑ, 34004, ΕΥΒΟΙΑΣ","ΕΥΒΟΙΑΣ"],["ΜΑΡΟΥΛΗΣ ΕΜΜ. ΜΙΧΑΗΛ","ΧΩΡΑ, ΝΑΞΟΣ, 84300, ΚΥΚΛΑΔΩΝ","ΚΥΚΛΑΔΩΝ"],["ΜΕΝΕΓΑΣ ΑΝΤΩΝΙΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΔΗΜΟΣ ΕΥΡΩΤΑ, ΣΚΑΛΑ ΛΑΚΩΝΙΑΣ, 23051","ΣΚΑΛΑ ΛΑΚΩΝΙΑΣ"],["ΜΠΑΚΙΡΤΖΗ ΑΦΟΙ ΟΕ","ΒΥΖΑΝΤΙΟΥ 85, ΚΑΛΟΓΡΕΖΑ, 14234, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΜΠΕΝΑΚΗΣ ΓΕΩΡΓΙΟΣ","ΜΥΛΩΝΟΓΙΑΝΝΗ & ΚΟΡΑΚΑ 37, ΧΑΝΙΑ, ΚΡΗΤΗ 73135, ΧΑΝΙΩΝ","ΧΑΝΙΩΝ"],["ΜΠΙΒΑΣ ΑΝΤΩΝΙΟΣ","ΦΩΤΗΛΑ 6, ΚΑΒΑΛΑ, 65302, ΚΑΒΑΛΑΣ","ΚΑΒΑΛΑΣ"],["ΜΠΙΝΤΣΗ & ΣΙΑ Ε.Ε.","ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΗΣ 3 -7, ΠΤΟΛΕΜΑΪΔΑ, 50200, ΚΟΖΑΝΗΣ","ΚΟΖΑΝΗΣ"],["ΜΠΟΥΖΑΚΗ ΑΦΟΙ ΕΠΕ","ΑΝΑΠΑΥΣΕΩΣ 22, ΧΑΝΙΑ ΚΡΗΤΗΣ, 73135, ΧΑΝΙΩΝ","ΧΑΝΙΩΝ"],["ΜΠΟΥΡΧΑΣ ΚΩΝ/ΝΟΣ","ΜΗΤΡΟΠΟΛΕΩΣ 16, ΣΤΥΛΙΔΑ, 35300, ΦΘΙΩΤΙΔΑΣ","ΦΘΙΩΤΙΔΑΣ"],["ΜΠΡΑΒΑΚΟΣ ΟΡΕΣΤΗΣ & ΣΙΑ Ο.Ε.Ε","ΚΙΛΚΙΣ 1, ΚΑΛΑΜΑΤΑ, 24100, ΜΕΣΣΗΝΙΑΣ","ΜΕΣΣΗΝΙΑΣ"],["ΜΠΡΙΛΑΚΗ ΑΦΟΙ Ε.Ε","ΜΕΣΟΓΕΙΩΝ 64, ΑΜΠΕΛΟΚΗΠΟΙ, 11527, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΜΩΛΟΣ ΝΙΚ.ΣΤΑΜΑΤΙΟΣ","1ο ΧΛΜ Λ.ΑΛΕΠΟΧΩΡΙΟΥ, ΜΕΓΑΡΑ, 19100, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΝΕΔΑΝΗΣ Α.Ε.","Λ. ΚΥΚΝΩΝ 24, ΚΑΣΤΟΡΙΑ, 52100, ΚΑΣΤΟΡΙΑΣ","ΚΑΣΤΟΡΙΑΣ"],["ΝΙΚΟΛΑΚΟΠΟΥΛΟΣ Θ ΚΑΙ ΝΙΚΟΛΑΚΟΠΟΥΛΟΥ Κ ΟΕ","ΚΟΠΑΝΑΚΙ (ΚΕΝΤΡΙΚΗ ΠΛΑΤΕΙΑ), ΚΟΠΑΝΑΚΙ, 24003, ΜΕΣΣΗΝΙΑΣ","ΜΕΣΣΗΝΙΑΣ"],["ΝΙΚΟΛΑΟΣ ΠΡΟΙΟΣ ΑΕ (ΚΕΝΤΡΙΚΟ)","ΟΥΛΩΦ ΠΑΛΜΕ 15, ΖΩΓΡΑΦΟΥ, 15771, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΝΙΚΟΛΑΟΣ ΠΡΟΙΟΣ ΑΕ (ΥΠΟΚ/ΜΑ)","ΔΑΜΑΣΙΠΟΥ 29-31 & ΜΑΙΚΗΝΑ, ΖΩΓΡΑΦΟΥ, 15771, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΝΙΚΟΛΑΪΔΟΥ – ΔΙΑΜΑΤΑΡΗ ΣΜΑΡΩ","ΛΙΜΕΝΑΡΙΑ, ΘΑΣΟΣ, 64002, ΚΑΒΑΛΑΣ","ΚΑΒΑΛΑΣ"],["ΝΙΚΟΛΟΠΟΥΛΟΣ ΧΑΡ.ΓΕΩΡΓΙΟΣ","ΠΑΤΡΩΝ-ΠΥΡΓΟΥ 15, Κ. ΑΧΑΪA, 25200 , ΑΧΑΪΑΣ","ΑΧΑΪΑΣ"],["ΝΙΤΣΟΥ ΧΡΗΣΤΟΣ & ΣΙΑ ΟΕ","ΜΟΝΑΣΤΗΡΙΟΥ 66, ΦΛΩΡΙΝΑ, 53100, ΦΛΩΡΙΝΗΣ","ΦΛΩΡΙΝΗΣ"],["ΝΤΑΜΠΙΖΑ ΑΝΑΣΤΑΣΙΑ (ΚΕΝΤΡΙΚΟ)","ΜΕΓΑΛΟΥ ΑΛΕΞΑΝΔΡΟΥ 11, ΑΜΥΝΤΑΙΟ, 53200, ΦΛΩΡΙΝΗΣ","ΦΛΩΡΙΝΗΣ"],["ΝΤΑΜΠΙΖΑ ΑΝΑΣΤΑΣΙΑ (ΥΠΟΚ/ΜΑ)","ΑΝΔΡΕΑ ΠΑΠΑΝΔΡΕΟΥ, ΑΜΥΝΤΑΙΟ, 53200, ΦΛΩΡΙΝΗΣ","ΦΛΩΡΙΝΗΣ"],["ΝΤΑΝΟΣ ΣΤΥΛΙΑΝΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΠΥΡΓΕΤΟΣ ΛΑΡΙΣΑΣ, ΠΥΡΓΕΤΟΣ ΛΑΡΙΣΑΣ, 40007","ΠΥΡΓΕΤΟΣ ΛΑΡΙΣΑΣ"],["ΟΛΙΒΙΑ ΙΚΕ","ΤΕΡΤΙΠΗ 25-27, ΚΑΤΩ ΠΑΤΗΣΙΑ, 10445, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΠΑΝΑΓΙΩΤΟΠΟΥΛΟΣ ΑΠΟΣΤΟΛΟΣ","ΟΠΛΑΡΧΗΓΟΥ ΒΟΓΚΛΗ 21, ΘΗΒΑ, 32200, ΒΟΙΩΤΙΑΣ","ΒΟΙΩΤΙΑΣ"],["ΠΑΝΑΓΙΩΤΟΥ Σ. & Μ. ΟΕ","28ΗΣ ΟΚΤΩΒΡΙΟΥ, ΚΑΡΠΑΘΟΣ, 85700, ΔΩΔΕΚΑΝΗΣΟΥ","ΔΩΔΕΚΑΝΗΣΟΥ"],["ΠΑΝΤΑΖΗΣ ΠΑΝΤΕΛΗΣ ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ","49 ΜΑΡΤΥΡΩΝ 15, ΗΓΟΥΜΕΝΙΤΣΑ, 46100, ΗΓΟΥΜΕΝΙΤΣΑ","ΗΓΟΥΜΕΝΙΤΣΑ"],["ΠΑΠΑΓΕΩΡΓΙΟΥ ΘΕΟΔΩΡΟΣ","ΑΓ.ΓΕΩΡΓΙΟΥ 10, ΣΕΡΒΙΑ ΚΟΖΑΝΗΣ, 50500, ΚΟΖΑΝΗΣ","ΚΟΖΑΝΗΣ"],["ΠΑΠΑΔΕΛΛΗΣ Β. & ΥΙΟΙ ΕΠΕ","ΕΡΜΟΥ 65, ΜΥΤΙΛΗΝΗ, 81100, ΛΕΣΒΟΥ","ΛΕΣΒΟΥ"],["ΠΑΠΑΔΗΜΗΤΡΙΟΥ Φ. ΟΔΥΣΣΕΑΣ & ΣΙΑ Ο.Ε","ΑΘ. ΑΡΓΥΡΟΥ 26Α, ΝΙΓΡΙΤΑ, 62200, ΣΕΡΡΩΝ","ΣΕΡΡΩΝ"],["ΠΑΠΑΕΥΑΓΓΕΛΟΥ ΒΑΪΟΣ","ΣΤ. ΛΑΠΠΑ 11 (πεζόδρομος), ΚΑΡΔΙΤΣΑ, 43100, ΚΑΡΔΙΤΣΑΣ","ΚΑΡΔΙΤΣΑΣ"],["ΠΑΠΑΗΛΙΑΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","ΒΙΤΣΙΟΥ 7, ΝΕΑΠΟΛΗ - ΚΟΖΑΝΗ, 50001, ΚΟΖΑΝΗΣ","ΚΟΖΑΝΗΣ"],["ΠΑΠΑΘΑΝΑΣΙΟΥ ΑΝΑΣΤΑΣΙΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΙΩΝΟΣ ΔΡΑΓΟΥΜΗ 10, ΛΑΡΙΣΑ, 41222","ΛΑΡΙΣΑ"],["ΠΑΠΑΚΥΡΙΑΚΟΥ ΕΥΑΓΓΕΛΙΑ","ΠΑΠΑΚΥΡΙΑΚΟΥ ΕΥΑΓΓΕΛΙΑ, ΔΕΔΑΚΗ 42, ΣΧΗΜΑΤΑΡΙ, 32009, ΒΟΙΩΤΙΑΣ","ΒΟΙΩΤΙΑΣ"],["ΠΑΠΑΧΑΡΑΛΑΜΠΟΥΣ Ε.Σ. Α.Ε.","ΦΙΛΩΝΟΣ & ΡΟΥΜΕΛΗΣ, ΛΕΙΒΑΔΙΑ, 32100, ΒΟΙΩΤΙΑΣ","ΒΟΙΩΤΙΑΣ"],["ΠΑΠΑΧΡΗΣΤΟΣ ΣΟΦΟΚΛΗΣ","ΠΡΙΝΟΣ, ΘΑΣΟΣ, 64010, ΚΑΒΑΛΑΣ","ΚΑΒΑΛΑΣ"],["ΠΑΡΑΣΚΕΥΑΣ Κ. & ΣΙΑ Ο.Ε.","ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΗΣ 14, ΠΡΕΒΕΖΑ, 48100, ΠΡΕΒΕΖΑΣ","ΠΡΕΒΕΖΑΣ"],["ΠΑΡΡΑ ΙΩΑΝΝΑ & ΣΙΑ ΟΕ","ΠΑΤΡΩΝ 68, ΠΥΡΓΟΣ, 27100, ΗΛΕΙΑΣ","ΗΛΕΙΑΣ"],["ΠΑΡΡΑΣ ΑΝΔ. ΚΩΝΣΤΑΝΤΙΝΟΣ (ΚΕΝΤΡΙΚΟ)","ΤΕΡΜΑ ΝΑΥΑΡΙΝΟΥ, ΑΜΑΛΙΑΔΑ, 27200, ΗΛΕΙΑΣ","ΗΛΕΙΑΣ"],["ΠΑΡΡΑΣ ΑΝΔ. ΚΩΝΣΤΑΝΤΙΝΟΣ (ΥΠΟΚ/ΜΑ)","ΚΑΛΑΒΡΥΤΩΝ 24, ΑΜΑΛΙΑΔΑ, 27200, ΗΛΕΙΑΣ","ΗΛΕΙΑΣ"],["ΠΑΤΣΑΛΟΥ ΑΦΟΙ Ο.Ε.","ΧΑΡ. ΤΡΙΚΟΥΠΗ & ΕΦΕΣΣΟΥ 1, ΝΑΥΠΛΙΟ, 21100, ΑΡΓΟΛΙΔΑΣ","ΑΡΓΟΛΙΔΑΣ"],["ΠΕΤΡΙΔΗΣ ΙΩΑΝΝΗΣ ΚΑΙ ΣΙΑ Ο.Ε (ΥΠΟΚΑΤΑΣΤΗΜΑ)","ΛΕΩΝ. ΙΑΣΩΝΙΔΟΥ 9, ΙΩΝΙΑ ΘΕΣΣΑΛΟΝΙΚΗΣ, 57008","ΙΩΝΙΑ ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΠΕΤΡΙΔΗΣ ΙΩΑΝΝΗΣ ΚΑΙ ΣΙΑ Ο.Ε.","ΕΛΕΥΘΕΡΙΟΥ ΒΕΝΙΖΕΛΟΥ 4, ΙΩΝΙΑ ΘΕΣΣΑΛΟΝΙΚΗΣ, 57008","ΙΩΝΙΑ ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΠΕΤΡΟΠΟΥΛΟΣ Ι. ΚΩΝ/ΝΟΣ - ΑΝΔΡΕΑΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΕΛΑΙΩΝ 65, ΠΕΤΡΟΥΠΟΛΗ, 13123","ΠΕΤΡΟΥΠΟΛΗ"],["ΠΕΤΡΟΠΟΥΛΟΥ ΑΡΧΟΝΤΙΑ","Κατάστημα Ηλεκτρικών Συσκευών, ΣΚΑΛΙΔΗ 109, ΚΙΣΑΜΟΣ ΧΑΝΙΩΝ, 74300","ΚΙΣΑΜΟΣ ΧΑΝΙΩΝ"],["ΠΕΤΡΟΥ Τ. ΧΡ. ΠΕΤΡΟΣ","ΓΡ. ΓΟΥΛΙΑΝΟΥ 32, ΠΑΛΑΜΑ, 43200, ΚΑΡΔΙΤΣΑΣ","ΚΑΡΔΙΤΣΑΣ"],["ΠΕΤΣΟΥ Θ. ΑΦΟΙ ΟΕΕ (ΥΠΟΚΑΤΑΣΤΗΜΑ)","ΑΦΟΙ Θ. ΠΕΤΣΟΥ ΟΕΕ, ΒΕΝΙΖΕΛΟΥ 192, ΓΙΑΝΝΙΤΣΑ, 58100, ΓΙΑΝΝΙΤΣΑ","ΓΙΑΝΝΙΤΣΑ"],["ΠΙΣΙΜΙΣΗΣ Α. ΚΩΝΣΤΑΝΤΙΝΟΣ","ΠΑΤΗΣΙΩΝ 211, ΠΑΤΗΣΙΑ, 11253, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΠΛΕΥΡΗΣ ΕΜΜΑΝΟΥΗΛ & ΣΙΑ ΟΕ","Λ.ΙΚΑΡΟΥ 154 – 156, ΗΡΑΚΛΕΙΟ ΚΡΗΤΗΣ, 71307, ΗΡΑΚΛΕΙΟΥ","ΗΡΑΚΛΕΙΟΥ"],["ΠΟΛΥΖΟΥ ΑΝΝΑ","ΠΑΛΑΙΟΧΩΡΙ, 63074, ΧΑΛΚΙΔΙΚΗΣ","ΧΑΛΚΙΔΙΚΗΣ"],["ΠΡΟΔΡΟΜΟΥ ΧΡΗΣΤΟΣ","25ης ΜΑΡΤΙΟΥ 16, Ν.ΜΑΓΝΗΣΙΑ, 57008, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΠΡΩΙΟΣ ΙΩΑΝΝΗΣ & ΣΤΕΦΑΝΟΣ Ο.Ε","ΚΑΛΟΓΕΡΑΚΗ 10, ΧΙΟΣ, 82100, ΧΙΟΥ","ΧΙΟΥ"],["ΡΕΜΟΥΝΤΗΣ ΔΙΟΝΥΣΙΟΣ","ΕΥΑΓΓΕΛΟΥ ΜΠΑΣΙΑ 8, ΛΗΞΟΥΡΙ, 28200, ΚΕΦΑΛΛΗΝΙΑΣ","ΚΕΦΑΛΛΗΝΙΑΣ"],["ΡΕΝΤΖΙΛΑΣ ΚΩΝΣΤΑΝΤΙΝΟΣ ΚΑΙ ΣΙΑ ΙΚΕ","ΗΡΑΚΛΕΟΥΣ 19, ΠΕΡΙΣΤΕΡΙ, 12133, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΡΗΓΑΚΗΣ ΣΤΥΛΙΑΝΟΣ & ΟΛΓΑ-ΕΛΕΝΗ Ο.Ε.","28ης ΟΚΤΩΒΡΙΟΥ 131, ΜΟΙΡΕΣ ΗΡΑΚΛΕΙΟΥ, 70400, ΗΡΑΚΛΕΙΟΥ","ΗΡΑΚΛΕΙΟΥ"],["ΡΗΓΙΝΟΣ Β. ΠΑΤΣΗΣ","ΣΚΟΠΕΛΟΣ, ΣΚΟΠΕΛΟΣ, 37003, ΜΑΓΝΗΣΙΑΣ","ΜΑΓΝΗΣΙΑΣ"],["ΡΟΔΗ ΕΥΑΓΓΕΛΙΑ - ΡΟΔΗ ΑΘΗΝΑ Ο.Ε.","Κατάστημα Ηλεκτρικών Συσκευών, ΛΕΩΦ. ΔΗΜΟΚΡΑΤΙΑΣ 78Α, ΑΣΠΡΟΠΥΡΓΟΣ, 19300","ΑΣΠΡΟΠΥΡΓΟΣ"],["ΡΟΥΣΙΑΣ Π ΔΗΜΗΤΡΙΟΣ","ΘΗΒΩΝ 279, ΙΛΙΟΝ, 12135, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΑΒΒΑΣ Σ. ΘΕΟΦΑΝΗΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΑΣΤΑΚΟΣ ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ, ΑΣΤΑΚΟΣ, 30006","ΑΣΤΑΚΟΣ"],["ΣΑΛΙΒΕΡΟΥ Ε.ΕΛΕΥΘΕΡΙΑ","ΠΟΛΥΦΗΜΟΥ 3, ΖΩΓΡΑΦΟΥ, 15772, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΑΛΙΚΑ ΔΗΜΟΣΘ. ΕΥΔΟΚΙΑ","ΚΑΡΑΪΣΚΑΚΗ 2, ΣΚΥΔΡΑ, 58500, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["ΣΑΛΤΑΣ ΔΗΜΗΤΡΙΟΣ","ΑΥΛΙΔΟΣ 24, ΘΗΒΑ, 32200, ΒΟΙΩΤΙΑΣ","ΒΟΙΩΤΙΑΣ"],["ΣΑΜΟΥΡΚΑΣΙΔΗΣ Α. & Α. Ο.Ε.","ΣΑΧΤΟΥΡΗ 45, ΠΕΙΡΑΙΑΣ, 18536, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΑΜΠΑΝΗΣ ΠΑΝ. & ΣΙΑ Ο.Ε.","ΗΡ. ΠΟΛΥΤΕΧΝΕΙΟΥ 23, ΕΛΕΥΣΙΝΑ, 19200, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΑΡΑΓΑΣ ΝΙΚΟΛΑΟΣ","ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ, ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ, 81102, ΛΕΣΒΟΥ","ΛΕΣΒΟΥ"],["ΣΑΡΟΓΛΟΥ Θ ΧΡΙΣΤΙΝΑ","ΑΘΗΝΑΣ 46, ΚΡΥΑ ΒΡΥΣΗ, 58300, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["ΣΕΡΑΦΕΙΜΙΔΗΣ ΠΛΑΤΩΝ ΟΡΕΣΤ. & ΣΙΑ Ο.Ε.","Λ. ΔΗΜΟΚΡΑΤΙΑΣ 241, ΑΛΕΞΑΝΔΡΟΥΠΟΛΗ, 68100, ΕΒΡΟΥ","ΕΒΡΟΥ"],["ΣΙΑΛΕΥΡΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΜΑΤΑΡΑΓΚΑ, ΜΑΤΑΡΑΓΚΑ ΑΓΡΙΝΙΟΥ, 30015","ΜΑΤΑΡΑΓΚΑ ΑΓΡΙΝΙΟΥ"],["ΣΙΒΡΗ ΜΟΥΣΤΑΦΑ","ΘΕΡΜΟΠΥΛΩΝ 19Α, ΞΑΝΘΗ, 67100, ΞΑΝΘΗΣ","ΞΑΝΘΗΣ"],["ΣΙΦΝΑΙΟΣ ΠΑΝΤΕΛΗΣ","ΠΑΡΟΙΚΙΑ, ΠΑΡΟΣ, 84400, ΚΥΚΛΑΔΩΝ","ΚΥΚΛΑΔΩΝ"],["ΣΚΑΡΠΑΛΕΝΤΖΟΥ ΚΛΕΑ","ΣΚΟΠΕΛΟΣ, ΣΚΟΠΕΛΟΣ, 37003, ΜΑΓΝΗΣΙΑΣ","ΜΑΓΝΗΣΙΑΣ"],["ΣΚΛΑΒΟΥΝΟΣ Γ. ΒΑΣΙΛΕΙΟΣ","ΠΑΠΑΔΙΑΜΑΝΤΟΠΟΥΛΟΥ 148, ΖΩΓΡΑΦΟΥ, 15773, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΟΛΩΜΟΣ Δ. ΠΑΝΑΓΙΩΤΗΣ & ΣΙΑ ΕΕ","ΠΕΡ.ΟΔΟΣ ΛΕΥΚΙΜΜΗΣ, ΘΕΣΗ ΑΓ.ΚΥΡΙΑΚΗΣ, ΛΕΥΚΙΜΜΗ, 49080, ΚΕΡΚΥΡΑΣ","ΚΕΡΚΥΡΑΣ"],["ΣΟΜΠΟΛΑΣ Γ. & ΣΙΑ Ε.Ε.","ΒΑΘΥ, ΙΘΑΚΗ, 28300, ΚΕΦΑΛΛΗΝΙΑΣ","ΚΕΦΑΛΛΗΝΙΑΣ"],["ΣΟΥΛΙΟΥ ΒΑΣΙΛΙΚΗ & ΣΙΑ Ε.Ε","ΑΡΑΠΑΚΗ 18-20, ΚΑΛΛΙΘΕΑ, 17676, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΟΦΙΑΝΟΣ Δ. ΒΛΑΣΙΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΣΠΕΡΧΕΙΑΔΑ, ΣΠΕΡΧΕΙΑΔΑ ΦΘΙΩΤΙΔΑΣ, 35003","ΣΠΕΡΧΕΙΑΔΑ ΦΘΙΩΤΙΔΑΣ"],["ΣΠΑΘΑΡΗΣ ΑΛ. ΒΑΣΙΛΕΙΟΣ & ΣΙΑ Ε.Ε.","ΛΕΩΦ. ΑΓ.ΙΩΑΝ.ΚΑΡΕΑ 8, ΒΥΡΩΝΑΣ, 16233, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΠΑΡΓΙΑ Α. & ΣΙΑ ΕΕ","ΧΑΝΙΩΤΗ, ΧΑΛΚΙΔΙΚΗ, 63085, ΧΑΛΚΙΔΙΚΗΣ","ΧΑΛΚΙΔΙΚΗΣ"],["ΣΠΙΘΑΣ ΚΩΝ ΝΙΚΟΛΑΟΣ","ΒΟΥΛΓΑΡΟΚΤΟΝΟΥ & ΠΑΓΚΟΣΜΙΟΥ ΑΡΜΟΝΙΑΣ 2, Ν.ΙΩΝΙΑ (ΠΕΡΙΣΣΟΣ), 14233, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΤEΦΑΝΙΔΗ Α.Ε.Ε.","ΑΓ.ΔΗΜΗΤΡΙΟΥ 46, ΒΥΡΩΝΑΣ, 16231, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΣΤΑΘΟΠΟΥΛΟΣ ΚΩΝ/ΝΟΣ & ΣΙΑ ΟΕ","Κατάστημα Ηλεκτρικών Συσκευών, 8ο ΧΛΜ. ΧΑΛΚΙΔΟΣ-ΛΕΠΟΥΡΩΝ, ΜΥΤΙΚΑΣ ΧΑΛΚΙΔΟΣ, 34100","ΜΥΤΙΚΑΣ ΧΑΛΚΙΔΟΣ"],["ΣΤΑΥΡΑΤΗΣ ΔΗΜΗΤΡΙΟΣ","Γ. ΓΕΝΝΗΜΑΤΑ, ΠΑΡΑΜΥΘΙΑ, 46200, ΘΕΣΠΡΩΤΙΑΣ","ΘΕΣΠΡΩΤΙΑΣ"],["ΣΤΑΧΤΑΡΗ Γ. ΠΕΡΣΕΦΩΝΗ","Δ.Μ ΠΑΠΑΔΟΠΟΥΛΟΥ 13, ΓΙΑΝΝΙΤΣΑ, 58100, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["ΣΤΕΡΓΙΑΝΝΑΚΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","ΣΦΑΓΕΙΩΝ 35, ΛΑΓΚΑΔΑΣ, 57200, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΣΤΡΑΤΑΚΗ ΜΑΡΙΑ & ΣΙΑ ΕΕ","ΕΘΝ.ΑΝΤΙΣΤΑΣΗΣ 15, ΡΟΔΟΣ, 85100, ΔΩΔΕΚΑΝΗΣΟΥ","ΔΩΔΕΚΑΝΗΣΟΥ"],["ΣΤΡΑΤΗΓΑΚΗΣ ΕΜΜ. & ΣΙΑ IKE","ΚΑΣΤΑΜΟΝΗΣ 63, Ν.ΙΩΝΙΑ, 14235, Ν.ΗΡΑΚΛΕΙΟΥ ΑΘΗΝΩΝ","Ν.ΗΡΑΚΛΕΙΟΥ ΑΘΗΝΩΝ"],["ΣΤΡΑΤΗΓΑΚΗΣ ΕΜΜ. & ΣΙΑ IKE Υποκ/μα","ΚΟΛΙΑΤΣΟΥ 79, ΚΟΡΙΝΘΟΣ, 20100","ΚΟΡΙΝΘΟΣ"],["ΣΦΑΚΙΑΝΑΚΗΣ Γ. ΝΙΚΟΛΑΟΣ","ΠΑΛΑΙΟΧΩΡΑ, ΠΑΛΑΙΟΧΩΡΑ ΧΑΝΙΩΝ ΚΡΗΤΗΣ, 73001, ΧΑΝΙΩΝ","ΧΑΝΙΩΝ"],["ΣΦΑΚΙΑΝΑΚΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","ΑΣΗΜΙ ΗΡΑΚΛΕΙΟΥ, ΑΣΗΜΙ, 70016, ΗΡΑΚΛΕΙΟΥ","ΗΡΑΚΛΕΙΟΥ"],["ΣΦΑΚΙΑΝΟΣ ΚΩΝ/ΝΟΣ - ΑΝΔΡΕΑΣ","ΜΑΝΔΡΑΚΙ, ΝΙΣΥΡΟΣ, 85303, ΔΩΔΕΚΑΝΗΣΟΥ","ΔΩΔΕΚΑΝΗΣΟΥ"],["ΣΧΟΙΝΑ Γ. ΥΙΟΙ Ο.Ε.","ΑΓ.ΕΛΕΥΘΕΡΙΟΥ 139, ΠΕΙΡΑΙΑΣ, 18541, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΤΑΚΚΟΣ ΒΑΣ.& ΣΙΑ ΟΕ","Λ.ΕΛΕΥΘΕΡΙΑΣ 39, ΡΟΔΟΣ, 85104, ΔΩΔΕΚΑΝΗΣΟΥ","ΔΩΔΕΚΑΝΗΣΟΥ"],["ΤΑΛΑΡΗΣ ΣΤΕΡΓΙΟΣ","Γ.ΑΒΕΡΩΦ 13, ΜΕΤΣΟΒΟ, 44200, ΙΩΑΝΝΙΝΩΝ","ΙΩΑΝΝΙΝΩΝ"],["ΤΑΡΑΡΑΣ Ι. & Δ. ΟΕ (ΚΕΝΤΡΙΚΟ)","Μ.ΑΛΕΞΑΝΔΡΟΥ 55, ΚΑΤΕΡΙΝΗ, 60100, ΠΙΕΡΙΑΣ","ΠΙΕΡΙΑΣ"],["ΤΑΡΑΡΑΣ Ι. & Δ. ΟΕ (ΥΠΟΚ/ΜΑ)","Λ.ΙΑΣΩΝΙΔΗ ΤΕΡΜΑ ΣΤΑΘΜΟΣ ΚΑΤΕΡΙΝΗΣ, ΚΑΤΕΡΙΝΗ, 60100, ΠΙΕΡΙΑΣ","ΠΙΕΡΙΑΣ"],["ΤΖΗΜΑ Κ. ΑΦΟΙ Ο.Ε","Γ.ΜΠΟΥΣΙΟΥ 1, ΓΡΕΒΕΝΑ, 51100, ΓΡΕΒΕΝΩΝ","ΓΡΕΒΕΝΩΝ"],["ΤΖΙΕΡΗΣ ΝΙΚΟΛΑΟΣ ΜΟΝ.ΕΠΕ","ΑΚΤΗ ΚΑΡΑΙΣΚΑΚΗ 26 & ΜΠΟΓΡΗ 2, ΣΑΛΑΜΙΝΑ, 18900, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΤΖΟΥΛΙΑΣ ΠΑΝΑΓΙΩΤΗΣ","ΝΕΑΠΟΛΗ, ΛΑΚΩΝΙΑ, 23053, ΛΑΚΩΝΙΑΣ","ΛΑΚΩΝΙΑΣ"],["ΤΟΓΙΑΣ & ΣΙΑ Ο.Ε.","ΚΑΤΑΤΣΗΜΑ ΗΛΕΚΤΡΙΚΩΝ & ΗΛΕΚΤΡΟΝΙΚΩΝ ΕΙΔΩΝ, ΕΛ. ΒΕΝΙΖΕΛΟΥ 76, ΧΑΛΚΙΔΑ, 34100, ΕΥΒΟΙΑΣ","ΕΥΒΟΙΑΣ"],["ΤΟΝΓΙΑΛΙΔΗΣ ΗΛΙΑΣ","ΛΕΩΝΙΔΑ ΙΑΣΩΝΙΝΔΗ 115, ΚΑΤΕΡΙΝΗ, 60100, ΠΙΕΡΙΑΣ","ΠΙΕΡΙΑΣ"],["ΤΟΠΚΑΣ ΜΟΝΟΠΡΟΣΩΠΗ Ε.Π.Ε.","ΓΑΛΑΤΑΔΕΣ ΓΙΑΝΝΙΤΣΩΝ, ΠΕΛΛΑ, 58300, ΠΕΛΛΑΣ","ΠΕΛΛΑΣ"],["ΤΟΡΑΚΗΣ ΜΑΝΟΥΣΟΣ","ΤΣΑΜΑΔΟΥ 45, ΠΕΙΡΑΙΑΣ, 18532, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΤΡΑΜΠΑΚΟΥΛΟΣ ΝΙΚΟΛΑΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΗΠΕΙΡΟΥ 60, ΛΑΡΙΣΑ, 41222","ΛΑΡΙΣΑ"],["ΤΣΑΚΙΡΗΣ ΠΑΝ ΚΥΡΙΑΚΟΣ","40 ΕΚΚΛΗΣΙΕΣ 7Α, ΑΓ.ΑΘΑΝΑΣΙΟΣ - ΘΕΣΣΑΛΟΝΙΚΗΣ, 57003, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΤΣΑΚΝΑΚΗ ΣΟΦΙΑ","Κατάστημα Ηλεκτρικών Συσκευών, ΒΕΝΙΖΕΛΟΥ 8, ΕΛΑΣΣΟΝΑ, 40200","ΕΛΑΣΣΟΝΑ"],["ΤΣΑΧΡΕΛΙΑΣ ΜΙΧ ΙΩΣΗΦ","Π. ΡΑΛΛΗ 511, ΝΙΚΑΙΑ, 18450","ΝΙΚΑΙΑ"],["ΤΣΕΚΟΥΡΑΣ ΑΝΑΣΤΑΣΙΟΣ ΚΑΙ ΣΙΑ Ο.Ε","Κατάστημα Ηλεκτρικών Συσκευών, Δ. ΒΡΑΧΛΑ 15, ΚΥΜΗ, 34003","ΚΥΜΗ"],["ΤΣΙΓΚΟΣ ΓΕΩΡΓ. ΚΩΝ/ΝΟΣ","ΝΕΣΤΟΡΟΣ 120, ΙΛΙΟΝ, 13122, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΤΣΙΛΑΒΗΣ ΔΑΜ. ΣΤΑΥΡΟΣ","Λ.ΜΑΡΑΘΩΝΟΣ & ΧΑΡΑΣ, ΝΕΑ ΜΑΚΡΗ, 19005, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΤΣΙΡΟΓΙΑΝΝΗΣ ΛΑΜΠΡΟΣ","ΚΕΙΡΙΑΔΩΝ 41, ΚΑΤΩ ΠΕΤΡΑΛΩΝΑ, 11854, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΤΣΙΦΕΤΑΚΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","ΚΑΠΟΔΙΣΤΡΙΑ 6, ΣΗΤΕΙΑ 72300","ΣΗΤΕΙΑ 72300"],["ΤΣΟΥΚΑΛΑΣ Θ. ΜΑΤΘΑΙΟΣ","ΞΕΝΟΜΙΔΗ 7, ΧΙΟΣ, 82100, ΧΙΟΥ","ΧΙΟΥ"],["ΦΑΣΟΗΣ ΕΜΠΟΡΙΚΗ Ι.Κ.Ε.","ΣΟΦ.ΒΕΝΙΖΕΛΟΥ 29, ΗΛΙΟΥΠΟΛΗ, 16346, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΦΕΪΖΙΔΗΣ Α. ΔΗΜΗΤΡΙΟΣ","ΕΘΝ.ΑΝΤΙΣΤΑΣΗΣ 17, ΚΟΥΦΑΛΙΑ ΘΕΣ/ΝΙΚΗΣ, 57100, ΘΕΣΣΑΛΟΝΙΚΗΣ","ΘΕΣΣΑΛΟΝΙΚΗΣ"],["ΦΟΥΝΤΑΣ ΙΩΑΝΝΗΣ","ΒΡΑΣΙΔΟΥ 103, ΣΠΑΡΤΗ, 23100, ΛΑΚΩΝΙΑΣ","ΛΑΚΩΝΙΑΣ"],["ΦΡΑΓΚΙΑΣ Ε. ΔΗΜΗΤΡΙΟΣ","ΓΥΘΕΙΟ, ΓΥΘΕΙΟ, 23200, ΛΑΚΩΝΙΑΣ","ΛΑΚΩΝΙΑΣ"],["ΦΡΑΓΚΟΥΛΗΣ Α. ΔΗΜΗΤΡΙΟΣ","Κατάστημα Ηλεκτρικών Συσκευών, ΣΚΥΡΟΣ, ΣΚΥΡΟΣ, 34007","ΣΚΥΡΟΣ"],["ΧΑΛΗΛ ΧΑΣΑΝ ΙΜΠΡΑΗΜ","ΜΠΙΖΑΝΙΟΥ 33, ΚΟΜΟΤΗΝΗ, 69100, ΡΟΔΟΠΗΣ","ΡΟΔΟΠΗΣ"],["ΧΑΡΜΑΝΔΑΡΗΣ ΒΑΣΙΛΕΙΟΣ (ΚΕΝΤΡΙΚΟ)","ΔΡΑΒΙΣΚΟΣ, ΣΕΡΡΕΣ, 65052, ΣΕΡΡΩΝ","ΣΕΡΡΩΝ"],["ΧΑΡΜΑΝΔΑΡΗΣ ΒΑΣΙΛΕΙΟΣ (ΥΠΟΚ/ΜΑ)","ΠΑΡΑΛΙΑ ΟΦΡΥΝΙΟΥ - ΜΟΥΣΘΕΝΗ, ΠΑΡΑΛΙΑ ΟΡΦΥΝΙΟΥ, 64008, ΚΑΒΑΛΑΣ","ΚΑΒΑΛΑΣ"],["ΧΑΣΙΚΟΣ Ν. ΒΑΓΓΕΛΗΣ","ΠΛ.ΔΗΜΟΚΡΑΤΙΑΣ 8, ΝΙΚΑΙΑ, 18453, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΧΑΣΧΑΤΖΗΣ ΚΩΝ/ΝΟΣ","ΠΥΡΓΟΣ ΜΟΝΟΦΑΤΣΙΟΥ, ΗΡΑΚΛΕΙΟ ΚΡΗΤΗΣ, 70010, ΗΡΑΚΛΕΙΟΥ","ΗΡΑΚΛΕΙΟΥ"],["ΧΑΥΔΑΣ ΑΘΑΝΑΣΙΟΣ","ΑΓΙΑ ΛΑΡΙΣΣΑΣ, ΑΓΙΑ, 40003, ΛΑΡΙΣΑΣ","ΛΑΡΙΣΑΣ"],["ΧΑΥΔΑΣ ΔΗΜΗΤΡΗΣ ΝΙΚ","ΛΑΡΙΣΗΣ 53 Α, ΑΓΙΑ, 40003, ΛΑΡΙΣΑΣ","ΛΑΡΙΣΑΣ"],["ΧΕΛΙΩΤΗΣ ΧΡΗΣΤΟΣ","ΣΠΕΤΣΕΣ, ΣΠΕΤΣΕΣ, 18050, ΑΤΤΙΚΗΣ","ΑΤΤΙΚΗΣ"],["ΧΟΝΔΡΟΓΙΑΝΝΗΣ ΣΤ. ΑΝΤΩΝΙΟΣ & ΣΙΑ Ε.Ε.","ΚΑΘ. ΑΡ. ΣΙΔΕΡΗ 47- 49, ΚΕΡΚΥΡΑ, 49100, ΚΕΡΚΥΡΑΣ","ΚΕΡΚΥΡΑΣ"],["ΧΟΝΔΡΟΥΔΑΚΗΣ Α.Ε.","ΑΓΙΟΣ ΚΥΡΙΚΟΣ, ΙΚΑΡΙΑ 83300","ΙΚΑΡΙΑ 83300"],["ΧΡΗΣΤΙΔΗΣ ΑΕΒΕ (ΚΕΝΤΡΙΚΟ)","3ο ΧΛΜ ΔΡΑΜΑΣ-ΚΑΒΑΛΑΣ, ΔΡΑΜΑ, 66100, ΔΡΑΜΑΣ","ΔΡΑΜΑΣ"]],"electronet":[["ARMACI AGIM SELIM","Εθνικης Αντιστασης Κοραη, 37300","Αγρια"],["ΑΝΤΩΝΗΣ ΤΖΙΤΖΗΣ & ΣΙΑ Ο.Ε.","Ν. Πέππα 8, 18010","Αίγινα"],["ΑΣΛΑΝΙΔΗΣ Π. & ΣΙΑ ΟΕ","Ιερά Οδός 201, 12241","Αιγάλεω"],["ΑΣΩΝΙΤΗΣ Γ ΝΙΚΗΤΑΣ","Χριστος, 85200","Κάλυμνος"],["ΒΑΣΙΛΕΙΟΣ ΚΑΖΑΝΑΣ ΑΕΒΕ","Διονύσου 10 & Παπαδοπούλου - Μυρών, 41447","Λάρισα"],["ΒΕΝΙΑΝΑΚΗΣ Ν.- Ε.ΠΕΝΤΑΡΑΚΗΣ Ο.Ε","Π. Εθν. Οδού Χανίων - Κισσάμου & Δελφών, 73100","Χανιά"],["ΒΕΡΓΙΩΤΗΣ ΕΥΑΓΓΕΛΟΣ","Μακαρίου 31, 32200","Θήβα"],["ΒΛΑΜΗΣ ΦΙΛ. ΓΕΩΡΓΙΟΣ","1ο Χλμ. Εθν. Οδού Λεωνιδίου- Αστρους, 22300","Λεωνίδιο"],["Γ ΚΑΙ Κ ΚΑΤΣΑΡΟΣ ΟΕ","Νέδοντος & Ιατροπούλου, 24100","Καλαμάτα"],["ΓΑΒΡΑΣ Α. - ΒΑΣΙΛΑΚΗΣ Ε. Ο.Ε.","Χώρα Νάξου, 84300","Νάξος"],["ΓΡΗΓΟΡΙΟΣ ΚΑΜΠΕΡΗΣ Α.Ε","Ελ. Βενιζέλου 6, 11147","Γαλάτσι"],["Δ ΣΤΑΣΙΝΟΣ ΚΑΙ ΣΙΑ ΟΕΕ","Δημοτσελίου 13, 30100","Αγρίνιο"],["ΔΑΜΑΚΟΠΟΥΛΟΣ Ι. & Ε. Ο.Ε.","Καποδιστρίου 46, 35100","Λαμία"],["ΔΕΔΕΣ ΚΩΝΣΤΑΝΤΙΝΟΣ ΧΡΗΣΤΟΣ","7ης Νοεμβρίου & Δημητρίου Λαμπράκη 2, 53100","Φλώρινα"],["ΔΡΙΤΣΑΣ Κ. ΔΗΜΗΤΡΙΟΣ","28ης Οκτωβρίου 201, 19100","Μέγαρα"],["ΕΜΠΟΡΙΚΗ ΗΛΕΚΤΡΟΔΥΝΑΜΙΚΗ ΝΙΚΟΛΑΟΥ ΜΟΝΟΠΡΟΣΩΠΗ Α.Ε","2 Ο Χλμ Αλεξανδρουπολης Συνορων, 68100","Αλεξανδρούπολη"],["ΕΠΙΧΕΙΡΕΙΝ ΝΑΥΠΑΚΤΟΥ Α.Ε","Μεσολογγίου Και Ακαρνανίας, 30300","Ναύπακτος"],["ΙΩΑΝΝΗΣ ΚΑΙ ΦΩΤΕΙΝΗ ΠΑΠΑΪΩΑΝΝΟΥ ΙΚΕ","Πλατεία Μητροπόλεως 3, 34200","Ιστιαία"],["Κ. ΜΙΧΑΗΛΙΔΗΣ & ΣΙΑ Ο.Ε.","Καλουτά 2, 82100","Χίος"],["ΚΑΜΠΟΛΗΣ ΑΘΑΝΑΣΙΟΣ ΙΣΙΔΩΡΟΣ","Λεωφόρος Δημοκρατίας 76, 19300","Ασπρόπυργος"],["ΚΑΠΑΡΕΛΗΣ ΕΠΕ","Ελ. Βενιζέλου 115, 12351","Αγία Βαρβάρα"],["ΚΑΠΑΡΕΛΗΣ ΕΠΕ","Γαϊτάνι, 29100","Ζάκυνθος"],["ΚΑΡΑΓΙΑΝΝΗ ΣΤΥΛΙΑΝΗ ΜΟΝΟΠΡΟΣΩΠΗ ΕΠΕ","Βυζαντίου 43 & Θ. Καιρη 21, 17122","Νέα Σμύρνη"],["ΚΑΡΑΦΛΟΣ ΙΚΕ","4o Χλμ. Ε.ο. Πύργου-πατρών, 27131","Πύργος"],["ΚΑΡΕΛΗΣ Δ. ΑΓΑΘΑΓΓΕΛΟΣ","Δημητράκου 2, 61100","Κιλκίς"],["ΚΑΡΚΟΥΛΗ Ι. ΑΦΟΙ Ο.Ε.","Άστρος Κυνουρίας 1, 22001","Άστρος"],["ΚΟΙΛΙΑ Ε. & ΣΙΑ ΕΕ","Περιφερειακή Οδός (έναντι Αστυνομίας), 47100","Άρτα"],["ΚΟΡΑΧΑΗΣ ΕΠΕ","Ίσιδος Περιφ/κός Ερέτριας, 34008","Ερέτρια"],["ΚΟΡΑΧΑΗΣ ΕΠΕ","Ελ. Βενιζέλου 3, 34100","Χαλκίδα"],["ΚΟΥΡΕΠΙΝΗΣ Ι. ΔΗΜΗΤΡΙΟΣ","Άγκυρα Λέρου, 85400","Λέρος"],["ΚΥΝΙΑΖΟΠΟΥΛΟΣ Π. ΑΕ","Γρανικού 3, 66100","Δράμα"],["ΚΥΝΙΑΖΟΠΟΥΛΟΣ Π. ΑΕ","Αβδήρων 37 & Αγ. Αποστόλων, 67100","Ξάνθη"],["ΚΩΛΕΤΤΑΣ Μ. ΓΕΩΡΓΙΟΣ Α.Ε.E.","28ης Οκτωβρίου 75, 46100","Ηγουμενίτσα"],["ΚΩΝΣΤΑΝΤΙΝΙΔΗΣ ΧΑΡΑΛΑΜΠΟΣ","Κ. Ταλιαδούρη & Ιπποκράτους, 51100","Γρεβενά"],["ΛΑΖΟΣ Π Ε Ε","Λιμεναρια, 64002","Θασος"],["ΛΟΓΟΘΕΤΗΣ Α. ΚΑΙ ΣΙΑ ΟΕ","Σοφοκλή Βενιζέλου 115, 16345","Ηλιουπολη"],["ΜΑΝΤΑΣ Γ. & ΣΙΑ ΟΕ","3 Χιλ. Αργους - Ναυπλίου - Δαλαμά, 21200","Άργος"],["ΜΑΡΚΑΚΗ Ε. & ΣΙΑ Ο. Ε.","Αρχαίου Θεάτρου 16, 13671","Αχαρνές"],["ΜΕΣΗΜΕΡΗ ΑΦΟΙ ΑΕ","Εθνική Παλαιοκαστρίτσας 201, 49100","Κέρκυρα"],["ΜΙΧΑΗΛΙΔΗΣ ΑΝΤΩΝΗΣ","Κωνσταντίνου Φελουζή, 85700","Κάρπαθος"],["ΜΟΥΙΚΗ ΑΙΚΑΤΕΡΙΝΗ-ΝΕΟΦΥΤΟΣ ΓΕΡΑΣΙΜΟΣ ΚΑΙ ΣΙΑ ΟΕ","Σιτεμπόρων 68, 28100","Αργοστόλι"],["ΜΠΕΗΣ ΗΛΕΚΤΡΙΚΗ ΜΟΝΟΠΡΟΣΩΠΗ ΕΠΕ","Λ. Μαρκοπούλου-πόρτο Ράφτη Θέση Καμαρίζα, 19003","Μαρκόπουλο"],["ΝΕΚΤΑΡΙΟΣ & ΝΙΚΟΛΑΟΣ ΦΛΕΣΣΑΣ Ο.Ε.","Μέμι ( Κυπαρισσία ), 24500","Κυπαρισσία"],["ΞΕΝΑΚΗΣ Α.Ε","Κ. Υδραίου 2, 85100","Ρόδος"],["ΟΡΦΑΝΟΣ Π. ΑΕ","Νέου Φαλήρου 3, 18233","Αγ.ι.ρέντης"],["Π ΓΙΑΝΝΟΥΛΑΚΗΣ ΟΕ","Πατητήρι, 37005","Αλόννησος"],["Π. ΔΕΛΑΚΟΥΒΙΑΣ & ΣΙΑ Ο.Ε","Περιφερειακή Οδός / ring road, 37002","Σκιάθος"],["ΠΑΜΠΟΥΚΙΔΗΣ Κ. & ΣΙΑ Ο.Ε","Α. Παπανδρέου 10, 56334","Κορδελιό"],["ΠΑΝΕΘΥΜΙΤΑΚΗΣ ΓΕΩΡΓΙΟΣ","Κολυμπάρι Χανίων, 73006","Κολυμπάρι"],["ΠΑΝΤΖΑΡΤΖΙΔΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ & ΣΙΑ Ο.Ε.","2ο Χλμ Αριδαίας Εξαπλάτανου, 58400","Αριδαία"],["ΠΑΝΤΖΑΡΤΖΙΔΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ & ΣΙΑ Ο.Ε.","Εγνατίας 8, 58100","Γιαννιτσά"],["ΠΑΠΑΔΑΚΗΣ Γ Ν ΑΓΓΕΛΑΚΗΣ ΙΚΕ","Κωνσταντίνου Καραμανλή 14, 72200","Ιεράπετρα"],["ΠΑΠΑΔΑΚΗΣ ΣΠΥΡΙΔΩΝ","Επιμενίδου 27, 72100","Άγιος Νικόλαος"],["ΠΑΠΑΔΑΤΟΣ Δ. & ΣΙΑ ΟΕ","Αλεξανδρείας 54, 10442","Αθήνα"],["ΠΑΠΑΝΔΡΙΚΟΠΟΥΛΟΣ Ι.Κ.Ε","Κολοκοτρ'ωνη 25, 26221","Πάτρα"],["ΠΑΠΑΪΩΑΝΝΟΥ Π. & ΣΙΑ Ο.Ε.","Χαριλάου Τρικούπη 46, 36100","Καρπενήσι"],["ΠΑΤΑΚΑΣ Ε Ε","Ευελπίδων 33, 11362","Κυψέλη"],["ΠΕΛΑΝΤΑΚΗ ΧΡΙΣΤΙΝΑ & ΣΙΑ Ε.Ε","Εμ. Πορτάλιου 25, 74100","Ρέθυμνο"],["ΠΕΡΒΑΝΑ ΑΦΟΙ ΟΕ","Δαμιανού 2, 65403","Καβάλα"],["ΠΕΡΚΑ ΑΦΟΙ ΑΕ","Β.τσιτσάνη 50, 42100","Τρίκαλα"],["ΠΕΡΚΑ ΑΦΟΙ ΑΕ","Αλβανικού Μετώπου 26, 42100","Τρίκαλα"],["ΠΕΤΡΙΔΗΣ Δ Ο Ε","Εθνικής Αντίστασης 64, 57100","Βι.πε. Κουφάλια Α"],["ΠΗΛΙΟΓΛΟΥ ΑΘΑΝΑΣΙΟΣ ΠΑΝΑΓΙΩΤΗΣ ΓΛΙΤΖΟΣ ΚΑΙ ΣΙΑ Ο Ε","Ν Γαροφαλλιδη 1, 81400","Λήμνος"],["ΠΙΤΣΟΥΛΑΚΗΣ-ΡΟΜΠΟΓΙΑΝΝΑΚΗΣ Α.Ε.Β.Ε","Παύλου Ζωγραφιστού 6, 71305","Ηράκλειο"],["ΠΙΤΣΟΥΛΑΚΗΣ-ΡΟΜΠΟΓΙΑΝΝΑΚΗΣ Α.Ε.Β.Ε","Λεβήνου 76, 71304","Ηράκλειο"],["ΠΙΤΣΟΥΛΑΚΗΣ-ΡΟΜΠΟΓΙΑΝΝΑΚΗΣ Α.Ε.Β.Ε","Λ. Εθν. Αντιστάσεως 182, 71306","Ηρακλειο"],["ΠΡΟΔΡΟΜΟΥ Γ. ΑΕ","Καλλονή, 81107","Μυτιλήνη"],["ΠΡΟΔΡΟΜΟΥ Γ. ΑΕ","5ο Χλμ. Μυτιλήνης - Καλλονής Θέση Χωράφα Αλυφάντων, 81100","Μυτιλήνη"],["ΡΟΥΜΕΛΙΩΤΗΣ ΒΑΣΙΛΕΙΟΣ ΚΑΙ ΣΙΑ ΟΕ","Λυκούργου 45, 23100","Σπάρτη"],["ΡΟΥΣΣΟΣ ΧΑΡΑΛΑΜΠΟΣ ΕΛΕΥΘΕΡΙΟΣ","Εμπορείο, 84700","Σαντορίνη"],["ΣΕΡΑΦΕΙΜ ΑΕΒΕ","Μ. Αλεξάνδρου 39, 60100","Κατερίνη"],["ΣΠΥΡΟΠΟΥΛΟΣ Β. & ΣΙΑ ΟΕ","Ανδ. Λόντου 12, 25100","Αίγιο"],["ΣΤ.ΒΑΤΣΑΚΗΣ ΚΑΙ ΣΙΑ Ε.Ε","Παπαναστασίου 24, 72300","Σητεία"],["ΤΡΑΝΟΥΛΗΣ ΔΙΑΜΑΝΤΗΣ ΚΑΙ ΣΙΑ ΕΕ","Ελ. Βενιζέλου 128, 14671","Νέα Ερυθραία"],["ΤΡΑΝΟΥΛΗΣ ΘΕΟΔΩΡΟΣ ΚΑΙ ΥΙΟΙ ΕΕ","Λ. Ειρήνης 21, 15121","Πεύκη"],["ΤΣΑΛΑΜΙΔΑΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","Αγ. Τριάδος 17, 15343","Αγία Παρασκευή"],["ΤΥΡΟΒΟΥΖΗΣ ΖΑΧΑΡΙΑΣ & ΣΙΑ Ο.Ε.","Επ. Οδ. Ν. Μουδανιών- Θεσσαλονίκης Χ.θ Οτ25 Οικ.2, 63200","Νέα Μουδανιά"],["ΧΑΤΖΗΑΝΤΩΝΙΑΔΗΣ Κ. Α.Ε.","Καρλόβασι, 83200","Σάμος"],["ΧΙΩΤΗΣ Ι. ΔΗΜΗΤΡΙΟΣ","Αγ. Θεοδόσιος, 18050","Σπέτσες"]],"plaisio":[["Κατάστημα Stockhouse Αγ.Παρασκευής","ΜΕΣΟΓΕΙΩΝ 512, 514, 15342","ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ"],["Κατάστημα Stockhouse Μεταμόρφωσης","ΦΑΒΙΕΡΟΥ 4, 14452","ΜΕΤΑΜΟΡΦΩΣΗ"],["Κατάστημα Αεροδρομίου","ΚΤΙΡΙΟ 501 ΕΜΠΟΡΙΚΟ ΠΑΡΚΟ ΔΙΕΘ, 19019","ΣΠΑΤΑ"],["Κατάστημα Αμαρουσίου","ΑΝΔΡΕΑ ΠΑΠΑΝΔΡΕΟΥ 35, 15122","ΜΑΡΟΥΣΙ"],["Κατάστημα Βενιζέλου Θεσσαλονίκη","ΒΕΝΙΖΕΛΟΥ 9, 54624","ΘΕΣΣΑΛΟΝΙΚΗ"],["Κατάστημα Γλυφάδας","ΑΝΔΡΕΑ ΠΑΠΑΝΔΡΕΟΥ 5, 16675","ΓΛΥΦΑΔΑ"],["Κατάστημα Γλυφάδας Χαρτοπωλείο","ΠΑΠΑΝΔΡΕΟΥ 6, 16675","ΓΛΥΦΑΔΑ"],["Κατάστημα Δάφνης","ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΕΩΣ 87-89, 17236","ΔΑΦΝΗ"],["Κατάστημα Ηρακλείου Λ.62 Μαρτύρων","62 ΜΑΡΤΥΡΩΝ 154, 71303","ΗΡΑΚΛΕΙΟ"],["Κατάστημα Ηρακλείου Λ.Δημοκρατίας","Λ. ΔΗΜΟΚΡΑΤΙΑΣ 33, 71306","ΗΡΑΚΛΕΙΟ"],["Κατάστημα Ιωαννίνων","ΚΡΥΣΤΑΛΛΗ 5 & ΚΩΛΕΤΤΗ, 45444","ΙΩΑΝΝΙΝΑ"],["Κατάστημα Καλαμαριάς","ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΕΩΣ 121, 55134","ΚΑΛΑΜΑΡΙΑ"],["Κατάστημα Καλλιθέας","ΔΑΒΑΚΗ 31, 17672","ΚΑΛΛΙΘΕΑ"],["Κατάστημα Καλλιθέας Δαβάκη 33","ΔΑΒΑΚΗ 33, 17672","ΚΑΛΛΙΘΕΑ"],["Κατάστημα Κηφισιάς","ΛΕΩΦ. ΚΗΦΙΣΙΑΣ 287, 14561","ΚΗΦΙΣΙΑ"],["Κατάστημα Κηφισού","ΛΕΩΦΟΡΟΣ ΚΗΦΙΣΟΥ 90, 12132","ΠΕΡΙΣΤΕΡΙ"],["Κατάστημα Λ. Βουλιαγμένης","Λ. ΒΟΥΛΙΑΓΜΕΝΗΣ 595 & Μ.ΓΕΡΟΥ, 16452","ΑΡΓΥΡΟΥΠΟΛΗ"],["Κατάστημα Λ.Δημοκρατίας Οικιακές","Λ.ΔΗΜΟΚΡΑΤΙΑΣ 35, 71306","ΗΡΑΚΛΕΙΟ"],["Κατάστημα Λάρισας","ΓΕΩΡΓΙΑΔΟΥ 26, 41221","ΛΑΡΙΣΑ"],["Κατάστημα Μαγούλας","ΘΕΣΗ ΣΚΛΗΡΗ, 19018","ΜΑΓΟΥΛΑ"],["Κατάστημα Μελισσίων","ΑΝ.ΠΑΠΑΝΔΡΕΟΥ ΚΑΙ ΤΡΑΠΕΖΟΥΝΤΟΣ 17, 15127","ΜΕΛΙΣΣΙΑ"],["Κατάστημα Μεσογείων","Λ.ΜΕΣΟΓΕΙΩΝ 502-504, 15342","ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ"],["Κατάστημα Μεταμόρφωσης","ΦΑΒΙΕΡΟΥ 5, 14452","ΜΕΤΑΜΟΡΦΩΣΗ"],["Κατάστημα Ν.Ευκαρπίας","ΠΑΡΟΔΟΣ ΑΝΘΟΚΗΠΩΝ ΙΑ, ΠΑΥΛΟΣ Μ, 56429","ΕΥΚΑΡΠΙΑ"],["Κατάστημα Ομήρου 5","ΟΜΗΡΟΥ 5, 15451","ΨΥΧΙΚΟ"],["Κατάστημα Πάτρας","ΑΓ. ΑΝΔΡΕΟΥ 120, 26221","ΠΑΤΡΑ"],["Κατάστημα Πέτρου Ράλλη","ΠΕΤΡΟΥ ΡΑΛΛΗ 99, 18233","ΑΓΙΟΣ ΙΩΑΝΝΗΣ ΡΕΝΤΗΣ"],["Κατάστημα Πειραιά","ΕΘΝ. ΑΝΤΙΣΤΑΣΕΩΣ 21, 18531","ΠΕΙΡΑΙΑΣ"],["Κατάστημα Περιστερίου","ΕΘΝΙΚΗΣ ΑΝΤΙΣΤΑΣΕΩΣ 42, 12134","ΠΕΡΙΣΤΕΡΙ"],["Κατάστημα Στουρνάρη 19","ΣΤΟΥΡΝΑΡΗ 19, 10682","ΑΘΗΝΑ"],["Κατάστημα Στουρνάρη 24","ΣΤΟΥΡΝΑΡΗ 24, 10682","ΑΘΗΝΑ"],["Κατάστημα Συντάγματος","ΒΟΥΛΗΣ 3, 10562","ΣΥΝΤΑΓΜΑ"],["Κατάστημα Τσιμισκή & Π.Π. Γερμανού","Π.Π. ΓΕΡΜΑΝΟΥ 11, 54622","ΘΕΣ/ΝΙΚΗ"],["Κατάστημα Χανίων","ΜΑΡΚΟΥ ΜΠΟΤΣΑΡΗ 1, 73135","ΧΑΝΙΑ"]],"kotsovolos":[["Cosmos Mediterranean","11ο χλμ Εθνικής Οδού Θεσσαλονίκης/ Νέων Μουδανιών, 57001","Θεσσαλονίκη"],["K spot Ιωάννινα","Λεωφ. Δωδώνης, 2, 45332","Ιωάννινα"],["Mουδανιά","1ο ΧΛΜ. Επαρ. Οδ. Νέων Μουδανιών – Τριγλίας, 63200","Μουδανιά"],["Note: the store locator also returns 80 co-branded \"Κατάστημα ΔΕΗ\" (Public Power Corporation) service points, which are excluded here as they are not Kotsovolos retail stores.","",""],["River West","Λεωφ. Κηφισού, 96-98, 12241","Αιγάλεω"],["Source: kotsovolos.gr store locator (https://www.kotsovolos.gr/StoresLocator) – 95 Kotsovolos-branded stores, retrieved 22 Sep 2026. Names, addresses and cities as returned by the site's store-locator API; store names link to each store's page on kotsovolos.gr.","",""],["Άγιοι Ανάργυροι","Λεωφ. Δημοκρατίας, 266, 13562","Άγιοι Ανάργυροι"],["Άγιος Νικόλαος","Κ. Καραμανλή , 51, 72100","Άγιος Νικόλαος Κρήτης"],["Άργος","4ο ΧΛΜ Άργους - Ναυπλίου, 21100","Άργος"],["Άρτα","Σπ. Σπύρου και Πούλιου Δράκου, 4, 47100","Άρτα"],["Αίγιο","Κορίνθου 52 & Αγίας Κυριακής, 25100","Αίγιο"],["Αγία Παρασκευή","Λεωφ. Μεσογείων, 448, 15343","Αγία Παρασκευή"],["Αγρίνιο","Χαριλάου Τρικούπη & Μάκρη, 12, 30100","Αγρίνιο"],["Αεροδρόμιο Ελ. Βενιζέλος","Εμπορικό Πάρκο Αεροδρομίου, 19019","Σπάτα"],["Αλεξανδρούπολη - Λ.Δημοκρατίας 294","Λεωφ.Δημοκρατίας, 294, 68100","Αλεξανδρούπολη"],["Αμπελόκηποι","Λεωφ. Κηφισίας, 124, 11526","Αμπελόκηποι"],["Ανάβυσσος","Λεωφ. Καραμανλή, 20, 19013","Ανάβυσσος"],["Βέροια","Βενιζέλου, 1, 59132","Βέροια"],["Βριλήσσια","Λεωφ. Πεντέλης, 57, 15235","Βριλήσσια"],["Βόλος","Ιάσωνος 58 & Ιωλκού, 38221","Βόλος"],["Γιαννιτσά","Ελ.Βενιζέλου & Πασχαλούδη Ρήγα, 58100","Γιαννιτσά"],["Γλυφάδα - Λ.Βουλιαγμένης","Λεωφ. Βουλιαγμένης 83 & Προφήτη Ηλία 18 & Εμμ. Δημελά 12, 16674","Γλυφάδα"],["ΔΕΘ - Tech Living Zone","Εγνατίας 154, 54636","Θεσσαλονίκη"],["Δράμα","Γεωργίου Παπανδρέου 35 & Περικλέους, 66100","Δράμα"],["Ελευσίνα","Ιερά οδός, 32, 19200","Ελευσίνα"],["Εμπορικό κέντρο The Mall Athens","Ανδρέα Παπανδρέου 35,θέση Ψαλίδι, 15122","Μαρούσι"],["Ερυθραία - Εθν. Οδός","19ο ΧΛΜ. Ε.Ο. Αθηνών - Λαμίας, 14671","Νέα Ερυθραία"],["Ευκαρπία","Περιφερειακή Οδός Θεσσαλονίκης & Λεωφ. Στρατού,Κόμβος Ευκαρπίας, 57013","Θεσσαλονίκη"],["Εύοσμος","Καραολή Δημητρίου 96 και Αργυροκάστρου, 56224","Εύοσμος"],["Ζάκυνθος","ΘΕΣΗ ΦΛΟΚΑ, 29100","Ζάκυνθος"],["Ζωγράφου","Λεωφ. Παπάγου, 30, 15771","Ζωγράφου"],["Ηλιούπολη","Λεωφ. Βουλιαγμένης, 519, 16341","Ηλιούπολη"],["Ηράκλειο - Κέντρο","Λεωφ. 62 Μαρτύρων, 166, 71303","Ηράκλειο Κρήτης"],["Ηράκλειο - Λ. Κνωσσού 123","Λεωφ. Κνωσσού, 123, 71409","Ηράκλειο Κρήτης"],["Θήβα","Οπλαρχηγού Βόγκλη, 7, 32200","Θήβα"],["Θεσσαλονίκη Κέντρο - Τσιμισκή","Τσιμισκή, 43, 54621","Θεσσαλονίκη"],["Ιεράπετρα","1ο ΧΛΜ Ιεράπετρας – Αγ. Νικολάου, 72200","Ιεραπετρα"],["Ιωάννινα","Σταύρου Νιάρχου, 8, 45332","Ιωάννινα"],["Κ spot Ρόδος","Εθνάρχου Μακαρίου 46, 85100","Ρόδος"],["Κάλυμνος","Πλατεία Στράτα, 85200","Κάλυμνος"],["Κέρκυρα","Ε. Ο. Κέρκυρας - Παλαιοκαστρίτσας, 100, 49100","Σολάρι Κέρκυρας"],["Καβάλα","Μ. Αλεξάνδρου 30 & Αβέρωφ, 65302","Καβάλα"],["Καλαμάτα","Αριστομένους, 4, 24100","Καλαμάτα"],["Καλαμαριά","Εθνικής Αντιστάσεως, 16, 55133","Καλαμαριά"],["Καλλιθέα","Λεωφ. Ελευθερίου Βενιζέλου, 262, 17675","Καλλιθέα"],["Καρδίτσα","Πλαστήρα 27 & Βασιαρδάνη, 43100","Καρδίτσα"],["Κατερίνη","Βάρναλη, 8, 60100","Κατερίνη"],["Κερατσίνι","Λεωφ. Δημοκρατίας 137 & Κομνηνών, 18755","Κερατσίνι"],["Κηφισιά","Κυριαζή 36, 14562","Κηφισιά"],["Κιλκίς","Ομήρου, 55, 61100","Κιλκίς"],["Κοζάνη","11ης Οκτωβρίου & Αλιάκμονος, 2, 50100","Κοζάνη"],["Κομοτηνή","Εθνικής Αντίστασης 28, 69100","Κομοτηνή"],["Κορυδαλλός","Ταξιαρχών, 44, 18120","Κορυδαλλός"],["Κως","Παπαναστασίου,Αγ. Μαρίνα, 85300","Κως"],["Κόρινθος","Δαμασκηνού , 55, 20100","Κόρινθος"],["Λάρισα","Παπαναστασίου, 52, 41222","Λάρισα"],["Λήμνος - Επαρ. Οδ. Μύρινας - Μούνδρου","1o ΧΛΜ. Μύρινας - Μούνδρου, 81400","Λήμνος"],["Λήμνος - Μύρινα","Πλατεία Υψιπύλης, 1, 81400","Λήμνος"],["Λαμία","1ο ΧΛΜ Ν.Ε.Ο. ΛΑΜΙΑΣ-ΑΘΗΝΩΝ, 35133","Λαμία"],["Λευκάδα","1o ΧΛΜ Λευκάδας - Νυδρίου, 31100","Λευκάδα"],["Λιβαδειά","Ρούμελης & Έρκυνας, 32100","Λιβαδειά"],["ΜΥΤΙΛΗΝΗ","Βενιζέλου Ελευθερίου 6, 81100","Μυτιληνη"],["Μενίδι","Λιοσίων, 71, 13675","Μενίδι"],["Μοίρες","1ο ΧΛΜ. Μοιρών – Πόμπιας, 70400","Μοίρες Κρήτης"],["Νάουσα","5o ΧΛΜ Νάουσας - Βέροιας, 5, 59200","Νάουσα"],["Νέα Ιωνία","Ιφιγενείας 7 & Πεύκων, 14451","Νέα Ιωνία"],["Νέα Μάκρη","Λεωφ. Μαραθώνος, 177, 19005","Νέα Μάκρη"],["Νέα Σμύρνη","Λεωφ. Ανδρέα Συγγρού, 257-259, 17122","Νέα Σμύρνη"],["Νέο Ηράκλειο","Μαρίνου Αντύπα, 90, 14121","Νέο Ηράκλειο"],["Ξάνθη","Μιχαήλ Καραολή 79-81, 67100","Ξάνθη"],["Ορεστιάδα","Κωνσταντινουπόλεως 41, 68200","Ορεστιάδα"],["Πάτρα","Γλαύκου 9 - Περιβόλα Πατρών, 26332","Πάτρα"],["Πάτρα (Top Park)","Ανθείας 15 (Εμπορικό Πάρκο Top Parks), 26333","Πάτρα"],["Παγκράτι","Μεσολογγίου 3 & Χρεμωνίδου , 52, 16231","Παγκράτι"],["Πατησίων","Πατησίων , 181, 11252","Αθήνα"],["Πειραιάς","Τσαμαδού 26 & Φίλωνος, 18531","Πειραιάς"],["Περιστέρι","Λεωφ. Θηβών 205 & Καρκαβίτσα 2 & Ευγενών, 12134","Περιστέρι"],["Πρέβεζα","Κωστή Παλαμά, 24, 48100","Πρέβεζα"],["Πυλαία","10ο ΧΛΜ. Επαρχιακού δρόμου Θεσσαλονίκης, 57001","θεσσαλονίκη"],["Πύργος","1ο ΧΛΜ Ε.Ο. Πύργου - Πατρών, 27100","Πύργος Ηλείας"],["Ρέθυμνο","Αντισμήναρχου Βασιλάκη 4, 74100","Ρέθυμνο"],["Ρόδος","Εθνικής Αντίστασης, 42-44, 85100","Ρόδος"],["Σ.Ε.Α Σείριος","43ο χιλιόμετρο της Αθηνών-Λαμίας, 19011","Ωρωπός"],["Σέρρες","Πλατεία Δήμητρας και Πλαταιών, 1, 62121","Σέρρες"],["Σαλαμίνα","Λεωφ. Σαλαμίνος, 99, 18900","Σαλαμίνα"],["Σαντορίνη","Μεσαριά, 84700","Σαντορίνη"],["Σπάρτη","Των 118 73 & Ορθίας Αρτέμιδος, 23100","Σπάρτη"],["Σταδίου","Σταδίου 34 & Κοραή, 10564","Αθήνα"],["Σύρος","Αεροδρομίου, 22, 84100","Σύρος"],["Τούμπα","Γρηγορίου Λαμπράκη, 189, 54352","Θεσσαλονίκη"],["Τρίκαλα","Κολοκοτρώνη 1 & Πτολεμαίου, 42100","Τρίκαλα"],["Τρίπολη","Αλ. Σούτσου, 35, 22100","Τρίπολη"],["Χίος","Λ.ΕΝΩΣΕΩΣ 48 - ΚΑΤΩ ΒΑΡΒΑΣΗ, 82100","Χίος"],["Χαλκίδα","Αρεθούσης & Ι. Κιαπεκού, 34100","Χαλκίδα"],["Χανιά","Σκαλίδη, 24, 73100","Χανιά Κρήτης"],["Χαϊδάρι","Λεωφ. Αθηνών 149 & Αναγεννήσεως, 12461","Χαϊδάρι"],["Χολαργός","Λεωφόρος Μεσογείων, 319, 15231","Χαλάνδρι"]],"public":[["Public + home Ίλιον","Πετρουπόλεως 41, 13121","Ίλιον"],["Public + home Αγία Παρασκευή","Λεωφ. Μεσογείων 402, 15342","Αγία Παρασκευή"],["Public + home Αργυρούπολη","Λέοντος 4 & Ελευθερίας, 16452","Αργυρούπολη"],["Public + home Γέρακας","Λεωφ. Μαραθώνος 149, 15344","Γέρακας"],["Public + home Ηράκλειο","Λεωφ. Κνωσού 172, 71409","Ηράκλειο"],["Public + home Ιωάννινα","Πυρσινέλλα 4 & Γ. Μελανίδη, 45332","Ιωάννινα"],["Public + home Λάρισα (Fashion City Outlet)","Fashion City Outlet, 41335","Λάρισα"],["Public + home Μαρούσι","Λεωφ. Κηφισίας 49, 15123","Μαρούσι"],["Public + home Πάτρα (Veso Mall)","Ακτή Δυμαίων 17, 26221","Πάτρα"],["Public + home Πατήσια","Λεωφ. Πατησίων 324, 11141","Αθήνα"],["Public + home Πειραιάς","Γρ. Λαμπράκη 152-154, 18534","Πειραιάς"],["Public + home Περιστέρι","Λεωφ. Αθηνών 64, 12136","Περιστέρι"],["Public + home Πυλαία (Ποσειδώνος)","Ποσειδώνος 30, 55535","Πυλαία"],["Public + home Ρέντης","Λεωφ. Κηφισού 161, 18233","Άγιος Ιωάννης Ρέντης"],["Public + home Ρόδος (Λ. Λίνδου)","7ο χλμ Εθν. Οδού Ρόδου–Λίνδου, 85150","Ρόδος"],["Public + home Ρόδος (Νέα Μαρίνα)","Αυστραλίας 84-86, 85100","Ρόδος"],["Public + home Σταθμός","Νέα Δυτική Είσοδος (Ι. Κωλέττη), 54627","Θεσσαλονίκη"],["Public + home Σταυρούπολη","Λαγκαδά 341, 56430","Σταυρούπολη"],["Public + home Συγγρού (Καλλιθέα)","Λεωφ. Ανδρέα Συγγρού 340, 17673","Καλλιθέα"],["Public Athens Metro Mall","Λεωφ. Βουλιαγμένης 276, 17343","Άγιος Δημήτριος"],["Public Golden Hall","Λεωφ. Κηφισίας 37Α, 15123","Μαρούσι"],["Public Smart Park","Smart Park, Πουλάκη, 19004","Σπάτα"],["Public The Mall Athens","Ανδρέα Παπανδρέου 35, 15122","Μαρούσι"],["Public Άργος","Δαναού 25, 21232","Άργος"],["Public Αγία Παρασκευή (Χαλανδρίου)","Λεωφ. Χαλανδρίου 15Β, 15343","Αγία Παρασκευή"],["Public Αγρίνιο","Αδελφών Παπαστράτου 3, 30131","Αγρίνιο"],["Public Αεροδρόμιο Ελ. Βενιζέλος","Διεθνής Αερολιμένας Αθηνών, 19019","Σπάτα"],["Public Αιγάλεω","Αλ. Παπαναστασίου 3, 12241","Αιγάλεω"],["Public Αλεξανδρούπολη","Λεωφ. Δημοκρατίας 210, 68100","Αλεξανδρούπολη"],["Public Βόλος","Ογλ 28 & Ι. Κονταράτου 9, 38221","Βόλος"],["Public Γλυφάδα","Σ. Καράγιωργα 4 & Λαζαράκη, 16675","Γλυφάδα"],["Public Δράμα","Εθν. Αμύνης 13, 66133","Δράμα"],["Public Ζωγράφου","Ούλωφ Πάλμε 44, 15771","Ζωγράφου"],["Public Ηράκλειο Κρήτης","Δαιδάλου 15, 71202","Ηράκλειο"],["Public Κέρκυρα","Ευγενίου Βουλγάρεως 82, 49131","Κέρκυρα"],["Public Καβάλα","Ομονοίας 50 & Ίωνος Δραγούμη, 65302","Καβάλα"],["Public Καλαμάτα","Αριστομένους 16 & Αναπλιώτη, 24133","Καλαμάτα"],["Public Καλλιθέα","Λεωφ. Ελ. Βενιζέλου 155-157, 17672","Καλλιθέα"],["Public Κατερίνη","Οδ. Ανδρούτσου & Ερμού 5, 60132","Κατερίνη"],["Public Κοζάνη","Ειρήνης 5 & Κ. Δρίζη, 50131","Κοζάνη"],["Public Κομοτηνή","Αγίου Γεωργίου 3, 69132","Κομοτηνή"],["Public Κορυδαλλός","Πλ. Ελευθερίας 10, 18120","Κορυδαλλός"],["Public Κόρινθος","Δαμασκηνού 45, 20131","Κόρινθος"],["Public Λάρισα","Κ. Κούμα 6 & Μ. Αντύπα, 41222","Λάρισα"],["Public Λάρνακα (Metropolis Mall)","Λεωφ. Ευρωπαϊκής Ένωσης 5, 6043","Λάρνακα (Κύπρος)"],["Public Λαμία","Πλ. Πάρκου 11-13, 35132","Λαμία"],["Public Λεμεσός (My Mall)","Φραγκλίνου Ρούσβελτ 285, Ζακάκι, 3150","Λεμεσός (Κύπρος)"],["Public Λευκωσία 1 (Mall of Cyprus)","Βεργίνας 3, Στρόβολος, 2025","Λευκωσία (Κύπρος)"],["Public Λευκωσία 2 (Nicosia Mall)","Μαδρίτης 2, Λακατάμια, 2306","Λευκωσία (Κύπρος)"],["Public Μυτιλήνη","Αρχιπελάγους & Σάμου, 81100","Μυτιλήνη"],["Public Νέα Ερυθραία","Χαριλάου Τρικούπη 123, 14563","Νέα Ερυθραία"],["Public Νέα Σμύρνη","Λεωφ. Ελ. Βενιζέλου 45, 17123","Νέα Σμύρνη"],["Public Νέο Ψυχικό","Διονυσίου Σολωμού 3, 15451","Νέο Ψυχικό"],["Public Ξάνθη","Δαγκλή & Ελπίδος (Cosmos Center), 67100","Ξάνθη"],["Public Ορεστιάδα","Κωνσταντινουπόλεως 185, 68200","Ορεστιάδα"],["Public Πάτρα","Ερμού 55, 26221","Πάτρα"],["Public Πάφος (Kings Avenue Mall)","Λεωφ. Τάφων των Βασιλέων 2, 8046","Πάφος (Κύπρος)"],["Public Παραλίμνι","Λεωφ. Γρίβα Διγενή 152, 5281","Παραλίμνι (Κύπρος)"],["Public Περιστέρι","Εθν. Αντιστάσεως 27, 12134","Περιστέρι"],["Public Πυλαία (Mediterranean Cosmos)","11ο χλμ Θεσσαλονίκης–Ν. Μουδανιών, 57001","Πυλαία"],["Public Πύργος","Μανωλοπούλου 4, 27131","Πύργος"],["Public Ρέθυμνο","Πλ. Αγνώστου Στρατιώτη, 74131","Ρέθυμνο"],["Public Σέρρες","Γ. Τσαλοπούλου 9, 62123","Σέρρες"],["Public Σύνταγμα","Καραγιώργη Σερβίας 1, 10563","Αθήνα"],["Public Τρίκαλα","Γ. Κανούτα 1 & Βύρωνος, 42131","Τρίκαλα"],["Public Τσιμισκή","Τσιμισκή 24 & Μητροπόλεως 33, 54624","Θεσσαλονίκη"],["Public Χαλκίδα","Κριεζώτου 14, 34100","Χαλκίδα"],["Public Χανιά","Χατζημιχάλη Γιάνναρη 40-42, 73132","Χανιά"]],"expert":[["EXPERT ΑΒ CLIMA","Λεωφόρος Κηφισίας 157","ΜΑΡΟΥΣΙ"],["EXPERT ΑΝΤΩΝΙΟΥ HOMES","25ης Μαρτίου 53","ΠΤΟΛΕΜΑΪΔΑ"],["EXPERT ΑΠΟΣΤΟΛΑΚΟΥΔΗ","Κωνσταντινουπόλεως 260","ΟΡΕΣΤΙΑΔΑ"],["EXPERT ΒΑΛΗΣ","Καπετάν Σταμάτη 12","ΣΑΜΟΣ"],["EXPERT ΒΑΡΤΖΗ","1ο χλμ Νέας Αρτάκης Ψαχνών","ΝΕΑ ΑΡΤΑΚΗ"],["EXPERT ΒΑΦΕΙΑΔΗΣ","Λεωφόρος Καραμανλή 95","ΧΑΛΚΙΔΑ"],["EXPERT ΒΕΛΕΤΑΣ","Καρόδρομος","ΜΗΛΟΣ"],["EXPERT ΒΟΥΤΣΙΝΟΥ","Χώρα Νάξου","ΝΑΞΟΣ"],["EXPERT ΓΑΪΤΑΝΗΣ","Θέση Γερακάδα","ΚΟΡΩΝΗ"],["EXPERT ΓΚΑΝΗ","Αρεθούσης 43","ΧΑΛΚΙΔΑ"],["EXPERT ΔΑΓΚΛΗΣ","Αρκαδιουπόλεως 27","ΘΕΣΣΑΛΟΝΙΚΗ"],["EXPERT ΔΕΛΗΜΗΤΡΟΣ","Καλλονή Λέσβου","ΚΑΛΛΟΝΗ"],["EXPERT ΗΛΕΚΤΡΟΣΥΝΘΕΣΗ","Εθνική Παλαιοκαστρίτσας Σολάρι","ΚΕΡΚΥΡΑ"],["EXPERT ΚΑΛΑΜΙΔΑΣ","Ναπολέοντος Ζέρβα & Αρχιεπισκόπου Μακαρίου 13","ΦΙΛΙΠΠΙΑΔΑ"],["EXPERT ΚΑΣΕΛΑΚΗΣ","Σοφοκλή Βενιζέλου 109","ΑΓ. ΑΝΑΡΓΥΡΟΙ"],["EXPERT ΚΕΦΑΛΛΗΝΟΣ","Γεωργίου Παπανδρέου 58","ΑΜΑΛΙΑΔΑ"],["EXPERT ΚΛΑΥΔΙΑΝΟΣ","Αγία Αικατερίνη Λαγανάς Καλαμακίου","ΖΑΚΥΝΘΟΣ"],["EXPERT ΚΟΚΟΣΗΣ","Σιτεμπόρων 53","ΑΡΓΟΣΤΟΛΙ"],["EXPERT ΚΟΣΙΑΒΕΛΟΥ","Λεωφόρος Κωνσταντίνου Καραμανλή 10","ΑΜΦΙΣΣΑ"],["EXPERT ΚΟΥΚΟΥΖΕΛΗΣ","Γρηγορίου Λαμπράκη 28","ΤΑΥΡΟΣ"],["EXPERT ΚΟΥΚΟΥΖΕΛΗΣ","Ελευθερίου Βενιζέλου 55","ΠΕΙΡΑΙΑΣ"],["EXPERT ΚΟΥΚΟΥΖΕΛΗΣ","Νάουσα Πάρου","ΠΑΡΟΣ"],["EXPERT ΚΡΟΥΤΙΤΣΚΑΓΙΑ","Πηγάδια","ΚΑΡΠΑΘΟΣ"],["EXPERT ΚΩΣΤΑΡΙΔΗΣ","Καναδά 12","ΡΟΔΟΣ"],["EXPERT ΚΩΤΣΑΔΑΜ","Σοφοκλέους 42","ΛΙΒΑΔΕΙΑ"],["EXPERT ΛΕΚΑΚΗΣ","Μολάοι","ΛΑΚΩΝΙΑ"],["EXPERT ΛΕΟΝΤΙΑΔΗΣ","28ης Οκτωβρίου 133","ΝΙΚΑΙΑ"],["EXPERT ΜΑΤΗΓΑΚΗ ΨΑΛΛΙΔΑ","Ελευθερίας 20","ΠΕΡΑΜΑ"],["EXPERT ΜΕΝΥΧΤΑΣ","Αρχαίας Ολυμπίας 0 & Βασιλέως Κωνσταντίνου","ΒΑΡΔΑ"],["EXPERT ΜΟΥΤΖΟΥΡΙΔΗΣ","Σκάλα Πάτμου","ΠΑΤΜΟΣ"],["EXPERT ΜΥΛΩΝΑΚΗΣ","Μάρκου Πορτάλιου 8","ΡΕΘΥΜΝΟ"],["EXPERT ΠΕΤΡΑΚΟΣ","Ερμού 15","ΛΑΥΡΙΟ"],["EXPERT ΡΟΥΣΣΟΣ","Σάκη Καράγιωργα 10","ΕΡΜΟΥΠΟΛΗ"],["EXPERT ΣΑΡΑΚΗ","Γοργοποτάμου 3","ΑΓΡΙΝΙΟ"],["EXPERT ΣΙΜΩΣΗΣ","Ταμυναίων 34","ΑΛΙΒΕΡΙ"],["EXPERT ΣΤΑΥΡΟΠΟΥΛΟΣ","Τσώκρη 30","ΑΡΓΟΣ"],["EXPERT ΣΦΗΝΑΡΟΛΑΚΗ","25ης Μαρτίου 170","ΠΕΤΡΟΥΠΟΛΗ"],["EXPERT ΤΡΙΑΝΤΑΦΥΛΛΟΥ","Καρτεράδος","ΣΑΝΤΟΡΙΝΗ"],["EXPERT ΤΣΙΛΙΓΓΙΡΗΣ","Μιχαήλ Καραολή 52","ΞΑΝΘΗ"],["EXPERT ΦΟΥΝΤΑΤΖΗ","Μεγάλου Αλεξάνδρου","ΝΕΑ ΖΙΧΝΗ"],["EXPERT ΦΡΕΤΖΑΓΙΑΣ","Στρατηγού Σισίνη 141","ΓΑΣΤΟΥΝΗ"]],"bestelectric":[["MYTEL SMART ELECTRONICS I.K.E.","Νηλέως 9, Θησείο, 11851","ΑΤΤΙΚΗ"],["ΑΡΧΑΓΓΕΛΙΤΗΣ ΕΛΕΥΘΕΡΙΟΣ","Αρχάγγελος Ρόδου, 85102","ΡΟΔΟΣ"],["ΑΦΟΙ ΚΟΥΡΗ Ο.Ε.","5ης Μαΐου 100, Σκάλα Λακωνίας, 23051","ΛΑΚΩΝΙΑ"],["ΒΑΚΑΛΗ ΠΑΝΑΓΙΩΤΑ","Σταυροπούλου 9, Μεσολόγγι, 30200","ΜΕΣΟΛΟΓΓΙ"],["ΒΕΛΜΑΧΟΣ ΓΕΩΡΓΙΟΣ","Ριζόμυλος Μεσσηνίας, 24014","ΜΕΣΣΗΝΙΑ"],["ΒΛΑΧΟΣ ΠΑΝΑΓΙΩΤΗΣ","Γεωργίου Βλαχανδρέα 18, Μολάοι Λακωνίας, 23052","ΛΑΚΩΝΙΑ"],["ΒΟΥΡΟΣ ΠΑΝΑΓΙΩΤΗΣ","Πιττακού 7, Μυτιλήνη, 81100","ΜΥΤΙΛΗΝΗ"],["ΓΑΡΙΤΟΣ ΓΕΩΡΓΙΟΣ","Υψηλάντου 62, Καρδίτσα, 43100","ΚΑΡΔΙΤΣΑ"],["ΔΗΜΑΚΟΣ ΒΑΣΙΛΕΙΟΣ","Τριακοσίων & Ωραίας Ελένης, Σπάρτη, 23100","ΣΠΑΡΤΗ"],["ΕΦΡΑΙΜΙΔΗΣ ΒΑΣΙΛΕΙΟΣ \"CENTER ELECTRIC\"","4ο χλμ. Σίνδου - Χαλάστρας, Σίνδος Θεσσαλονίκης, 57400","ΘΕΣΣΑΛΟΝΙΚΗ"],["ΖΑΜΑΝΗΣ ΔΗΜΗΤΡΙΟΣ","Νικοτσάρα 5, Λιτόχωρο Πιερίας, 60200","ΠΙΕΡΙΑ"],["ΖΩΡΖΟΥ ΜΙΧΑΗΛ","Λακκί Λέρου, 85400","ΛΕΡΟΣ"],["ΗΛΕΚΤΡΑΓΟΡΑ ΠΑΓΚΡΑΤΙΟΥ","Φρύνης 58, Βύρωνας, 16232","ΑΤΤΙΚΗ"],["ΙΣΑΑΚΙΔΗΣ ΙΟΡΔΑΝΗΣ","Ελ. Βενιζέλου 109, Χρυσούπολη Καβάλας, 64200","ΚΑΒΑΛΑ"],["ΚΑΛΤΣΟΥΛΑΣ ΧΡΗΣΤΟΣ","Σκαλιστήρη 2, Μαντούδι Εύβοιας, 34004","ΕΥΒΟΙΑ"],["ΚΑΝΑΧΑΛΙΔΗΣ","Ερμού 5, Λαύριο, 19500","ΑΤΤΙΚΗ"],["ΚΑΡΑΣΤΡΑΤΗΣ ΑΠΟΣΤΟΛΟΣ","Συνταγματάρχου Δαβάκη 10, Καλλιθέα, 17672","ΑΤΤΙΚΗ"],["ΚΑΡΑΦΥΛΛΙΔΗΣ ΣΤΑΥΡΟΣ ΘΩΜ. & ΣΙΑ Ο.Ε.","Νικ. Χάσου 12, Φλώρινα, 53100","ΦΛΩΡΙΝΑ"],["ΚΑΤΣΟΥΔΑΣ Ι.Κ.Ε.","Κολοκοτρώνη 7, Λαμία, 35100","ΛΑΜΙΑ"],["ΚΑΤΣΟΥΔΑΣ Ι.Κ.Ε.","Κεχαγιά 7, Άμφισσα, 37100","ΑΜΦΙΣΣΑ"],["ΚΛΕΙΔΗΣ","Μοάτσου 49, Ρέθυμνο, 74100","ΚΡΗΤΗ"],["ΚΟΡΟΣΙΔΗΣ ΧΑΡΑΛΑΜΠΟΣ","Μεγ. Αλεξάνδρου 4, Ηράκλεια Σερρών, 62400","ΣΕΡΡΕΣ"],["ΚΟΥΛΕΛΗΣ ΙΩΑΝΝΗΣ","Γεφυρούδι Σερρών, 62400","ΣΕΡΡΕΣ"],["ΚΟΥΡΕΑΣ ΔΗΜΟΣ","Λεωφόρος Δημοκρατίας 72, Αιγίνιο, 60300","ΠΙΕΡΙΑ"],["ΛΑΒΟΥΤΑΣ","Άγιοι Ασώματοι Αίγινας, 18010","ΑΙΓΙΝΑ"],["ΛΟΤΣΙΟΥ ΕΙΡΗΝΗ","Ζαφειράκη 39, Νάουσα, 59200","ΝΑΟΥΣΑ"],["ΛΥΤΡΟΚΑΠΗΣ ΔΗΜΗΤΡΙΟΣ","Χρυσοχόου 9, Λάρισα, 41221","ΛΑΡΙΣΑ"],["ΜΑΚΡΟΓΙΑΝΝΗΣ ΝΙΚΟΛΑΟΣ","Αγία Παρασκευή Μυτιλήνης, 81102","ΜΥΤΙΛΗΝΗ"],["ΜΕΡΑΚΛΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","Ποταμιά Θάσου, 64004","ΘΑΣΟΣ"],["ΜΙΧΑΗΛΙΔΟΥ","Ξενοφώντος 77, Καλλιθέα, 17672","ΑΤΤΙΚΗ"],["ΜΟΝΤΙΑΔΗΣ ΣΩΤΗΡΗΣ","Λίνδου 89, Αφάντου Ρόδος, 85103","ΡΟΔΟΣ"],["ΜΟΤΑΚΗΣ ΑΘΑΝΑΣΙΟΣ","Μεταμορφώσεως 145 & Καποδιστρίου, Μοσχάτο, 18345","ΑΤΤΙΚΗ"],["ΜΠΙΜΠΗΣ ΜΑΡΓΑΡΙΤΗΣ","Αλεξάνδρου Παπάγου 13, Νιγρίτα Σερρών, 62200","ΣΕΡΡΕΣ"],["ΟΙΚΟΝΟΜΟΥ ΚΩΝΣΤΑΝΤΙΝΟΣ","Γρ. Λαμπράκη 4, Πρέβεζα, 48100","ΠΡΕΒΕΖΑ"],["ΟΥΖΟΥΝΗΣ ΔΗΜΗΤΡΙΟΣ","Γαλατάδες Γιαννιτσών, 58300","ΠΕΛΛΑ"],["ΟΥΡΟΥΜΗΣ ΑΝΕΣΤΗΣ","Υψηλάντου 6, Νευροκόπι Δράμας, 66033","ΔΡΑΜΑ"],["ΠΑΠΑΔΟΠΟΥΛΟΣ Γ. ΒΑΣΙΛΗΣ Ε.Ε.","Κειριαδών 159, Αθήνα, 11851","ΑΤΤΙΚΗ"],["ΠΑΠΑΔΟΠΟΥΛΟΣ ΠΑΝΑΓΙΩΤΗΣ","Κασσάνδρου 20, Κατερίνη, 60100","ΚΑΤΕΡΙΝΗ"],["ΠΑΠΑΕΜΜΑΝΟΥΗΛ Ν. ΑΠΟΣΤΟΛΟΣ","Βεροίας 1, Αλεξάνδρεια Ημαθίας, 59300","ΑΛΕΞΑΝΔΡΕΙΑ ΗΜΑΘΙΑΣ"],["ΠΑΠΑΖΟΥΔΗ ΑΦΟΙ Ο.Ε.","Νίκης 105, Νέα Πέραμος Καβάλας, 64007","ΚΑΒΑΛΑ"],["ΠΑΠΑΘΑΝΑΣΙΟΥ & ΣΙΑ Ο.Ε.","Πλατεία Πλουμιστού, Κιάτο Κορινθίας, 20200","ΚΟΡΙΝΘΟΣ"],["ΣΑΒΒΑΣ ΜΙΧΑΗΛ","Πέρα Γιαλός, Αστυπάλαια, 85900","ΑΣΤΥΠΑΛΑΙΑ"],["ΣΑΒΒΟΥΛΙΔΗΣ ΚΩΝΣΤΑΝΤΙΝΟΣ","Δημοσθένους Φλωριά 4, Σέρρες, 62123","ΣΕΡΡΕΣ"],["ΣΑΛΑΠΑΤΑΣ Β. & Χ. & ΣΙΑ Ε.Ε.","Αγία Ελεούσα - Άρια Ναυπλίου, 21100","ΝΑΥΠΛΙΟ"],["ΣΑΜΑΡΑ ΜΑΡΙΑ & ΣΙΑ Ε.Ε.","Απ. Παύλου 24, Κόρινθος, 20100","ΚΟΡΙΝΘΟΣ"],["ΣΑΜΑΡΑΣ ΑΕ \"ΗΛΕΚΤΡΟΕΙΣΑΓΩΓΙΚΗ ΘΕΣΣΑΛΙΑΣ\"","Κ. Καρτάλη 244, Βόλος, 38221","ΒΟΛΟΣ"],["ΣΑΡΑΚΗ ΑΙΚΑΤΕΡΙΝΗ","Χαρ. Τρικούπη 38, Αγρίνιο, 30100","ΑΓΡΙΝΙΟ"],["ΣΕΛΛΗΝΑ ΣΠΥΡΙΔΕΙΑ","Γαϊτάνι Ζακύνθου, 29100","ΖΑΚΥΝΘΟΣ"],["ΣΚΟΡΔΥΛΑΚΗΣ Ε.Π.Ε.","Περίδου 37, Χανιά Κρήτης, 73100","ΚΡΗΤΗ"],["ΣΠΥΡΙΔΑΚΗΣ Σ. & ΧΟΡΕΜΗ Δ. Ο.Ε.","28ης Οκτωβρίου 55, Αγριά Βόλου, 37300","ΒΟΛΟΣ"],["ΣΤΑΥΡΟΠΟΥΛΟΣ ΑΛΕΞΑΝΔΡΟΣ","Χρήστου Πραντούνα 10, Λεχαινά Ηλείας, 27053","ΛΕΧΑΙΝΑ ΗΛΕΙΑΣ"],["ΣΤΕΦΑΝΑΚΗΣ ΙΩΑΝΝΗΣ \"SIGMA CRETA\"","1ο Χιλιόμετρο Τυμπακίου Κόκκινου Πύργου, Κρήτη, 70200","ΚΡΗΤΗ"],["ΤΣΕΝΕΜΠΗΣ ELECTRICS I.K.E.","Εθν. Οδ. Αχαράβης - Ρόδας, Κέρκυρα, 49081","ΚΕΡΚΥΡΑ"],["ΤΣΙΑΡΕΑΣ ΙΩΑΝΝΗΣ & ΣΙΑ Ε.Ε","1o χλμ. Σερρών-Νιγρίτας, 62100","ΣΕΡΡΕΣ"],["ΤΣΙΜΠΟΥΚΗΣ ΗΛΕΚΤΡΙΚΑ Ι.Κ.Ε","Ταμυνέων 40, Αλιβέρι Εύβοιας, 34500","ΑΛΙΒΕΡΙ ΕΥΒΟΙΑΣ"],["ΦΑΡΑΟΥΝΗΣ ΣΤΥΛΙΑΝΟΣ","Μεταμορφόσεως & Ηλία Τρίγκα 29, Ιτέα, 33200","ΙΤΕΑ"],["ΦΩΤΙΟΥ ΑΘΑΝΑΣΙΟΣ","Μουζάκι Θεσσαλίας, 43060","ΚΑΡΔΙΤΣΑ"],["ΦΩΤΙΟΥ ΘΩΜΑΣ","Απόλλωνος 32, Τρίκαλα, 42100","ΤΡΙΚΑΛΑ"],["ΧΑΛΙΩΤΗΣ & ΣΙΑ Ο.Ε.","Ανδρέα Χοϊδά 8, Αργοστόλι, 28100","ΚΕΦΑΛΟΝΙΑ"],["ΧΑΤΖΗΘΩΜΑΣ ΑΡΙΩΝ & ΣΙΑ Ο.Ε.","Λεωφ. Παπάγου 39Β, Ζωγράφου, 15773","ΑΤΤΙΚΗ"],["ΧΑΤΖΗΚΟΚΟΛΗΣ Α.Ε.","Μητροπόλεως 43, Βέροια, 59100","ΒΕΡΟΙΑ"]],"praktiker":[["Praktiker Αγ. Βαρβάρας","ΙΕΡΑ ΟΔΟΣ 339, 12351","ΑΓΙΑ ΒΑΡΒΑΡΑ"],["Praktiker Αλεξανδρούπολης","3Ο ΧΛΜ ΑΛΕΞΑΝΔΡΟΥΠΟΛΗΣ, 68100","ΑΛΕΞΑΝΔΡΟΥΠΟΛΗ"],["Praktiker Βόλου","ΑΡ. ΖΑΧΟΥ & ΜΗΤΡΟΠΟΛΙΤΟΥ ΓΡΗΓΟΡΙΟΥ, 38334","ΒΟΛΟΣ"],["Praktiker Ελληνικού","ΑΓ. ΠΑΡΑΣΚΕΥΗΣ & ΤΙΤΑΝΩΝ 2, 16777","ΕΛΛΗΝΙΚΟ"],["Praktiker Ηρακλείου Κρήτης","ΚΑΡΤΕΡΟΥ 22, 71601","ΝΕΑ ΑΛΙΚΑΡΝΑΣΣΟΣ"],["Praktiker Θεσσαλονίκης","ΜΑΡΙΝΟΥ ΑΝΤΥΠΑ 34, 55535","ΠΥΛΑΙΑ-ΧΟΡΤΙΑΤΗΣ"],["Praktiker Ιωαννίνων","6Ο ΧΛΜ. ΕΘΝΙΚΗΣ ΟΔΟΥ ΙΩΑΝΝΙΝΩΝ - ΑΡΤΑΣ, 45500","ΙΩΑΝΝΙΝΑ"],["Praktiker Κέρκυρας","5Ο ΧΛΜ. ΕΘΝΙΚΗΣ, 49084","ΓΑΣΤΟΥΡΙ"],["Praktiker Καλαμάτας","7Ο ΧΛΜ. ΕΘΝΙΚΗΣ ΟΔΟΥ ΚΑΛΑΜΑΤΑΣ - ΤΡΙΠΟΛΕΩΣ, 24009","ΘΟΥΡΙΑ"],["Praktiker Λάρισας","ΛΑΡΙΣΗΣ ΤΡΙΚΑΛΩΝ & ΦΑΡΣΑΛΩΝ, 41500","ΛΑΡΙΣΑ"],["Praktiker Μάνδρας","ΜΥΚΗΝΩΝ, 23Ο ΧΛΜ Ε.Ο. ΑΘΗΝΩΝ - ΚΟΡΙΝΘΟΥ, 19600","ΜΑΝΔΡΑ-ΕΙΔΥΛΛΙΑ"],["Praktiker Μεταμόρφωσης","ΤΑΤΟΪΟΥ 14, 14451","ΜΕΤΑΜΟΡΦΩΣΗ"],["Praktiker Ξάνθης","FLAMINGO RETAIL PARK, 5Ο ΧΛΜ Ε.Ο. ΞΑΝΘΗΣ - ΚΟΜΟΤΗΝΗΣ, 67100","ΞΑΝΘΗ"],["Praktiker Πάτρας","ΑΚΤΗ ΔΥΜΑΙΩΝ 56-58, 26333","ΠΑΤΡΑ"],["Praktiker Παλλήνης","ΠΡΩΗΝ EXPO ATHENS, EMPORIUM PLAZA, ΛΕΩΦ. ΑΝΘΟΥΣΑΣ & ΝΤΡΑΦΙΟΥ, 15349","ΑΝΘΟΥΣΑ"],["Praktiker Ρόδου","ΗΛΙΑ ΒΕΝΕΖΗ, 85100","ΡΟΔΟΣ"],["Praktiker Ταύρου","ΠΕΙΡΑΙΩΣ 176, 17778","ΑΘΗΝΑ"]]};
 const LOGO = "data:image/png;base64,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";
+const CLIENT_LOGOS = { euronics: "data:image/png;base64,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" };   // λογότυπα πελατών (λευκά, για μαύρο φόντο)· όσοι δεν έχουν, εμφανίζεται το όνομα
 document.querySelectorAll("img[data-logo]").forEach(i => i.src = LOGO);
 
 /* ===================================================================== */
@@ -242,38 +341,203 @@ const $ = s => document.querySelector(s);
 const Q = CONFIG.questions;
 const LETTERS = ["Α","Β","Γ","Δ","Ε","ΣΤ","Ζ","Η","Θ","Ι","Κ","Λ"];
 const answers = Q.map(q => q.type === "multi" ? [] : (q.type === "text" ? "" : null));
-let cur = 0;
+const params = new URLSearchParams(location.search);
+const P_CLIENT = (params.get("c") || "").toLowerCase(), P_SESSION = params.get("s") || "";
+let sessions = [], session = null, store = "", cur = 0, consent = null, pickIdx = null, nameVal = "";
 
-const OCC = (() => { const e = new URLSearchParams(location.search).get("e");
-  return e && CONFIG.occasions[e] ? e : CONFIG.defaultOccasion; })();
-$("#trainingName").textContent = CONFIG.occasions[OCC];
 $("#introText").textContent = CONFIG.intro;
 $("#minutes").textContent = CONFIG.minutes;
 document.querySelectorAll(".q-count").forEach(e => e.textContent = Q.length);
+if (CONFIG.clients[P_CLIENT]) $("#eyebrow").textContent = CONFIG.clients[P_CLIENT];
+/* Πάνω αριστερά: «Internal» για εσωτερικές εκπαιδεύσεις, αλλιώς ο πελάτης */
+function setLeft(key, name){
+  let h = "";
+  if (key === "internal") h = '<span class="internal">Internal</span>';
+  else if (key && CLIENT_LOGOS[key]) h = '<img src="' + CLIENT_LOGOS[key] + '" alt="' + esc(name || key) + '">';
+  else if (key) h = '<span class="cname">' + esc(name || CONFIG.clients[key] || key) + '</span>';
+  document.querySelectorAll(".left-mark").forEach(e => e.innerHTML = h);
+}
+setLeft(P_CLIENT, CONFIG.clients[P_CLIENT]);
 
 function show(id){
   document.querySelectorAll(".screen").forEach(s => s.classList.toggle("active", s.id === id));
   document.querySelector(".app").scrollTop = 0;
 }
 function esc(t){ return String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+const norm = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ς/g, "σ");
+const isInternal = s => s && s.clientKey === "internal";
+
+/* ---------- 1. Φόρτωση εκπαιδεύσεων από το Google Sheet ---------- */
+async function loadSessions(){
+  const card = $("#startCard");
+  card.innerHTML = '<div class="loading"><span class="spin"></span>Φόρτωση εκπαιδεύσεων…</div>';
+  $("#startBtn").disabled = true;
+  try{
+    const url = CONFIG.sheetUrl + "?action=sessions" + (P_SESSION ? "&s=" + encodeURIComponent(P_SESSION) : "");
+    const j = await (await fetch(url, { redirect: "follow" })).json();
+    if (!j.ok) throw new Error(j.error || "error");
+    sessions = j.sessions || [];
+    if (P_SESSION) sessions = sessions.filter(s => s.code === P_SESSION);
+    else if (P_CLIENT) sessions = sessions.filter(s => s.clientKey === P_CLIENT);
+    renderStart();
+  } catch(e){
+    card.innerHTML = '<div class="msg">Δεν ήταν δυνατή η φόρτωση. Ελέγξτε τη σύνδεση στο internet.<button class="btn btn-dark" id="reloadBtn" type="button">Δοκιμάστε ξανά</button></div>';
+    $("#reloadBtn").onclick = loadSessions;
+  }
+}
+function sessLine(s){ return (s.date ? s.date + " · " : "") + (isInternal(s) ? "Internal" : s.client); }
+function renderStart(){
+  const card = $("#startCard");
+  if (!sessions.length){
+    card.innerHTML = '<div class="msg"><b>Δεν υπάρχει ανοιχτή αξιολόγηση αυτή τη στιγμή.</b><br>Ευχαριστούμε!</div>';
+    return;
+  }
+  if (sessions.length === 1) session = sessions[0];
+  let h = '<div class="field" id="f-sess"><div class="f">Εκπαίδευση <span class="req">*</span></div>';
+  if (sessions.length === 1){
+    h += '<div class="sess-one"><b>' + esc(session.title) + '</b><span>' + esc(sessLine(session)) + '</span></div>';
+  } else {
+    h += '<div class="slistc">' + sessions.map((s, i) =>
+      '<label class="sopt' + (session === s ? " sel" : "") + '"><input type="radio" name="sess" value="' + i + '"><span class="dot"></span><span><b>' + esc(s.title) +
+      '</b><span><span class="badge' + (isInternal(s) ? "" : " store") + '">' + (isInternal(s) ? "INTERNAL" : esc(s.client)) + '</span>' + esc(s.date || "") + '</span></span></label>').join("") + '</div>';
+    h += '<div class="err">Επιλέξτε την εκπαίδευση που παρακολουθήσατε.</div>';
+  }
+  h += '</div><div id="detailsArea"></div>';
+  card.innerHTML = h;
+  document.querySelectorAll('input[name=sess]').forEach(r => r.onchange = () => {
+    const prev = session;
+    session = sessions[+r.value];
+    document.querySelectorAll(".sopt").forEach((l, i) => l.classList.toggle("sel", i === +r.value));
+    $("#f-sess").classList.remove("invalid");
+    if (!prev || prev.clientKey !== session.clientKey){ store = ""; pickIdx = null; }
+    sessionChanged();
+  });
+  if (session) sessionChanged();
+  $("#startBtn").disabled = false;
+}
+function sessionChanged(){
+  setLeft(session.clientKey, session.client);
+  if (!isInternal(session) && consent === null) openConsent();
+  renderDetails();
+}
+
+/* ---------- Συγκατάθεση (μόνο για πελάτες) ---------- */
+function openConsent(){ $("#consentBg").classList.add("open"); }
+function setConsent(v){ consent = v; $("#consentBg").classList.remove("open"); renderDetails(); }
+$("#agreeBtn").onclick = () => setConsent(true);
+$("#disagreeBtn").onclick = () => setConsent(false);
+
+/* ---------- 2. Όνομα και κατάστημα ---------- */
+function nameField(){
+  return '<div class="field" id="f-name"><label class="f" for="name">Ονοματεπώνυμο <span class="req">*</span></label>' +
+    '<input type="text" id="name" autocomplete="name" maxlength="80" placeholder="π.χ. Γιάννης Παπαδόπουλος" value="' + esc(nameVal) + '">' +
+    '<div class="err">Γράψτε το ονοματεπώνυμό σας.</div></div>';
+}
+function renderDetails(){
+  const area = $("#detailsArea");
+  if (!session){ area.innerHTML = ""; return; }
+  if (isInternal(session)){ store = "Samsung"; area.innerHTML = nameField(); bindName(); return; }
+  let h = "";
+  if (consent !== null) h += '<div class="consent-line"><span>Αποστολή με όνομα: <b>' + (consent ? "Ναι" : "Όχι – ανώνυμα") + '</b></span><button type="button" class="linkbtn" id="chgConsent">Αλλαγή</button></div>';
+  if (consent === true) h += nameField();
+  area.innerHTML = h + '<div id="storeArea"></div>';
+  const cc = $("#chgConsent"); if (cc) cc.onclick = openConsent;
+  bindName(); renderStore();
+}
+function bindName(){ const n = $("#name"); if (n) n.oninput = () => { nameVal = n.value; $("#f-name").classList.remove("invalid"); }; }
+function renderStore(){
+  const area = $("#storeArea");
+  const list = STORES[session.clientKey];
+  if (list && list.length){
+    area.innerHTML = '<div class="field" id="f-store"><label class="f" for="storePicker">Κατάστημα <span class="req">*</span></label>' +
+      '<button type="button" class="picker" id="storePicker"><span class="ph">Επιλέξτε κατάστημα ' + esc(session.client) + '…</span></button>' +
+      '<div class="err">Επιλέξτε το κατάστημά σας.</div>' +
+      '<div class="hint">Αναζήτηση με επωνυμία, πόλη ή διεύθυνση. Αν δεν το βρίσκετε, επιλέξτε «Άλλο» στο τέλος της λίστας.</div></div>' +
+      '<div class="field" id="f-other" style="display:none"><label class="f" for="storeOther">Γράψτε το κατάστημα <span class="req">*</span></label>' +
+      '<input type="text" id="storeOther" maxlength="120" placeholder="π.χ. επωνυμία, πόλη" autocomplete="off"><div class="err">Γράψτε το κατάστημά σας.</div></div>';
+    $("#storePicker").onclick = openSheet;
+    if (pickIdx !== null) showPicked();
+  } else {
+    area.innerHTML = '<div class="field" id="f-other"><label class="f" for="storeOther">Κατάστημα <span class="req">*</span></label>' +
+      '<input type="text" id="storeOther" maxlength="120" placeholder="π.χ. ' + esc(session.client) + ', πόλη" autocomplete="off"><div class="err">Γράψτε το κατάστημά σας.</div></div>';
+  }
+  const o = $("#storeOther"); if (o) o.oninput = () => $("#f-other").classList.remove("invalid");
+}
+function showPicked(){
+  const pk = $("#storePicker");
+  if (pickIdx === "other"){ pk.innerHTML = '<span class="owner">Άλλο κατάστημα</span>'; $("#f-other").style.display = ""; }
+  else { const s = STORES[session.clientKey][pickIdx]; pk.innerHTML = '<span class="owner">' + esc(s[0]) + '</span><span class="addr">' + esc([s[1], s[2]].filter(Boolean).join(" · ")) + '</span>'; }
+}
+function openSheet(){
+  $("#storeSearch").value = ""; renderList("");
+  $("#sheetBg").classList.add("open"); $("#sheet").classList.add("open");
+  setTimeout(() => $("#storeSearch").focus({ preventScroll: true }), 300);
+}
+function closeSheet(){ $("#sheetBg").classList.remove("open"); $("#sheet").classList.remove("open"); }
+$("#sheetBg").onclick = closeSheet; $("#sheetClose").onclick = closeSheet;
+$("#storeSearch").oninput = e => renderList(e.target.value);
+function renderList(q){
+  const list = STORES[session.clientKey] || [], words = norm(q).split(/\s+/).filter(Boolean);
+  const hits = [];
+  list.forEach((s, i) => { const hay = norm(s.join(" ")); if (words.every(w => hay.includes(w))) hits.push(i); });
+  $("#slist").innerHTML = (hits.length ? hits.slice(0, 300).map(i => {
+      const s = list[i];
+      return '<button type="button" class="sitem' + (pickIdx === i ? " sel" : "") + '" data-i="' + i + '"><span class="owner">' + esc(s[0]) + '</span><span class="addr">' + esc([s[1], s[2]].filter(Boolean).join(" · ")) + '</span></button>';
+    }).join("") : '<div class="empty">Δεν βρέθηκε κατάστημα.</div>') +
+    '<button type="button" class="sitem other" data-i="other"><span class="owner">Άλλο – δεν βρίσκω το κατάστημά μου</span></button>';
+  document.querySelectorAll(".sitem").forEach(b => b.onclick = () => pickStore(b.dataset.i));
+}
+function pickStore(i){
+  const pk = $("#storePicker"), fo = $("#f-other");
+  $("#f-store").classList.remove("invalid");
+  if (i === "other"){
+    pickIdx = "other"; store = "";
+    pk.innerHTML = '<span class="owner">Άλλο κατάστημα</span>';
+    fo.style.display = ""; closeSheet(); setTimeout(() => $("#storeOther").focus(), 320);
+  } else {
+    pickIdx = +i; const s = STORES[session.clientKey][pickIdx];
+    store = session.client + " · " + s[0] + (s[2] ? " · " + s[2] : "");
+    pk.innerHTML = '<span class="owner">' + esc(s[0]) + '</span><span class="addr">' + esc([s[1], s[2]].filter(Boolean).join(" · ")) + '</span>';
+    fo.style.display = "none"; closeSheet();
+  }
+}
+function validStart(){
+  let ok = true, first = null;
+  if (session && !isInternal(session) && consent === null){ openConsent(); return false; }
+  const n = $("#name");
+  if (n && !n.value.trim()){ $("#f-name").classList.add("invalid"); ok = false; first = $("#f-name"); }
+  if (!session){ $("#f-sess").classList.add("invalid"); ok = false; first = first || $("#f-sess"); }
+  else if (!isInternal(session)){
+    const o = $("#storeOther"), fs = $("#f-store");
+    if (fs && pickIdx === null){ fs.classList.add("invalid"); ok = false; first = first || fs; }
+    else if (o && (!fs || pickIdx === "other")){
+      if (!o.value.trim()){ $("#f-other").classList.add("invalid"); ok = false; first = first || $("#f-other"); }
+      else store = session.client + " · " + o.value.trim() + " (Άλλο)";
+    }
+  }
+  if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+  return ok;
+}
+$("#startBtn").onclick = () => { if (!validStart()) return; cur = 0; render(); show("s-quiz"); };
+
+/* ---------- 3. Ερωτήσεις ---------- */
 const answered = i => { const q = Q[i], a = answers[i];
   if (q.optional) return true;
   if (q.type === "multi") return a.length > 0;
   if (q.type === "text") return a.trim().length > 0;
   return a !== null; };
-
 function render(){
   const q = Q[cur], a = answers[cur];
   $("#secLine").textContent = q.section || "";
   $("#stepLine").textContent = (cur + 1) + " / " + Q.length;
-  $("#bar").style.width = ((cur) / Q.length * 100) + "%";
+  $("#bar").style.width = (cur / Q.length * 100) + "%";
   let sub = "", html = "";
   if (q.type === "grade"){
     sub = "Πατήστε ένα αστέρι: 1 = " + q.labels[0] + ", 5 = " + q.labels[4] + ".";
     html = '<div class="stars" role="radiogroup" aria-label="Βαθμολογία">' + q.labels.map((l, k) =>
       '<button type="button" class="star' + (a !== null && k <= a ? " on" : "") + '" data-k="' + k + '" role="radio" aria-checked="' + (a === k) + '" aria-label="' + (k+1) + ' – ' + esc(l) + '">' +
       '<svg viewBox="0 0 24 24"><path d="M12 2.8l2.85 5.9 6.45.85-4.7 4.5 1.17 6.4L12 17.3l-5.77 3.15 1.17-6.4-4.7-4.5 6.45-.85z"/></svg><span>' + (k+1) + '</span></button>').join("") +
-      '</div><div class="grade-label" id="gradeLabel">' + (a !== null ? esc(q.labels[a]) + '<small>' + (a+1) + ' / 5</small>' : '') + '</div>';
+      '</div><div class="grade-label">' + (a !== null ? esc(q.labels[a]) + '<small>' + (a+1) + ' / 5</small>' : '') + '</div>';
   } else if (q.type === "single" || q.type === "multi"){
     const multi = q.type === "multi";
     sub = multi ? "Επιλέξτε όσα ισχύουν." : "Επιλέξτε μία απάντηση.";
@@ -288,7 +552,6 @@ function render(){
   $("#qBody").innerHTML = '<span class="qnum">Ερώτηση ' + (cur + 1) + '</span>' +
     (q.optional ? '<span class="optional">Προαιρετική</span>' : '') +
     '<h2 class="qtext">' + esc(q.text) + '</h2><p class="qsub">' + sub + '</p>' + html;
-
   if (q.type === "grade") document.querySelectorAll(".star").forEach(b => b.onclick = () => { answers[cur] = +b.dataset.k; render(); });
   document.querySelectorAll(".opt input").forEach(inp => inp.onchange = () => {
     const k = +inp.value;
@@ -307,7 +570,6 @@ function updateNav(){
   nb.className = "btn " + (last ? "btn-primary" : "btn-dark");
   nb.innerHTML = last ? "Αποστολή " + SEND_ICON : "Επόμενη";
 }
-$("#startBtn").onclick = () => { cur = 0; render(); show("s-quiz"); };
 $("#prevBtn").onclick = () => { if (cur > 0){ cur--; render(); } };
 $("#nextBtn").onclick = () => {
   if (!answered(cur)) return;
@@ -315,50 +577,43 @@ $("#nextBtn").onclick = () => {
   else submit();
 };
 
-/* ---------- Αποστολή (χωρίς ερώτηση επιβεβαίωσης) ---------- */
+/* ---------- 4. Αποστολή (χωρίς ερώτηση επιβεβαίωσης) ---------- */
 let payload = null, sending = false;
 function buildPayload(){
   return {
-    token: CONFIG.sheetToken, form: CONFIG.formId, occasion: OCC, occasionName: CONFIG.occasions[OCC],
+    token: CONFIG.sheetToken, session: session.code, store: store,
+    consent: isInternal(session) ? "internal" : (consent ? "yes" : "no"),
+    name: (isInternal(session) || consent) ? nameVal.trim() : "",
     id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),   // τυχαίος κωδικός, όχι προσωπικό στοιχείο
     answers: Q.map((q, i) => {
       const a = answers[i];
-      let v = "";
-      if (q.type === "grade") v = a === null ? "" : (a + 1);
-      else if (q.type === "single") v = a === null ? "" : q.options[a];
+      let v = "", pts = null;
+      if (q.type === "grade"){ v = a === null ? "" : a + 1; if (a !== null) pts = a / 4 * 100; }
+      else if (q.type === "single"){ v = a === null ? "" : q.options[a]; if (a !== null && q.scores) pts = q.scores[a]; }
       else if (q.type === "multi") v = a.map(k => q.options[k]).join(" | ");
       else v = a.trim();
-      return { n: i + 1, section: q.section || "", type: q.type, q: q.text, a: v };
+      return { n: i + 1, section: q.section || "", type: q.type, q: q.text, a: v, pts: pts };
     })
   };
 }
 function setStatus(cls, html){ const s = $("#sendStatus"); s.className = "status " + cls; s.innerHTML = html; }
-async function submit(){
-  payload = buildPayload();
-  $("#bar").style.width = "100%";
-  show("s-done");
-  send();
-}
+function submit(){ payload = buildPayload(); $("#bar").style.width = "100%"; show("s-done"); send(); }
 async function send(){
   if (sending) return; sending = true;
-  setStatus("pending", '<span class="spin"></span><span>Αποστολή απαντήσεων…</span>');
+  $("#sendStatus").style.display = "none";
   try{
-    if (!CONFIG.sheetUrl){
-      await new Promise(r => setTimeout(r, 900));
-      setStatus("preview", '<span>👁️</span><span>Προεπισκόπηση: δεν στάλθηκε τίποτα ακόμη – η σύνδεση με το Google Sheet θα γίνει στο επόμενο βήμα.</span>');
-      console.log("Payload (preview):", payload);
-    } else {
-      const res = await fetch(CONFIG.sheetUrl, { method:"POST", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body: JSON.stringify(payload), redirect:"follow" });
-      const j = await res.json().catch(() => ({}));
-      if (j.closed){ show("s-closed"); return; }
-      if (!res.ok || j.ok === false) throw new Error(j.error || res.status);
-      setStatus("ok", '<span>✔</span><span>Οι απαντήσεις σας στάλθηκαν.</span>');
-    }
+    const res = await fetch(CONFIG.sheetUrl, { method:"POST", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body: JSON.stringify(payload), redirect:"follow" });
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok || j.ok !== true) throw new Error(j.error || res.status);
+    $("#sendStatus").style.display = "none";
   } catch(e){
-    setStatus("fail", '<span>✘</span><span>Δεν στάλθηκαν. Ελέγξτε τη σύνδεση στο internet.</span><button type="button" id="retryBtn">Ξανά</button>');
+    $("#sendStatus").style.display = "";
+    setStatus("fail", '<span>Δεν ολοκληρώθηκε η καταχώριση. Ελέγξτε τη σύνδεση στο internet.</span><button type="button" id="retryBtn">Ξανά</button>');
     $("#retryBtn").onclick = send;
   } finally { sending = false; }
 }
+
+loadSessions();
 </script>
 </body>
 </html>
