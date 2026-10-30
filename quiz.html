@@ -18,7 +18,7 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none}
 body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
+  font-size:19px;line-height:1.45;-webkit-font-smoothing:antialiased}
 .app{max-width:480px;height:100%;height:100dvh;margin:0 auto;display:flex;flex-direction:column;background:var(--bg);position:relative;
   overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 @media (min-width:520px){body{background:#d5dbe7}.app{box-shadow:0 0 60px rgba(15,31,61,.18)}}
@@ -28,8 +28,8 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
 .samsung{display:block;height:20px;width:auto;flex:none}
 .left-mark{display:flex;align-items:center;min-height:20px}
 .left-mark img{display:block;height:20px;width:auto}
-.left-mark .cname{font-size:17px;font-weight:800;color:#fff;letter-spacing:.01em;line-height:1}
-.internal{font-size:13px;font-weight:700;letter-spacing:.06em;color:#fff;opacity:.9;line-height:1}
+.left-mark .cname{font-size:19px;font-weight:800;color:#fff;letter-spacing:.01em;line-height:1}
+.internal{font-size:14.5px;font-weight:700;letter-spacing:.06em;color:#fff;opacity:.9;line-height:1}
 .hero{background:linear-gradient(160deg,var(--brand) 0%,var(--brand-2) 100%);color:#fff;
   padding:calc(env(safe-area-inset-top) + 22px) 22px 26px;border-radius:0 0 28px 28px;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;right:-80px;top:70px;width:200px;height:200px;border-radius:50%;
@@ -40,13 +40,13 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
   padding:calc(env(safe-area-inset-top) + 12px) 18px 12px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
 .minibar .samsung{height:14px}
 .minibar .left-mark img{height:14px}
-.minibar .left-mark .cname{font-size:14px}
-.minibar .internal{font-size:12px}
-.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;font-weight:600}
-.hero h1{margin:0 0 8px;font-size:27px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
-.hero p{margin:0;opacity:.85;font-size:15px}
+.minibar .left-mark .cname{font-size:15.5px}
+.minibar .internal{font-size:13.5px}
+.eyebrow{font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;font-weight:600}
+.hero h1{margin:0 0 8px;font-size:30px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
+.hero p{margin:0;opacity:.85;font-size:17px}
 .time-note{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:12px 14px;border-radius:14px;
-  background:rgba(242,165,22,.14);border:1px solid rgba(242,165,22,.5);font-size:14.5px;line-height:1.42;color:#fff}
+  background:rgba(242,165,22,.14);border:1px solid rgba(242,165,22,.5);font-size:16px;line-height:1.42;color:#fff}
 .time-note svg{flex:none;color:var(--accent);margin-top:1px}
 .time-note b{color:#ffd27a}
 
@@ -59,50 +59,50 @@ body{background:var(--bg);color:var(--ink);font-family:"Commissioner",system-ui,
 .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
 
 /* Στοιχεία */
-.f{display:block;font-weight:700;font-size:15px;margin:0 0 8px}
+.f{display:block;font-weight:700;font-size:17px;margin:0 0 8px}
 .req{color:var(--bad)}
 .field{margin-bottom:18px;scroll-margin-bottom:120px}
 .field:last-child{margin-bottom:0}
-.err{display:none;color:var(--bad);font-size:13px;font-weight:600;margin-top:6px}
+.err{display:none;color:var(--bad);font-size:14.5px;font-weight:600;margin-top:6px}
 .field.invalid .err{display:block}
-.hint{font-size:13px;color:var(--ink-2);margin-top:6px}
-input[type=text]{width:100%;font:inherit;font-size:17px;color:var(--ink);background:#f6f8fb;border:2px solid var(--line);
+.hint{font-size:14.5px;color:var(--ink-2);margin-top:6px}
+input[type=text]{width:100%;font:inherit;font-size:19px;color:var(--ink);background:#f6f8fb;border:2px solid var(--line);
   border-radius:14px;padding:14px;min-height:54px;outline:none;appearance:none;-webkit-appearance:none}
 input[type=text]:focus{border-color:var(--brand-2);background:#fff}
 .field.invalid input[type=text]{border-color:var(--bad);background:var(--bad-bg)}
 .sess-one{background:#f6f8fb;border:2px solid var(--line);border-radius:14px;padding:12px 14px}
-.sess-one b{display:block;font-size:16px;line-height:1.3}
-.sess-one span{font-size:14px;color:var(--ink-2)}
+.sess-one b{display:block;font-size:18px;line-height:1.3}
+.sess-one span{font-size:15.5px;color:var(--ink-2)}
 .slistc{display:flex;flex-direction:column;gap:10px}
 .sopt{position:relative;display:flex;gap:12px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer}
 .sopt input{position:absolute;opacity:0;pointer-events:none}
 .sopt .dot{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid #b8c1d3}
 .sopt.sel{border-color:var(--sel);background:var(--sel-bg)}
 .sopt.sel .dot{border:7px solid var(--sel)}
-.sopt b{display:block;font-size:15.5px;line-height:1.3}
-.sopt span{font-size:13.5px;color:var(--ink-2)}
+.sopt b{display:block;font-size:17.5px;line-height:1.3}
+.sopt span{font-size:15px;color:var(--ink-2)}
 .field.invalid .sopt{border-color:var(--bad)}
-.badge{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:2px 8px;border-radius:999px;background:#000;color:#fff;margin-right:6px;vertical-align:1px}
+.badge{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.04em;padding:2px 8px;border-radius:999px;background:#000;color:#fff;margin-right:6px;vertical-align:1px}
 .badge.store{background:var(--accent);color:var(--accent-ink)}
-.loading{display:flex;gap:10px;align-items:center;color:var(--ink-2);font-size:15px;font-weight:600}
+.loading{display:flex;gap:10px;align-items:center;color:var(--ink-2);font-size:17px;font-weight:600}
 .spin{width:18px;height:18px;border:3px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .8s linear infinite;flex:none}
 @keyframes sp{to{transform:rotate(360deg)}}
-.msg{font-size:15px;color:var(--ink-2)}
+.msg{font-size:17px;color:var(--ink-2)}
 .msg button{margin-top:12px}
-.consent-line{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#f4f6fa;border-radius:12px;padding:10px 12px;font-size:14px;color:var(--ink-2);margin-bottom:18px}
+.consent-line{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#f4f6fa;border-radius:12px;padding:10px 12px;font-size:15.5px;color:var(--ink-2);margin-bottom:18px}
 .consent-line b{color:var(--ink)}
-.linkbtn{background:none;border:0;font:inherit;font-size:14px;font-weight:700;color:var(--sel);text-decoration:underline;cursor:pointer;padding:4px;flex:none}
+.linkbtn{background:none;border:0;font:inherit;font-size:15.5px;font-weight:700;color:var(--sel);text-decoration:underline;cursor:pointer;padding:4px;flex:none}
 
 /* Επιλογή καταστήματος */
 .owner{color:#1d5fd1;font-weight:800}
 .addr{color:var(--ink-2);font-weight:500}
-.picker{width:100%;text-align:left;font:inherit;font-size:16px;line-height:1.35;color:var(--ink);background:#f6f8fb;border:2px solid var(--line);
+.picker{width:100%;text-align:left;font:inherit;font-size:18px;line-height:1.35;color:var(--ink);background:#f6f8fb;border:2px solid var(--line);
   border-radius:14px;padding:13px 42px 13px 14px;min-height:54px;cursor:pointer;position:relative;display:block}
 .picker::after{content:"";position:absolute;right:16px;top:50%;width:14px;height:9px;margin-top:-4px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%234a5878' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat}
 .picker .ph{color:#8a95ab}
 .picker .owner,.picker .addr{display:block}
-.picker .addr{font-size:14px}
+.picker .addr{font-size:15.5px}
 .field.invalid .picker{border-color:var(--bad);background:var(--bad-bg)}
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:20;display:none}
 .sheet-bg.open{display:block}
@@ -112,16 +112,16 @@ input[type=text]:focus{border-color:var(--brand-2);background:#fff}
 .sheet-h{padding:10px 18px 12px;border-bottom:1px solid var(--line)}
 .grab{width:44px;height:5px;border-radius:9px;background:#d0d6e2;margin:0 auto 12px}
 .sheet-t{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.sheet-t h3{margin:0;font-size:19px;font-weight:800}
+.sheet-t h3{margin:0;font-size:21.5px;font-weight:800}
 .xbtn{border:0;background:#eef1f6;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;cursor:pointer;color:var(--ink)}
 .search{position:relative}
 .search input{padding-left:44px!important;min-height:50px!important}
 .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-2)}
 .slist{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px 10px calc(env(safe-area-inset-bottom) + 16px);overscroll-behavior:contain}
-.sitem{display:block;width:100%;text-align:left;font:inherit;font-size:16px;line-height:1.35;background:none;border:0;border-bottom:1px solid #eef1f6;
+.sitem{display:block;width:100%;text-align:left;font:inherit;font-size:18px;line-height:1.35;background:none;border:0;border-bottom:1px solid #eef1f6;
   padding:14px 40px 14px 10px;cursor:pointer;position:relative;border-radius:12px;color:var(--ink)}
 .sitem .owner{display:block;margin-bottom:2px}
-.sitem .addr{font-size:14.5px}
+.sitem .addr{font-size:16px}
 .sitem.sel{background:#eef3ff}
 .sitem.sel::after{content:"✔";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#1d5fd1;font-weight:800}
 .sitem.other{border-top:2px dashed var(--line);border-bottom:0;margin-top:6px}
@@ -129,7 +129,7 @@ input[type=text]:focus{border-color:var(--brand-2);background:#fff}
 .sitem.other .owner::before{content:"＋ ";color:#1d5fd1}
 .empty{padding:30px 10px;text-align:center;color:var(--ink-2)}
 
-.btn{width:100%;font:inherit;font-weight:700;font-size:17px;border:0;border-radius:16px;min-height:56px;padding:14px 18px;
+.btn{width:100%;font:inherit;font-weight:700;font-size:19px;border:0;border-radius:16px;min-height:56px;padding:14px 18px;
   cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .08s,opacity .2s}
 .btn:active{transform:scale(.98)}
 .btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 20px -8px rgba(242,165,22,.8)}
@@ -141,22 +141,22 @@ input[type=text]:focus{border-color:var(--brand-2);background:#fff}
 .row .btn.small{flex:0 0 64px}
 
 /* Quiz */
-.timer{display:inline-flex;align-items:center;gap:6px;background:#14874f;color:#fff;font-weight:800;font-size:16px;padding:6px 13px;border-radius:999px;font-variant-numeric:tabular-nums;transition:background .3s;flex:none}
+.timer{display:inline-flex;align-items:center;gap:6px;background:#14874f;color:#fff;font-weight:800;font-size:18px;padding:6px 13px;border-radius:999px;font-variant-numeric:tabular-nums;transition:background .3s;flex:none}
 .timer.warn{background:#ff1f1f;animation:beat 1s ease-in-out infinite}
 @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 .qtop{padding:14px 18px 0}
-.qmeta{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;color:var(--ink-2);gap:10px}
+.qmeta{display:flex;justify-content:space-between;align-items:center;font-size:15.5px;font-weight:600;color:var(--ink-2);gap:10px}
 .who{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .progress{height:8px;background:#dce2ed;border-radius:99px;margin-top:10px;overflow:hidden}
 .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#f7c35a);border-radius:99px;transition:width .35s ease}
-.qnum{display:inline-block;background:var(--brand);color:#fff;font-weight:700;font-size:13px;padding:5px 11px;border-radius:999px;margin-bottom:12px}
-.qtext{font-size:21px;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:-.005em}
-.qsub{font-size:14px;color:var(--ink-2);margin:0 0 18px}
+.qnum{display:inline-block;background:var(--brand);color:#fff;font-weight:700;font-size:14.5px;padding:5px 11px;border-radius:999px;margin-bottom:12px}
+.qtext{font-size:23.5px;font-weight:700;line-height:1.3;margin:0 0 6px;letter-spacing:-.005em}
+.qsub{font-size:15.5px;color:var(--ink-2);margin:0 0 18px}
 .opts{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;border:0}
 .opt{position:relative;display:flex;align-items:center;gap:14px;background:var(--card);border:2px solid var(--line);
-  border-radius:16px;padding:15px 16px;min-height:62px;cursor:pointer;font-size:17px;font-weight:500;transition:border-color .15s,background .15s}
+  border-radius:16px;padding:15px 16px;min-height:62px;cursor:pointer;font-size:19px;font-weight:500;transition:border-color .15s,background .15s}
 .opt input{position:absolute;opacity:0;pointer-events:none}
-.opt .key{flex:none;width:34px;height:34px;border-radius:10px;background:#eef1f6;color:var(--ink-2);display:grid;place-items:center;font-weight:800;font-size:15px}
+.opt .key{flex:none;width:34px;height:34px;border-radius:10px;background:#eef1f6;color:var(--ink-2);display:grid;place-items:center;font-weight:800;font-size:17px}
 .opt.sel{border-color:var(--sel);background:var(--sel-bg)}
 .opt.sel .key{background:var(--sel);color:#fff}
 .opt:focus-within{outline:3px solid rgba(29,58,114,.25);outline-offset:2px}
@@ -167,28 +167,28 @@ input[type=text]:focus{border-color:var(--brand-2);background:#fff}
 .ring{width:150px;height:150px;margin:6px auto 12px;position:relative}
 .ring svg{transform:rotate(-90deg)}
 .ring .val{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
-.ring .val b{font-size:38px;font-weight:800;line-height:1;display:block}
-.ring .val span{font-size:13px;opacity:.8}
-.res-hero h2{margin:0 0 4px;font-size:24px;font-weight:800}
-.res-hero .meta{font-size:14px;opacity:.85}
+.ring .val b{font-size:35px;font-weight:800;line-height:1;display:block}
+.ring .val span{font-size:14px;opacity:.85;display:block;max-width:96px;margin:4px auto 0;line-height:1.2}
+.res-hero h2{margin:0 0 4px;font-size:27px;font-weight:800}
+.res-hero .meta{font-size:15.5px;opacity:.85}
 .res-hero .owner{color:#9cc2ff}
 .res-hero .addr{color:rgba(255,255,255,.85)}
-.status{display:flex;gap:10px;align-items:center;border-radius:14px;padding:12px 14px;font-size:14px;font-weight:600;margin-bottom:16px}
+.status{display:flex;gap:10px;align-items:center;border-radius:14px;padding:12px 14px;font-size:15.5px;font-weight:600;margin-bottom:16px}
 .status.fail{background:var(--bad-bg);color:var(--bad);flex-wrap:wrap}
-.status button{margin-left:auto;font:inherit;font-weight:700;font-size:13px;border:0;background:var(--bad);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
-.sec-title{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:700;margin:6px 4px 10px}
+.status button{margin-left:auto;font:inherit;font-weight:700;font-size:14.5px;border:0;background:var(--bad);color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+.sec-title{font-size:14.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:700;margin:6px 4px 10px}
 .rq{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:16px;margin-bottom:12px;border-left:6px solid var(--ok)}
 .rq.wrong{border-left-color:var(--bad)}
-.rq h4{margin:0 0 10px;font-size:16px;line-height:1.35}
-.rq .ans{font-size:15px;padding:8px 10px;border-radius:10px;margin-top:6px;display:flex;gap:8px}
+.rq h4{margin:0 0 10px;font-size:18px;line-height:1.35}
+.rq .ans{font-size:17px;padding:8px 10px;border-radius:10px;margin-top:6px;display:flex;gap:8px}
 .rq .ans.mine{background:var(--bad-bg);color:var(--bad)}
 .rq .ans.mine.right{background:var(--ok-bg);color:var(--ok)}
 .rq .ans.correct{background:var(--ok-bg);color:var(--ok)}
 .rq .ans b{flex:none}
-.rq .why{font-size:14px;color:var(--ink-2);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.rq .why{font-size:15.5px;color:var(--ink-2);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
 #s-result .foot{position:static;background:none;padding-top:4px}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 90px);transform:translateX(-50%) translateY(20px);
-  background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;font-weight:600;opacity:0;transition:.25s;pointer-events:none;z-index:40;max-width:90vw;text-align:center}
+  background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:15.5px;font-weight:600;opacity:0;transition:.25s;pointer-events:none;z-index:40;max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%)}
 
 /* Συγκατάθεση */
@@ -198,16 +198,21 @@ input[type=text]:focus{border-color:var(--brand-2);background:#fff}
 .modal-body{overflow-y:auto;padding:20px 18px 12px}
 .modal-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .modal-ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center}
-.modal h3{margin:0;font-size:20px;font-weight:800}
-.mlead{font-size:15px;margin:0 0 12px;line-height:1.45}
+.modal h3{margin:0;font-size:22.5px;font-weight:800}
+.mlead{font-size:17px;margin:0 0 12px;line-height:1.45}
 .mlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.mlist li{display:flex;gap:10px;align-items:flex-start;background:#f4f6fa;border-radius:12px;padding:10px 12px;font-size:14.5px;line-height:1.4}
-.mlist li .mi{flex:none;font-size:17px;line-height:1.3}
+.mlist li{display:flex;gap:10px;align-items:flex-start;background:#f4f6fa;border-radius:12px;padding:10px 12px;font-size:16px;line-height:1.4}
+.mlist li .mi{flex:none;font-size:19px;line-height:1.3}
 .mlist li.yes{background:#fff6dd}
 .modal-foot{padding:12px 18px calc(env(safe-area-inset-bottom) + 14px);border-top:1px solid var(--line)}
 .mbtns{display:flex;gap:10px}
-.mbtns .btn{flex:1;min-height:52px;font-size:16px;padding:10px 8px}
+.mbtns .btn{flex:1;min-height:52px;font-size:18px;padding:10px 8px}
 @media print{ .foot,.status,.toast,.no-print{display:none!important} }
+
+.thanks{background:var(--card);border-radius:18px;box-shadow:0 10px 30px -12px rgba(15,31,61,.25);padding:18px 18px;margin:0 0 18px;text-align:center}
+.thanks b{display:block;font-size:22px;line-height:1.25;color:var(--ink)}
+.thanks span{display:block;margin-top:8px;font-size:17px;font-weight:600;color:var(--ink-2)}
+@media print{.thanks{display:none}}
 </style>
 </head>
 <body>
@@ -264,6 +269,7 @@ input[type=text]:focus{border-color:var(--brand-2);background:#fff}
     </header>
     <div class="body">
       <div id="sendStatus" style="display:none"></div>
+      <div class="thanks"><b>Ευχαριστούμε πολύ για τον χρόνο σας!</b><span>Μπορείτε τώρα να κλείσετε αυτό το παράθυρο.</span></div>
       <div class="sec-title">Αναλυτικά</div>
       <div id="review"></div>
     </div>
@@ -317,37 +323,25 @@ input[type=text]:focus{border-color:var(--brand-2);background:#fff}
    ===================================================================== */
 const CONFIG = {
   title: "Quiz Γνώσεων",
-  heading: "Εκπαίδευση Οικιακών Συσκευών",
-  intro: "Συμπλήρωσε τα στοιχεία σου και ξεκίνα.",
+  heading: "Έξυπνες εφαρμογές για ψυγεία & πλυντήρια",
+  intro: "Γράψε το ονοματεπώνυμό σου και ξεκίνα.",
   sheetUrl: "https://script.google.com/macros/s/AKfycbyijcmVlst00PFV9xcXdiQrRdV3uZNNE-tKHdEBUztsRHdpNtb6lUBHsO6ChcgtOmw_iw/exec",
   sheetToken: "samsung-feedback-2026",
   passMark: 50,          // % για «Επιτυχία»
-  timeLimitMin: 10,      // λεπτά
+  timeLimitMin: 3.5,      // λεπτά
   clients: {
     internal: "Internal (Samsung)", euronics: "Euronics", electronet: "Electronet", plaisio: "Plaisio",
     kotsovolos: "Κωτσόβολος", public: "Public", expert: "Expert", bestelectric: "Best Electric", praktiker: "Praktiker"
   },
   // type: "single" (μία σωστή), "multi" (correct: [..]), "truefalse" (correct: true/false)
   questions: [
-    {
-      type: "single",
-      text: "Ποιο είναι το βασικό πλεονέκτημα μιας τηλεόρασης OLED σε σχέση με μια κλασική LED/LCD;",
-      options: [
-        "Κάθε pixel φωτίζεται μόνο του, άρα δίνει απόλυτο μαύρο και άπειρη αντίθεση",
-        "Έχει πάντα μεγαλύτερη μέγιστη φωτεινότητα",
-        "Καταναλώνει περισσότερο ρεύμα, άρα έχει καλύτερη εικόνα",
-        "Υποστηρίζει μόνο ανάλυση Full HD"
-      ],
-      correct: 0,
-      explain: "Στην OLED κάθε pixel εκπέμπει δικό του φως και μπορεί να σβήσει εντελώς — γι' αυτό το μαύρο είναι πραγματικά μαύρο. Οι LED/LCD χρειάζονται οπίσθιο φωτισμό."
-    },
-    {
-      type: "single",
-      text: "Στη νέα ενεργειακή σήμανση της ΕΕ (από το 2021), ποια κλάση είναι η πιο αποδοτική;",
-      options: ["A+++", "A", "B", "G"],
-      correct: 1,
-      explain: "Η νέα κλίμακα πάει από A (πιο αποδοτική) έως G. Οι κλάσεις A+, A++, A+++ καταργήθηκαν."
-    }
+    {"type": "single", "text": "Ποιος φωνητικός βοηθός είναι ο μόνος που υποστηρίζει ελληνικά για τον έλεγχο των συσκευών;", "options": ["Amazon Alexa", "Google Assistant / Google Home", "Samsung Bixby", "LG ThinQ ON"], "correct": 1, "explain": "Google Assistant / Google Home. Η Alexa δεν διατίθεται επίσημα στην Ελλάδα και δεν μιλά ελληνικά. Συμβουλή: για ελληνικές φωνητικές εντολές, ρυθμίστε τη συσκευή μέσω Google Home."},
+    {"type": "single", "text": "Τι σημαίνει η δυνατότητα «multi-admin» του προτύπου Matter;", "options": ["Πολλά μέλη της οικογένειας μπορούν να χρησιμοποιούν τον ίδιο λογαριασμό", "Η συσκευή ελέγχεται μόνο μέσω του cloud της μάρκας", "Η ίδια συσκευή μπορεί να ανήκει ταυτόχρονα σε έως 5 οικοσυστήματα (π.χ. SmartThings και Apple Home)", "Ένα hub μπορεί να ελέγχει έως 5 συσκευές"], "correct": 2, "explain": "Η ίδια συσκευή Matter μπορεί να ανήκει ταυτόχρονα σε έως 5 οικοσυστήματα· η πρώτη εφαρμογή δημιουργεί δεύτερο QR κοινής χρήσης για την επόμενη."},
+    {"type": "single", "text": "Ποιο από τα παρακάτω μπορεί να κάνει το Homey Pro, αλλά όχι το Matter από μόνο του;", "options": ["Τοπικό έλεγχο συσκευών, ακόμη κι αν πέσει το internet", "Έλεγχο συσκευών Wi-Fi", "Υποστήριξη συσκευών Thread", "Έλεγχο συσκευών Zigbee, Z-Wave, υπέρυθρων (IR) και 433 MHz"], "correct": 3, "explain": "Το Homey Pro υποστηρίζει Matter, Thread, Zigbee, Z-Wave, Bluetooth, Wi-Fi, IR και 433 MHz. Τοπικό έλεγχο, Wi-Fi και Thread προσφέρει και το Matter."},
+    {"type": "single", "text": "Ποιο ισχύει για τους τρόπους χρήσης της Homey;", "options": ["Απαιτεί πάντα hub και μηνιαία συνδρομή", "Είναι δωρεάν για απεριόριστες συσκευές χωρίς hub", "Homey Pro (hub, ~399 €) χωρίς συνδρομή· Homey Cloud (χωρίς hub) δωρεάν έως 5 συσκευές, με Premium ~3–4 €/μήνα για απεριόριστες", "Διατίθεται μόνο μαζί με τηλεόραση LG"], "correct": 2, "explain": "Homey Pro ~399 € χωρίς συνδρομή (τοπικός έλεγχος)· Homey Cloud δωρεάν έως 5 συσκευές, Homey Premium ~3–4 €/μήνα· το Homey Bridge (~69 €) προσθέτει Zigbee, Z-Wave, IR, 433 MHz."},
+    {"type": "single", "text": "Ένας πελάτης στην Ελλάδα θέλει να βλέπει από το κινητό το εσωτερικό του ψυγείου του. Τι ισχύει;", "options": ["Μόνο το LG ThinQ το προσφέρει στην Ελλάδα", "Το SmartThings το προσφέρει (Family Hub – View Inside / AI Vision Inside, που αναγνωρίζει 37 τρόφιμα)· ψυγεία LG με κάμερα δεν διατίθενται στην Ελλάδα", "Και οι δύο εφαρμογές το προσφέρουν", "Καμία από τις δύο"], "correct": 1, "explain": "Η κάμερα ψυγείου είναι διαθέσιμη στην Ελλάδα μέσω SmartThings (Family Hub, π.χ. RS90F66BEFEF)· η LG δεν πουλά ψυγεία με κάμερα στην Ελλάδα."},
+    {"type": "single", "text": "Ποια εφαρμογή πήρε την υψηλότερη συνολική βαθμολογία στη σύγκριση των 12 εφαρμογών (στα 28 κριτήρια);", "options": ["Home Connect (Bosch · Siemens)", "LG ThinQ", "SmartThings (Samsung)", "Xiaomi Home"], "correct": 2, "explain": "SmartThings: 26/28 (93%), πλήρες Matter και εκατοντάδες μάρκες τρίτων. Ακολουθεί η Home Connect με 23,5."},
+    {"type": "single", "text": "Τι ισχύει στην Ελλάδα για τον ορισμό ώρας έναρξης / λήξης του πλυντηρίου από το κινητό;", "options": ["Και οι δύο εφαρμογές το επιτρέπουν πλήρως", "Μόνο το LG ThinQ το επιτρέπει", "Καμία από τις δύο δεν το επιτρέπει", "Το SmartThings το επιτρέπει (Laundry Planner: ορίζετε πότε θέλετε να έχει τελειώσει η πλύση)· στο LG ThinQ η καθυστέρηση έναρξης ορίζεται μόνο από τον πίνακα της συσκευής"], "correct": 3, "explain": "SmartThings: πλήρως (Laundry Planner). LG ThinQ: μερικώς – η καθυστέρηση έναρξης ορίζεται μόνο από τον πίνακα της συσκευής."}
   ]
 };
 
@@ -357,7 +351,7 @@ const CLIENT_LOGOS = { euronics: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA
 /* ===================================================================== */
 
 const $ = s => document.querySelector(s);
-const Q = CONFIG.questions;
+let Q = [];   // ανακατεμένες ερωτήσεις/απαντήσεις ανά χρήστη (βλ. buildQ)
 const LETTERS = ["Α","Β","Γ","Δ","Ε","ΣΤ"];
 const ANON = "Ανώνυμη συμμετοχή";
 const params = new URLSearchParams(location.search);
@@ -374,6 +368,22 @@ const storage = {
   set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
   del(k){ try{ localStorage.removeItem(k); }catch(e){} }
 };
+/* Ανακάτεμα: κάθε χρήστης παίρνει άλλη σειρά ερωτήσεων και απαντήσεων.
+   Ο σπόρος (seed) αποθηκεύεται με την πρόοδο, ώστε μετά από ανανέωση η σειρά να μένει ίδια.
+   Στο Google Sheet οι ερωτήσεις στέλνονται πάντα με την αρχική σειρά (ίδιες στήλες για όλους). */
+const SEED = ((storage.get(PKEY) || {}).seed) || (Math.floor(Math.random() * 2147483646) + 1);
+function rng(a){ return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function shuffled(arr, r){ const x = arr.slice(); for (let i = x.length - 1; i > 0; i--){ const j = Math.floor(r() * (i + 1)); [x[i], x[j]] = [x[j], x[i]]; } return x; }
+function buildQ(){
+  const r = rng(SEED);
+  return shuffled(CONFIG.questions.map((q, orig) => {
+    if (q.type !== "single" && q.type !== "multi") return Object.assign({ orig }, q);
+    const perm = shuffled(q.options.map((_, k) => k), r);
+    const corr = q.type === "multi" ? q.correct.map(c => perm.indexOf(c)).sort() : perm.indexOf(q.correct);
+    return Object.assign({}, q, { orig, options: perm.map(k => q.options[k]), correct: corr });
+  }), r);
+}
+Q = buildQ();
 const isInternal = s => s && s.clientKey === "internal";
 function fmt(sec){ sec = Math.max(0, Math.ceil(sec)); return Math.floor(sec/60) + ":" + String(sec%60).padStart(2,"0"); }
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),2600); }
@@ -384,7 +394,7 @@ $("#quizHeading").textContent = CONFIG.heading;
 $("#quizIntro").textContent = CONFIG.intro;
 document.querySelectorAll("img[data-logo]").forEach(i => i.src = LOGO_S);
 document.querySelectorAll(".q-count").forEach(e => e.textContent = Q.length);
-document.querySelectorAll(".tl-min").forEach(e => e.textContent = CONFIG.timeLimitMin);
+document.querySelectorAll(".tl-min").forEach(e => e.textContent = String(CONFIG.timeLimitMin).replace(".", ","));
 if (CONFIG.clients[P_CLIENT]) $("#eyebrow").textContent = "Quiz Γνώσεων · " + CONFIG.clients[P_CLIENT];
 
 /* Πάνω αριστερά: «Internal» για εσωτερικές εκπαιδεύσεις, αλλιώς ο πελάτης */
@@ -556,7 +566,7 @@ window.addEventListener("beforeunload", e => { if (timerId && !state.submitted){
 function saveProgress(){
   if (state.submitted || !state.endsAt) return;
   storage.set(PKEY, { name: state.name, store: state.store, storeCo: state.storeCo, storePlace: state.storePlace, session: state.session, consent: state.consent,
-    answers: state.answers, i: state.i, startedAt: state.startedAt, endsAt: state.endsAt, warned: !!state.warned, qn: Q.length });
+    answers: state.answers, i: state.i, startedAt: state.startedAt, endsAt: state.endsAt, warned: !!state.warned, qn: Q.length, seed: SEED });
 }
 function resumeProgress(){
   const pr = storage.get(PKEY);
@@ -618,7 +628,7 @@ function submit(){
   const elapsed = Math.min(CONFIG.timeLimitMin * 60, Math.round((Date.now() - state.startedAt) / 1000));
   const items = Q.map((q, i) => {
     const a = state.answers[i];
-    return { q: q.text, mine: a === null ? "— Χωρίς απάντηση" : (Array.isArray(a) ? a : [a]).map(k => optText(q, k)).join(", "),
+    return { orig: q.orig, q: q.text, mine: a === null ? "— Χωρίς απάντηση" : (Array.isArray(a) ? a : [a]).map(k => optText(q, k)).join(", "),
       corr: correctIdx(q).map(k => optText(q, k)).join(", "), ok: isCorrect(q, a), blank: a === null, explain: q.explain || "" };
   });
   const score = items.filter(x => x.ok).length;
@@ -634,7 +644,7 @@ async function sendResults(){
     const body = { kind: "quiz", token: CONFIG.sheetToken, id: r.id, session: state.session.code, consent: state.consent,
       name: state.name || "", store: state.store, quiz: CONFIG.heading + " — " + CONFIG.title,
       score: r.score, total: r.total, pct: r.pct, passed: r.pct >= CONFIG.passMark, elapsed: r.elapsed, auto: r.auto,
-      unanswered: r.items.filter(x => x.blank).length, questions: r.items.map(it => ({ q: it.q, corr: it.corr, mine: it.mine, ok: it.ok })) };
+      unanswered: r.items.filter(x => x.blank).length, questions: r.items.slice().sort((x, y) => x.orig - y.orig).map(it => ({ q: it.q, corr: it.corr, mine: it.mine, ok: it.ok })) };
     const res = await fetch(CONFIG.sheetUrl, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body), redirect: "follow" });
     const data = await res.json().catch(() => ({}));
     if (!res.ok || data.ok !== true) throw new Error(data.error || res.status);
